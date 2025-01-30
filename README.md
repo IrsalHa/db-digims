@@ -5,6 +5,9 @@ time psql -h 10.12.4.167 -U postgres -d digimsdb -c "\COPY MBRANCH TO '/root/MBR
 
 time psql -h 10.12.4.167 -U postgres -d digimsdb -c "\COPY MBRANCH TO '/root/MBRANCH_DATA.csv' WITH (FORMAT CSV, HEADER, NULL 'NULL', DELIMITER '#', QUOTE '\"', ESCAPE '\"');"
 
+[+] SQLLDR [+] INI BENER
+time psql -h 10.12.4.164 -U postgres -d digimsdb2 -c "\COPY MBRANCH TO '/root/MBRANCH_DATA.csv' WITH (FORMAT CSV, HEADER FALSE, DELIMITER '#', QUOTE '$',  FORCE_QUOTE *);"
+
 
 [+] CEK PRIMARY KEY & FK [+]
 //CEK PK
