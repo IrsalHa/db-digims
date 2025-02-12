@@ -1,0 +1,2496 @@
+create sequence MUSER_SEQ
+    maxvalue 9223372036854775807
+    cache 2
+/
+
+create sequence MBRANCH_SEQ
+/
+
+create sequence MCOURIER_SEQ
+/
+
+create sequence MCOURIERVENDOR_SEQ
+/
+
+create sequence MCOURIERZIPCODE_SEQ
+/
+
+create sequence MHOLIDAY_SEQ
+/
+
+create sequence MLETTER_SEQ
+/
+
+create sequence MLETTERTYPE_SEQ
+/
+
+create sequence MNOTIF_SEQ
+/
+
+create sequence MORG_SEQ
+/
+
+create sequence MOUTLET_SEQ
+/
+
+create sequence MPERSOVENDOR_SEQ
+/
+
+create sequence MPICPRODUCT_SEQ
+/
+
+create sequence MPRODUCT_SEQ
+/
+
+create sequence MPRODUCTREQ_SEQ
+/
+
+create sequence MPRODUCTTYPE_SEQ
+/
+
+create sequence MREGION_SEQ
+/
+
+create sequence MREPAIRREASON_SEQ
+/
+
+create sequence MRETURNREASON_SEQ
+/
+
+create sequence MSUPPLIER_SEQ
+/
+
+create sequence MSYSPARAM_SEQ
+/
+
+create sequence MUSERGROUPLEVEL_SEQ
+/
+
+create sequence MUSERGROUPMENU_SEQ
+/
+
+create sequence MUSERGROUPNOTIF_SEQ
+/
+
+create sequence TBOOKDATA_SEQ
+/
+
+create sequence TBOOKFILE_SEQ
+/
+
+create sequence TBRANCHITEMBUCKET_SEQ
+/
+
+create sequence TBRANCHITEMTRACK_SEQ
+/
+
+create sequence TBRANCHSTOCK_SEQ
+/
+
+create sequence TBRANCHSTOCKITEM_SEQ
+/
+
+create sequence TCOUNTERENGINE_SEQ
+/
+
+create sequence TDELIVERY_SEQ
+/
+
+create sequence TDELIVERYCOURIER_SEQ
+/
+
+create sequence TDELIVERYDATA_SEQ
+/
+
+create sequence TDERIVATIF_SEQ
+/
+
+create sequence TDERIVATIFDATA_SEQ
+/
+
+create sequence TDERIVATIFPRODUCT_SEQ
+/
+
+create sequence TEMBOSSBRANCH_SEQ
+/
+
+create sequence TEMBOSSDATA_SEQ
+/
+
+create sequence TEMBOSSFILE_SEQ
+/
+
+create sequence TEMBOSSPRODUCT_SEQ
+/
+
+create sequence TFILEBRANCHACTV_TFILEBRANCHACTVPK_SEQ
+/
+
+create sequence TINCOMING_SEQ
+/
+
+create sequence TINCOMINGVENDOR_SEQ
+/
+
+create sequence TMANUALACTV_SEQ
+/
+
+create sequence TMISSINGBRANCH_SEQ
+/
+
+create sequence TMISSINGPRODUCT_SEQ
+/
+
+create sequence TNOTIF_SEQ
+/
+
+create sequence TORDER_SEQ
+/
+
+create sequence TORDERDOC_SEQ
+/
+
+create sequence TORDERFLOW_SEQ
+/
+
+create sequence TORDERITEM_SEQ
+/
+
+create sequence TORDERMEMO_SEQ
+/
+
+create sequence TOUTGOING_SEQ
+/
+
+create sequence TPAKET_SEQ
+/
+
+create sequence TPAKETDATA_SEQ
+/
+
+create sequence TPERSO_SEQ
+/
+
+create sequence TPERSODATA_SEQ
+/
+
+create sequence TPERSOUPLOAD_SEQ
+/
+
+create sequence TPERSOUPLOADDATA_SEQ
+/
+
+create sequence TPILOTING_SEQ
+/
+
+create sequence TPINMAILERBRANCH_SEQ
+/
+
+create sequence TPINMAILERDATA_SEQ
+/
+
+create sequence TPINMAILERFILE_SEQ
+/
+
+create sequence TPINMAILERORDER_SEQ
+/
+
+create sequence TPINMAILERPRODUCT_SEQ
+/
+
+create sequence TPINPADITEM_SEQ
+/
+
+create sequence TPINPADORDERPRODUCT_SEQ
+/
+
+create sequence TPLAN_SEQ
+/
+
+create sequence TPLANDOC_SEQ
+/
+
+create sequence TPLANPRODUCT_SEQ
+/
+
+create sequence TPRODUCTMM_SEQ
+/
+
+create sequence TREGISTERSTOCK_SEQ
+/
+
+create sequence TREPAIR_SEQ
+/
+
+create sequence TREPAIRDLV_SEQ
+/
+
+create sequence TREPAIRITEM_SEQ
+/
+
+create sequence TREPAIRMEMO_SEQ
+/
+
+create sequence TRETURN_SEQ
+/
+
+create sequence TRETURNITEM_SEQ
+/
+
+create sequence TRETURNMEMO_SEQ
+/
+
+create sequence TRETURNTRACK_SEQ
+/
+
+create sequence TROLLBACK_SEQ
+/
+
+create sequence TSECURITIESITEM_SEQ
+/
+
+create sequence TSTOCKCARD_SEQ
+/
+
+create sequence TSWITCH_SEQ
+/
+
+create sequence TSWITCHITEM_SEQ
+/
+
+create sequence TSWITCHMEMO_SEQ
+/
+
+create sequence TTOKENITEM_SEQ
+/
+
+create sequence TUNEOD_SEQ
+/
+
+create sequence MUSERGROUP_SEQ
+/
+
+create table MPRODUCTGROUP
+(
+    MPRODUCTGROUPPK  NUMBER(32) not null
+        constraint MPRODUCTGROUP_PKEY
+            primary key,
+    PRODUCTGROUPCODE VARCHAR2(2),
+    PRODUCTGROUP     VARCHAR2(40),
+    ISCOA            VARCHAR2(1)
+)
+/
+
+create table MCOURIERVENDOR
+(
+    MCOURIERVENDORPK NUMBER(32) not null
+        constraint MCOURIERVENDOR_PKEY
+            primary key,
+    VENDORCODE       VARCHAR2(10),
+    VENDORNAME       VARCHAR2(70),
+    VENDORPICNAME    VARCHAR2(40),
+    VENDORPICPHONE   VARCHAR2(20),
+    VENDORPICEMAIL   VARCHAR2(100),
+    LASTUPDATED      TIMESTAMP(6),
+    UPDATEDBY        VARCHAR2(15),
+    URLTOKEN         VARCHAR2(200),
+    URLTRACKING      VARCHAR2(200),
+    COSTUMERAUTH     VARCHAR2(200),
+    ISTRACKING       VARCHAR2(1),
+    ISINTERCITY      VARCHAR2(1)
+)
+/
+
+create table MREGION
+(
+    MREGIONPK   NUMBER(32) not null
+        constraint MREGION_PKEY
+            primary key,
+    REGIONID    VARCHAR2(5),
+    REGIONCODE  VARCHAR2(10),
+    REGIONNAME  VARCHAR2(70),
+    LASTUPDATED TIMESTAMP(6),
+    UPDATEDBY   VARCHAR2(15)
+)
+/
+
+create table MCOURIER
+(
+    MCOURIERPK       NUMBER(32) not null
+        constraint MCOURIER_PKEY
+            primary key,
+    MCOURIERVENDORFK NUMBER(32) not null
+        constraint MCOURIER_FK1
+            references MCOURIERVENDOR
+                on delete cascade,
+    COURIERCODE      VARCHAR2(15),
+    COURIERNAME      VARCHAR2(70),
+    COURIERPHONE     VARCHAR2(20),
+    COURIEREMAIL     VARCHAR2(100),
+    LASTUPDATED      TIMESTAMP(6),
+    UPDATEDBY        VARCHAR2(15),
+    COURIERIMG       VARCHAR2(30),
+    NPP              VARCHAR2(20)
+)
+/
+
+create table MCOURIERZIPCODE
+(
+    MCOURIERZIPCODEPK NUMBER(32) not null
+        constraint MCOURIERZIPCODE_PKEY
+            primary key,
+    MCOURIERVENDORFK  NUMBER(32)
+        constraint MCOURIERZIPCODE_FK1
+            references MCOURIERVENDOR
+                on delete cascade,
+    ZIPCODESTART      NUMBER(32) default 0,
+    ZIPCODEEND        NUMBER(32) default 0,
+    DESCRIPTION       VARCHAR2(70),
+    LASTUPDATED       TIMESTAMP(6),
+    UPDATEDBY         VARCHAR2(40)
+)
+/
+
+create table MBRANCH
+(
+    MBRANCHPK        NUMBER(32) not null
+        constraint MBRANCH_PKEY
+            primary key,
+    MREGIONFK        NUMBER(32)
+        constraint MBRANCH_FK1
+            references MREGION
+                on delete cascade,
+    BRANCHID         VARCHAR2(5),
+    BRANCHCODE       VARCHAR2(10),
+    BRANCHNAME       VARCHAR2(70),
+    LASTUPDATED      TIMESTAMP(6),
+    UPDATEDBY        VARCHAR2(15),
+    BRANCHADDRESS    VARCHAR2(200),
+    BRANCHCITY       VARCHAR2(70),
+    MCOURIERVENDORFK NUMBER(32)
+        constraint MBRANCH_FK2
+            references MCOURIERVENDOR
+                on delete set null,
+    ISHEADOFFICE     VARCHAR2(1),
+    ISINTERCITY      VARCHAR2(1),
+    BRANCHLEVEL      NUMBER(32) default 0,
+    ZIPCODE          VARCHAR2(6)
+)
+/
+
+create table MHOLIDAY
+(
+    MHOLIDAYPK  NUMBER(32) not null
+        constraint MHOLIDAY_PKEY
+            primary key,
+    HOLIDAY     DATE,
+    DESCRIPTION VARCHAR2(70),
+    LASTUPDATED TIMESTAMP(6),
+    UPDATEDBY   VARCHAR2(15)
+)
+/
+
+create table MICON
+(
+    MICONPK  NUMBER(32) not null
+        constraint MICON_PKEY
+            primary key,
+    ICONNAME VARCHAR2(15),
+    ICONPATH VARCHAR2(70),
+    URL      VARCHAR2(300)
+)
+/
+
+create table MLETTER
+(
+    MLETTERPK    NUMBER(32) not null
+        constraint MLETTER_PKEY
+            primary key,
+    LETTERPREFIX VARCHAR2(10),
+    DESCRIPTION  VARCHAR2(70),
+    LASTUPDATED  TIMESTAMP(6),
+    UPDATEDBY    VARCHAR2(15),
+    PRODUCTGROUP VARCHAR2(3)
+)
+/
+
+create table MLETTERTYPE
+(
+    MLETTERTYPEPK NUMBER(32) not null
+        constraint MLETTERTYPE_PKEY
+            primary key,
+    PRODUCTGROUP  VARCHAR2(3),
+    LETTERTYPE    VARCHAR2(10),
+    DESCRIPTION   VARCHAR2(70),
+    LASTUPDATED   TIMESTAMP(6),
+    UPDATEDBY     VARCHAR2(15)
+)
+/
+
+create table MUSERGROUPOLD
+(
+    MUSERGROUPPK  NUMBER not null
+        constraint MUSERGROUP_PKEY
+            primary key,
+    USERGROUPCODE VARCHAR2(20)      default '(null)',
+    USERGROUPNAME VARCHAR2(40)      default '(null)',
+    USERGROUPDESC VARCHAR2(100)     default '(null)',
+    LASTUPDATED   TIMESTAMP(6)      default (null),
+    UPDATEDBY     VARCHAR2(15 char) default '(null)'
+)
+/
+
+create table MNOTIF
+(
+    NOTIFID       VARCHAR2(10) not null
+        constraint MNOTIF_PKEY
+            primary key,
+    NOTIFNAME     VARCHAR2(100),
+    NOTIFTYPE     VARCHAR2(1),
+    NOTIFPAGEPATH VARCHAR2(100)
+)
+/
+
+create table MORG
+(
+    MORGPK      NUMBER(32) not null
+        constraint MORG_PKEY
+            primary key,
+    ORG         VARCHAR2(3),
+    DESCRIPTION VARCHAR2(40),
+    LASTUPDATED TIMESTAMP(6),
+    UPDATEDBY   VARCHAR2(15),
+    OPRCAPACITY NUMBER(32) default 0,
+    ISNEEDDOC   VARCHAR2(1)
+)
+/
+
+create table MPRODUCTOWNER
+(
+    MPRODUCTOWNERPK NUMBER(32) not null
+        constraint MPRODUCTOWNER_PKEY
+            primary key,
+    MBRANCHFK       NUMBER(32)
+        constraint MPRODUCTOWNER_FK1
+            references MBRANCH
+)
+/
+
+create table MPERSOVENDOR
+(
+    MPERSOVENDORPK NUMBER(32) not null
+        constraint MPERSOVENDOR_PKEY
+            primary key,
+    VENDORCODE     VARCHAR2(10),
+    VENDORNAME     VARCHAR2(70),
+    VENDORPICNAME  VARCHAR2(40),
+    VENDORPICPHONE VARCHAR2(20),
+    VENDORPICEMAIL VARCHAR2(100),
+    LASTUPDATED    TIMESTAMP(6),
+    UPDATEDBY      VARCHAR2(15),
+    VENDORLOGO     VARCHAR2(50)
+)
+/
+
+create table MPRODUCTTYPE
+(
+    MPRODUCTTYPEPK        NUMBER(32) not null
+        constraint MPRODUCTTYPE_PKEY
+            primary key,
+    PRODUCTGROUPCODE      VARCHAR2(3),
+    PRODUCTGROUPNAME      VARCHAR2(70),
+    PRODUCTTYPE           VARCHAR2(70),
+    LASTSTOCK             NUMBER(32)  default 0,
+    STOCKMIN              NUMBER(32)  default 0,
+    LASTUPDATED           TIMESTAMP(6),
+    UPDATEDBY             VARCHAR2(15),
+    PRODUCTORG            VARCHAR2(3),
+    STOCKRESERVED         NUMBER(32)  default 0,
+    STOCKINJECTED         NUMBER(32)  default 0,
+    PRODUCTUNIT           VARCHAR2(1),
+    PRODUCTUNITQTY        NUMBER(32)  default 0,
+    ESTDAYS               NUMBER(32)  default 0,
+    ESTDATE               DATE,
+    VELOCITY              NUMBER(32)  default 0,
+    SLACOUNTERTYPE        VARCHAR2(1),
+    ISALERTSTOCKPAGU      VARCHAR2(1) default 'N',
+    ALERTSTOCKPAGUDATE    DATE,
+    ALERTSTOCKPAGURELEASE DATE,
+    ISBLOCKPAGU           VARCHAR2(1) default 'N',
+    BLOCKPAGUTIME         TIMESTAMP(6),
+    UNBLOCKPAGUTIME       TIMESTAMP(6),
+    UNBLOCKPAGUBY         VARCHAR2(15),
+    ISESTCOUNT            VARCHAR2(1),
+    DOCTYPE               VARCHAR2(5),
+    COANO                 VARCHAR2(20),
+    MPRODUCTOWNERFK       NUMBER(32)
+        constraint MPRODUCTTYPE_FK1
+            references MPRODUCTOWNER,
+    STOCKUNUSED           NUMBER(32)  default 0,
+    GROUPTYPE             VARCHAR2(2),
+    BOOKTYPE              VARCHAR2(10),
+    AVG                   NUMBER(32)  default 0,
+    LASTUPLOADEDAVG       DATE
+)
+/
+
+create table MPRODUCT
+(
+    MPRODUCTPK     NUMBER(32) not null
+        constraint MPRODUCT_PKEY
+            primary key,
+    MPRODUCTTYPEFK NUMBER(32)
+        constraint MPRODUCT_FK1
+            references MPRODUCTTYPE
+                on delete cascade,
+    PRODUCTCODE    VARCHAR2(10),
+    PRODUCTNAME    VARCHAR2(70),
+    ISINSTANT      VARCHAR2(1),
+    LASTUPDATED    TIMESTAMP(6),
+    UPDATEDBY      VARCHAR2(15),
+    PRODUCTGROUP   VARCHAR2(3),
+    COMBOREF       NUMBER(32),
+    ISMM           VARCHAR2(1) default 'N',
+    ISOPR          VARCHAR2(1),
+    ISDLVHOME      VARCHAR2(1) default 'N'
+)
+/
+
+create table MBRANCHPRODUCTGROUP
+(
+    MBRANCHPRODUCTGROUPPK NUMBER(32) not null
+        constraint MBRANCHPRODUCTGROUP_PKEY
+            primary key,
+    MBRANCHFK             NUMBER(32)
+        constraint MBRANCHPRODUCTGROUP_FK1
+            references MBRANCH
+                on delete cascade,
+    MPRODUCTGROUPFK       NUMBER(32)
+        constraint MBRANCHPRODUCTGROUP_FK2
+            references MPRODUCTGROUP
+                on delete cascade
+)
+/
+
+create table TEMBOSSFILE
+(
+    TEMBOSSFILEPK NUMBER(32) not null
+        constraint TEMBOSSFILE_PKEY
+            primary key,
+    EMBOSSID      VARCHAR2(15),
+    FILENAME      VARCHAR2(70),
+    TOTALDATA     NUMBER(32) default 0,
+    MEMO          VARCHAR2(100),
+    UPLOADTIME    TIMESTAMP(6),
+    UPLOADEDBY    VARCHAR2(15)
+)
+/
+
+create table MPRODUCTREQ
+(
+    MPRODUCTREQPK NUMBER(32) not null
+        constraint MPRODUCTREQ_PKEY
+            primary key,
+    PRODUCTCODE   VARCHAR2(10),
+    PRODUCTNAME   VARCHAR2(70),
+    ISINSTANT     VARCHAR2(1),
+    ISDERIVATIF   VARCHAR2(1),
+    STATUS        VARCHAR2(2),
+    ENTRYTIME     TIMESTAMP(6),
+    LASTUPDATED   TIMESTAMP(6),
+    UPDATEDBY     VARCHAR2(15)
+)
+/
+
+create table TEMBOSSPRODUCT
+(
+    TEMBOSSPRODUCTPK NUMBER(32) not null
+        constraint TEMBOSSPRODUCT_PKEY
+            primary key,
+    TEMBOSSFILEFK    NUMBER(32) not null
+        constraint TEMBOSSPRODUCT_FK1
+            references TEMBOSSFILE
+                on delete cascade,
+    MPRODUCTFK       NUMBER(32)
+        constraint TEMBOSSPRODUCT_FK2
+            references MPRODUCT,
+    PRODUCTCODE      VARCHAR2(10),
+    ISINSTANT        VARCHAR2(1),
+    ORDERDATE        DATE,
+    TOTALDATA        NUMBER(32) default 0,
+    TOTALPROSES      NUMBER(32) default 0,
+    ORDEROS          NUMBER(32) default 0,
+    STATUS           VARCHAR2(3),
+    ENTRYTIME        TIMESTAMP(6),
+    ORG              VARCHAR2(3),
+    ISNEEDDOC        VARCHAR2(1)
+)
+/
+
+create table TBRANCHSTOCK
+(
+    TBRANCHSTOCKPK NUMBER(32) not null
+        constraint TBRANCHSTOCK_PKEY
+            primary key,
+    MBRANCHFK      NUMBER(32) not null
+        constraint TBRANCHSTOCK_FK1
+            references MBRANCH,
+    MPRODUCTFK     NUMBER(32) not null
+        constraint TBRANCHSTOCK_FK2
+            references MPRODUCT,
+    STOCKRESERVED  NUMBER(32) default 0,
+    STOCKACTIVATED NUMBER(32),
+    STOCKCABANG    NUMBER(32),
+    STOCKDELIVERED NUMBER(32),
+    PRODUCTGROUP   VARCHAR2(2),
+    OUTLET         VARCHAR2(2),
+    STOCKDESTROYED NUMBER(32)
+)
+/
+
+create table TDELIVERYCOURIER
+(
+    TDELIVERYCOURIERPK NUMBER(32) not null
+        constraint TDELIVERYCOURIER_PKEY
+            primary key,
+    MCOURIERVENDORFK   NUMBER(32)
+        constraint TDELIVERYCOURIER_FK1
+            references MCOURIERVENDOR,
+    MCOURIERFK         NUMBER(32)
+        constraint TDELIVERYCOURIER_FK2
+            references MCOURIER,
+    PRODUCTGROUP       VARCHAR2(3),
+    DLVCOURIERID       VARCHAR2(15),
+    STATUS             VARCHAR2(3),
+    TOTALDATA          NUMBER(32) default 0,
+    MEMO               VARCHAR2(100),
+    PROCESSTIME        TIMESTAMP(6),
+    PROCESSEDBY        VARCHAR2(15),
+    ISURGENT           VARCHAR2(1),
+    COURIERBRANCHPOOL  VARCHAR2(3)
+)
+/
+
+create table TDELIVERY
+(
+    TDELIVERYPK        NUMBER(32) not null
+        constraint TDELIVERY_PKEY
+            primary key,
+    MCOURIERVENDORFK   NUMBER(32)
+        constraint TDELIVERY_FK1
+            references MCOURIERVENDOR,
+    MBRANCHFK          NUMBER(32)
+        constraint TDELIVERY_FK2
+            references MBRANCH,
+    DLVID              VARCHAR2(30),
+    STATUS             VARCHAR2(3),
+    TOTALDATA          NUMBER(32)  default 0,
+    COURIERCODE        VARCHAR2(10),
+    PROCESSTIME        TIMESTAMP(6),
+    PROCESSEDBY        VARCHAR2(15),
+    PRODUCTGROUP       VARCHAR2(3),
+    TDELIVERYCOURIERFK NUMBER(32)
+        constraint TDELIVERY_FK3
+            references TDELIVERYCOURIER
+                on delete set null,
+    LETTERTYPE         VARCHAR2(10),
+    ISURGENT           VARCHAR2(1),
+    TGLTERIMA          DATE,
+    PENERIMA           VARCHAR2(40),
+    AWB                VARCHAR2(100),
+    ISPRODUCTPHOTO     VARCHAR2(1) default 'N',
+    MEMO               VARCHAR2(400),
+    ISRETURN           VARCHAR2(1),
+    BRANCHPOOL         VARCHAR2(3),
+    ACCNO              VARCHAR2(20),
+    CARDNO             VARCHAR2(20),
+    CUSTNAME           VARCHAR2(30),
+    ADDRESS1           VARCHAR2(200),
+    ADDRESS2           VARCHAR2(200),
+    ADDRESS3           VARCHAR2(200),
+    ZIPCODE            VARCHAR2(5),
+    HPNO               VARCHAR2(20),
+    ISDLVCUST          VARCHAR2(1) default 'N',
+    BERATITEM          VARCHAR2(10),
+    CITY               VARCHAR2(50),
+    PENERIMA2          VARCHAR2(40),
+    TGLTERIMA2         DATE,
+    TOTALAMOUNT        NUMBER(19)  default 0,
+    COURIERVENDOR2     VARCHAR2(70),
+    ORDERID            VARCHAR2(20),
+    FILENAME           VARCHAR2(200),
+    UPDATEDBY          VARCHAR2(40),
+    LASTUPDATED        TIMESTAMP(6)
+)
+/
+
+create table TPLAN
+(
+    TPLANPK         NUMBER(32) not null
+        constraint TPLAN_PKEY
+            primary key,
+    MBRANCHFK       NUMBER(32)
+        constraint TPLAN_FK1
+            references MBRANCH,
+    PRODUCTGROUP    VARCHAR2(2),
+    PLANNO          VARCHAR2(20),
+    MEMONO          VARCHAR2(20),
+    MEMODATE        DATE,
+    MEMOFILEORI     VARCHAR2(100),
+    MEMOFILEID      VARCHAR2(100),
+    ANGGARAN        BINARY_DOUBLE default 0,
+    TOTALQTY        NUMBER(32)    default 0,
+    STATUS          VARCHAR2(2),
+    INPUTER         VARCHAR2(40),
+    INPUTTIME       TIMESTAMP(6),
+    DECISIONBY      VARCHAR2(40),
+    DECISIONTIME    TIMESTAMP(6),
+    DECISIONDESC    VARCHAR2(200),
+    TOTALDATA       NUMBER(32)    default 0,
+    INCOMINGUSED    NUMBER(32),
+    TOTALPROCESS    NUMBER(32),
+    DECISIONTIMEPFA TIMESTAMP(6),
+    DECISIONBYPFA   VARCHAR2(40),
+    ISDECLINE       VARCHAR2(1)
+)
+/
+
+create table MSYSPARAM
+(
+    ORDERNO     NUMBER(32)  default 0,
+    PARAMCODE   VARCHAR2(30) not null
+        constraint MSYSPARAM_PKEY
+            primary key,
+    PARAMNAME   VARCHAR2(50),
+    PARAMDESC   VARCHAR2(100),
+    PARAMVALUE  VARCHAR2(100),
+    PARAMGROUP  VARCHAR2(30),
+    ISMASKED    VARCHAR2(1) default 'N',
+    LASTUPDATED TIMESTAMP(6),
+    UPDATEDBY   VARCHAR2(15)
+)
+/
+
+create table TEMBOSSBRANCH
+(
+    TEMBOSSBRANCHPK  NUMBER(32) not null
+        constraint TEMBOSSBRANCH_PKEY
+            primary key,
+    TEMBOSSFILEFK    NUMBER(32) not null
+        constraint TEMBOSSBRANCH_FK1
+            references TEMBOSSFILE
+                on delete cascade,
+    TEMBOSSPRODUCTFK NUMBER(32) not null
+        constraint TEMBOSSBRANCH_FK3
+            references TEMBOSSPRODUCT
+                on delete cascade,
+    MPRODUCTFK       NUMBER(32)
+        constraint TEMBOSSBRANCH_FK2
+            references MPRODUCT,
+    MBRANCHFK        NUMBER(32)
+        constraint TEMBOSSBRANCH_FK4
+            references MBRANCH,
+    BRANCHID         VARCHAR2(5),
+    ORDERDATE        DATE,
+    TOTALDATA        NUMBER(32),
+    ENTRYTIME        TIMESTAMP(6),
+    STATUS           VARCHAR2(3),
+    TOTALPROSES      NUMBER(32) default 0,
+    TOTALOS          NUMBER(32) default 0,
+    PRODSLA          NUMBER(32) default 0,
+    DLVSLA           NUMBER(32) default 0,
+    SLATOTAL         NUMBER(32) default 0,
+    DLVSTARTTIME     TIMESTAMP(6),
+    DLVFINISHTIME    TIMESTAMP(6)
+)
+/
+
+create table MUSERGROUPLEVEL
+(
+    MUSERGROUPLEVELPK NUMBER(32) not null
+        constraint MUSERGROUPLEVEL_PKEY
+            primary key,
+    MUSERGROUPFK      NUMBER(32)
+        constraint MUSERGROUPLEVEL_FK1
+            references MUSERGROUPOLD
+                on delete cascade,
+    AMOUNTSTART       NUMBER(17),
+    AMOUNTEND         NUMBER(17),
+    GROUPLEVEL        NUMBER(32) default 0,
+    BRANCHLEVEL       NUMBER(32) default 0
+)
+/
+
+create table MMENU
+(
+    MMENUPK          NUMBER(32) not null
+        constraint MMENU_PKEY
+            primary key,
+    MENUORDERNO      NUMBER(32) default 0,
+    MENUGROUP        VARCHAR2(20),
+    MENUSUBGROUP     VARCHAR2(20),
+    MENUNAME         VARCHAR2(40),
+    MENUPATH         VARCHAR2(70),
+    MENUPARAMNAME    VARCHAR2(10),
+    MENUPARAMVALUE   VARCHAR2(20),
+    MENUGROUPICON    VARCHAR2(50),
+    MENUSUBGROUPICON VARCHAR2(50),
+    MENUICON         VARCHAR2(50)
+)
+/
+
+create table TNOTIF
+(
+    TNOTIFPK     NUMBER(32) not null
+        constraint TNOTIF_PKEY
+            primary key,
+    NOTIFTXT     VARCHAR2(100),
+    NOTIFCOUNT   NUMBER(32) default 0,
+    MMENUFK      NUMBER(32)
+        constraint TNOTIF_FK1
+            references MMENU,
+    PRODUCTGROUP VARCHAR2(2),
+    MBRANCHFK    NUMBER(32)
+        constraint TNOTIF_FK2
+            references MBRANCH,
+    BRANCHLEVEL  NUMBER(32),
+    NOTIFTIME    TIMESTAMP(6)
+)
+/
+
+create table MUSERGROUPNOTIF
+(
+    MUSERGROUPNOTIFPK NUMBER(32) not null
+        constraint MUSERGROUPNOTIF_PKEY
+            primary key,
+    MUSERGROUPFK      NUMBER(32),
+    NOTIFID           VARCHAR2(10),
+    NOTIFTYPE         VARCHAR2(1)
+)
+/
+
+create table MYENTITY
+(
+    ID    NUMBER(38) not null
+        constraint MYENTITY_PKEY
+            primary key,
+    FIELD VARCHAR2(255)
+)
+/
+
+create table TEMBOSSDATA
+(
+    TEMBOSSDATAPK    NUMBER(32) not null
+        constraint TEMBOSSDATA_PKEY
+            primary key,
+    TEMBOSSFILEFK    NUMBER(32)
+        constraint TEMBOSSDATA_FK1
+            references TEMBOSSFILE
+                on delete cascade,
+    TEMBOSSPRODUCTFK NUMBER(32),
+    TEMBOSSBRANCHFK  NUMBER(32),
+    MBRANCHFK        NUMBER(32)
+        constraint TEMBOSSDATA_FK3
+            references MBRANCH
+                on delete set null,
+    MPRODUCTFK       NUMBER(32)
+        constraint TEMBOSSDATA_FK2
+            references MPRODUCT
+                on delete cascade,
+    CARDNO           VARCHAR2(20),
+    NAMEONID         VARCHAR2(40),
+    NAMEONCARD       VARCHAR2(40),
+    ORDERDATE        DATE,
+    PRODUCTCODE      VARCHAR2(10),
+    BRANCHID         VARCHAR2(10),
+    BRANCHNAME       VARCHAR2(70),
+    KLNCODE          VARCHAR2(10),
+    KLNNAME          VARCHAR2(70),
+    SEQNO            VARCHAR2(10),
+    ISINSTANT        VARCHAR2(1),
+    ISACTIVATED      VARCHAR2(1),
+    DATEACTIVATED    DATE,
+    ACTIVATEDTIME    DATE,
+    FILEBRANCHACTV   VARCHAR2(100),
+    ACCNO            VARCHAR2(20),
+    ADDRESS1         VARCHAR2(40),
+    ADDRESS2         VARCHAR2(40),
+    ADDRESS3         VARCHAR2(40),
+    ZIPCODE          VARCHAR2(5),
+    HPNO             VARCHAR2(20),
+    ISCLEANSING      VARCHAR2(1) default 'N'
+)
+/
+
+create table TPERSOUPLOAD
+(
+    TPERSOUPLOADPK NUMBER(32) not null
+        constraint TPERSOUPLOAD_PKEY
+            primary key,
+    FILENAME       VARCHAR2(70),
+    TOTALDATA      NUMBER(32) default 0,
+    UPLOADTIME     TIMESTAMP(6),
+    UPLOADEDBY     VARCHAR2(15)
+)
+/
+
+create table TDERIVATIF
+(
+    TDERIVATIFPK  NUMBER(32) not null
+        constraint TDERIVATIF_PKEY
+            primary key,
+    MBRANCHFK     NUMBER(32)
+        constraint TDERIVATIF_FK1
+            references MBRANCH,
+    ORDERNO       VARCHAR2(20),
+    ORDERDATE     DATE,
+    TOTALDATA     NUMBER(32) default 0,
+    MEMO          VARCHAR2(100),
+    ISSCAN        VARCHAR2(1),
+    ISCROP        VARCHAR2(1),
+    ISMERGE       VARCHAR2(1),
+    SCANDATE      DATE,
+    CROPDATE      DATE,
+    MERGEDATE     DATE,
+    STATUS        NUMBER(32) default 0,
+    ENTRYTIME     TIMESTAMP(6),
+    ENTRYBY       VARCHAR2(15),
+    TDELIVERYFK   NUMBER(32)
+        constraint TDERIVATIF_FK2
+            references TDELIVERY,
+    PRODSLA       NUMBER(32) default 0,
+    DLVSLA        NUMBER(32) default 0,
+    SLATOTAL      NUMBER(32) default 0,
+    DLVSTARTTIME  TIMESTAMP(6),
+    DLVFINISHTIME TIMESTAMP(6),
+    MPRODUCTFK    NUMBER(32)
+        constraint TDERIVATIF_FK3
+            references MPRODUCT,
+    TOTALREJECT   NUMBER(32) default 0,
+    FILENAME      VARCHAR2(70),
+    TOTALADJ      NUMBER(32) default 0
+)
+/
+
+create table TPINMAILERFILE
+(
+    TPINMAILERFILEPK NUMBER(32) not null
+        constraint TPINMAILERFILE_PKEY
+            primary key,
+    MPRODUCTFK       NUMBER(32)
+        constraint TPINMAILERFILE_FK1
+            references MPRODUCT,
+    BATCHID          VARCHAR2(15),
+    FILENAME         VARCHAR2(70),
+    TOTALDATA        NUMBER(32) default 0,
+    MEMO             VARCHAR2(100),
+    UPLOADTIME       TIMESTAMP(6),
+    UPLOADEDBY       VARCHAR2(15),
+    STATUS           VARCHAR2(3)
+)
+/
+
+create table TPINMAILERBRANCH
+(
+    TPINMAILERBRANCHPK NUMBER(32) not null
+        constraint TPINMAILERBRANCH_PKEY
+            primary key,
+    TPINMAILERFILEFK   NUMBER(32)
+        constraint TPINMAILERBRANCH_FK1
+            references TPINMAILERFILE
+                on delete cascade,
+    MBRANCHFK          NUMBER(32)
+        constraint TPINMAILERBRANCH_FK2
+            references MBRANCH,
+    BRANCHID           VARCHAR2(5),
+    ORDERDATE          DATE,
+    TOTALDATA          NUMBER(32) default 0,
+    STATUS             VARCHAR2(3)
+)
+/
+
+create table MREPAIRREASON
+(
+    MREPAIRREASONPK NUMBER(32) not null
+        constraint MREPAIRREASON_PKEY
+            primary key,
+    REPAIRREASON    VARCHAR2(40),
+    PINPADTYPE      VARCHAR2(1),
+    UPDATEDBY       VARCHAR2(40),
+    LASTUPDATED     TIMESTAMP(6)
+)
+/
+
+create table TCOUNTERENGINE
+(
+    COUNTERNAME VARCHAR2(70),
+    LASTCOUNTER NUMBER(32) default 0
+)
+/
+
+create table MRETURNREASON
+(
+    MRETURNREASONPK NUMBER(32) not null
+        constraint MRETURNREASON_PKEY
+            primary key,
+    RETURNREASON    VARCHAR2(100),
+    LASTUPDATED     TIMESTAMP(6),
+    UPDATEDBY       VARCHAR2(15),
+    ISDESTROY       VARCHAR2(1),
+    PRODUCTGROUP    VARCHAR2(2)
+)
+/
+
+create table TPERSOUPLOADDATA
+(
+    TPERSOUPLOADDATAPK NUMBER(32) not null
+        constraint TPERSOUPLOADDATA_PKEY
+            primary key,
+    TPERSOUPLOADFK     NUMBER(32) not null
+        constraint TPERSOUPLOADDATA_FK1
+            references TPERSOUPLOAD
+                on delete cascade,
+    TEMBOSSDATAFK      NUMBER(32) not null
+        constraint TPERSOUPLOADDATA_FK2
+            references TEMBOSSDATA,
+    CARDNO             VARCHAR2(20),
+    ORDERDATE          DATE
+)
+/
+
+create table TORDER
+(
+    TORDERPK         NUMBER(32) not null
+        constraint TORDER_PKEY
+            primary key,
+    MBRANCHFK        NUMBER(32)
+        constraint TORDER_FK1
+            references MBRANCH,
+    MPRODUCTFK       NUMBER(32)
+        constraint TORDER_FK2
+            references MPRODUCT,
+    PRODUCTGROUP     VARCHAR2(2),
+    ORDERID          VARCHAR2(20),
+    ORDERDATE        DATE,
+    ORDERLEVEL       NUMBER(32) default 0,
+    ORDEROUTLET      VARCHAR2(2),
+    ITEMQTY          NUMBER(32) default 0,
+    STATUS           VARCHAR2(3),
+    INSERTEDBY       VARCHAR2(40),
+    INSERTTIME       TIMESTAMP(6),
+    DECISIONBY       VARCHAR2(40),
+    DECISIONTIME     TIMESTAMP(6),
+    ORDERTYPE        VARCHAR2(1),
+    TOTALPROSES      NUMBER(32) default 0,
+    MEMO             VARCHAR2(200),
+    TPINMAILERFILEFK NUMBER(32)
+        constraint TORDER_FK10
+            references TPINMAILERFILE
+                on delete cascade,
+    MEMODATE         TIMESTAMP(6),
+    MEMONO           VARCHAR2(40),
+    LASTUPDATED      TIMESTAMP(6),
+    ORDERPINPADTYPE  VARCHAR2(1),
+    TOTALQTY         NUMBER(32) default 0,
+    PENERIMA         VARCHAR2(40),
+    FILETERIMA       VARCHAR2(200),
+    TGLTERIMA        DATE,
+    TOTALCS          NUMBER(32) default 0,
+    TOTALTELLER      NUMBER(32) default 0
+)
+/
+
+create table TDESTROY
+(
+    TDESTROYPK   NUMBER(32) not null
+        constraint TDESTROY_PKEY
+            primary key,
+    MBRANCHFK    NUMBER(32)
+        constraint TDESTROY_FK1
+            references MBRANCH,
+    MPRODUCTFK   NUMBER(32),
+    REGID        VARCHAR2(20),
+    ITEMQTY      NUMBER(32) default 0,
+    STATUS       VARCHAR2(2),
+    INSERTEDBY   VARCHAR2(40),
+    INSERTTIME   TIMESTAMP(6),
+    DECISIONBY   VARCHAR2(40),
+    DECISIONTIME TIMESTAMP(6)
+)
+/
+
+create table TDESTROYMEMO
+(
+    TDESTROYMEMOPK NUMBER(32) not null
+        constraint TDESTROYMEMO_PKEY
+            primary key,
+    TDESTROYFK     NUMBER(32)
+        constraint TDESTROYMEMO_FK1
+            references TDESTROY
+                on delete cascade,
+    MEMO           VARCHAR2(200),
+    MEMOBY         VARCHAR2(40),
+    MEMOTIME       TIMESTAMP(6)
+)
+/
+
+create table TDESTROYITEM
+(
+    TDESTROYITEMPK NUMBER(32) not null
+        constraint TDESTROYITEM_PKEY
+            primary key,
+    TDESTROYFK     NUMBER(32)
+        constraint TDESTROYITEMPK_FK1
+            references TDESTROY
+                on delete cascade,
+    ITEMNO         VARCHAR2(20),
+    ITEMSTATUS     VARCHAR2(2)
+)
+/
+
+create table TPINMAILERPRODUCT
+(
+    TPINMAILERPRODUCTPK NUMBER(32) not null
+        constraint TPINMAILERPRODUCT_PKEY
+            primary key,
+    TPINMAILERFILEFK    NUMBER(32)
+        constraint TPINMAILERPRODUCT_FK1
+            references TPINMAILERFILE
+                on delete cascade,
+    MPRODUCTFK          NUMBER(32)
+        constraint TPINMAILERPRODUCT_FK2
+            references MPRODUCT,
+    PRODUCTCODE         VARCHAR2(10),
+    ORDERDATE           DATE,
+    TOTALDATA           NUMBER(32) default 0,
+    TOTALPROSES         NUMBER(32) default 0,
+    ORDEROS             NUMBER(32) default 0,
+    STATUS              VARCHAR2(3),
+    ENTRYTIME           TIMESTAMP(6),
+    ORG                 VARCHAR2(3),
+    ISINSTANT           VARCHAR2(1),
+    TPINMAILERBRANCHFK  NUMBER(32)
+        constraint TPINMAILERBRANCHFK_FK3
+            references TPINMAILERBRANCH
+                on delete cascade
+)
+/
+
+create table MSUPPLIER
+(
+    MSUPPLIERPK  NUMBER(32) not null
+        constraint MSUPPLIER_PKEY
+            primary key,
+    SUPPLIERNAME VARCHAR2(70),
+    PICNAME      VARCHAR2(40),
+    PICHP        VARCHAR2(40),
+    PICEMAIL     VARCHAR2(40),
+    UPDATEDBY    VARCHAR2(40),
+    LASTUPDATED  TIMESTAMP(6)
+)
+/
+
+create table TDERIVATIFPRODUCT
+(
+    TDERIVATIFPRODUCTPK NUMBER(32) not null
+        constraint TDERIVATIFPRODUCT_PKEY
+            primary key,
+    TDERIVATIFFK        NUMBER(32) not null
+        constraint TDERIVATIFPRODUCT_FK1
+            references TDERIVATIF
+                on delete cascade,
+    MPRODUCTFK          NUMBER(32)
+        constraint TDERIVATIFPRODUCT_FK2
+            references MPRODUCT,
+    ORDERDATE           DATE,
+    TOTALDATA           NUMBER(32) default 0,
+    ENTRYTIME           TIMESTAMP(6),
+    NOPAKET             VARCHAR2(15),
+    PAKETTIME           TIMESTAMP(6),
+    TEMBOSSBRANCHFK     NUMBER(32)
+        constraint TDERIVATIFPRODUCT_FK3
+            references TEMBOSSBRANCH
+                on delete set null
+)
+/
+
+create table TORDERDOC
+(
+    TORDERDOCPK NUMBER(32) not null
+        constraint TORDERDOC_PKEY
+            primary key,
+    TORDERFK    NUMBER(32)
+        constraint TORDERDOC_FK1
+            references TORDER
+                on delete cascade,
+    DOCFILEORI  VARCHAR2(200),
+    DOCFILEID   VARCHAR2(200),
+    DOCFILESIZE NUMBER(32) default 0,
+    DOCTIME     TIMESTAMP(6)
+)
+/
+
+create table TORDERMEMO
+(
+    TORDERMEMOPK NUMBER(32) not null
+        constraint TORDERMEMO_PKEY
+            primary key,
+    TORDERFK     NUMBER(32)
+        constraint TORDERMEMO_FK1
+            references TORDER
+                on delete cascade,
+    MEMO         VARCHAR2(200),
+    MEMOBY       VARCHAR2(40),
+    MEMOTIME     TIMESTAMP(6)
+)
+/
+
+create table TRETURN
+(
+    TRETURNPK       NUMBER(32) not null
+        constraint TRETURN_PKEY
+            primary key,
+    MBRANCHFK       NUMBER(32)
+        constraint TRETURN_FK1
+            references MBRANCH,
+    MPRODUCTFK      NUMBER(32)
+        constraint TRETURN_FK2
+            references MPRODUCT,
+    REGID           VARCHAR2(20),
+    RETURNLEVEL     NUMBER(32) default 0,
+    ITEMQTY         NUMBER(32) default 0,
+    STATUS          VARCHAR2(3),
+    INSERTEDBY      VARCHAR2(40),
+    INSERTTIME      TIMESTAMP(6),
+    DECISIONBY      VARCHAR2(40),
+    DECISIONTIME    TIMESTAMP(6),
+    MRETURNREASONFK NUMBER(32)
+        constraint TRETURN_FK3
+            references MRETURNREASON,
+    LETTERTYPE      VARCHAR2(10),
+    FILENAME        VARCHAR2(200),
+    ISDESTROY       VARCHAR2(1)
+)
+/
+
+create table TORDERTRACK
+(
+    TORDERTRACKPK NUMBER(32) not null
+        constraint TORDERTRACK_PKEY
+            primary key,
+    TORDERFK      NUMBER(32)
+        constraint TORDERTRACK_FK1
+            references TORDER
+                on delete cascade,
+    PRODUCTGROUP  VARCHAR2(2),
+    ITEMNO        VARCHAR2(2),
+    TRACKTIME     TIMESTAMP(6),
+    TRACKSTATUS   VARCHAR2(2),
+    TRACKDESC     VARCHAR2(100)
+)
+/
+
+create table TFILEBRANCHACTV
+(
+    TFILEBRANCHACTVPK NUMBER(32) not null
+        constraint TFILEBRANCHACTV_PKEY
+            primary key,
+    FILENAME          VARCHAR2(100),
+    FILEGETTIME       TIMESTAMP(6)
+)
+/
+
+create table TINCOMING
+(
+    TINCOMINGPK      NUMBER(32) not null
+        constraint TINCOMING_PKEY
+            primary key,
+    MPRODUCTTYPEFK   NUMBER(32) not null
+        constraint TINCOMING_FK1
+            references MPRODUCTTYPE
+                on delete cascade,
+    PRODUCTGROUP     VARCHAR2(3),
+    INCOMINGID       VARCHAR2(20),
+    FILENAME         VARCHAR2(70),
+    ITEMQTY          NUMBER(32)    default 0,
+    MEMO             VARCHAR2(100),
+    STATUS           VARCHAR2(3),
+    ENTRYTIME        TIMESTAMP(6),
+    ENTRYBY          VARCHAR2(40),
+    DECISIONBY       VARCHAR2(40),
+    DECISIONTIME     TIMESTAMP(6),
+    DECISIONMEMO     VARCHAR2(100),
+    LASTUPDATED      TIMESTAMP(6),
+    UPDATEDBY        VARCHAR2(40),
+    MSUPPLIERFK      NUMBER(32)
+        constraint TINCOMING_FK2
+            references MSUPPLIER,
+    SPKNO            VARCHAR2(50),
+    SPKDATE          DATE,
+    MBRANCHFK        NUMBER(32)
+        constraint TINCOMING_FK3
+            references MBRANCH,
+    HARGA            BINARY_DOUBLE default 0,
+    ORDERTYPE        VARCHAR2(1),
+    PREFIX           VARCHAR2(5),
+    ITEMSTARTNO      NUMBER(32),
+    TPLANFK          NUMBER(32)
+        constraint TINCOMING_FK7
+            references TPLAN
+                on delete cascade,
+    VENDORLETTERNO   VARCHAR2(20),
+    VENDORLETTERDATE DATE,
+    PKSNO            VARCHAR2(20),
+    PKSDATE          DATE,
+    MANUFACTUREDATE  NUMBER(32)
+)
+/
+
+create table TREGISTERSTOCK
+(
+    TREGISTERSTOCKPK NUMBER(32) not null
+        constraint TREGISTERSTOCK_PKEY
+            primary key,
+    BRANCH           VARCHAR2(70),
+    PRODUCTGROUP     VARCHAR2(3),
+    MPRODUCT         VARCHAR2(70),
+    TGLINCOMING      DATE,
+    PREFIX           VARCHAR2(5),
+    NUMERAWALINC     VARCHAR2(13),
+    NUMERAKHIRINC    VARCHAR2(13),
+    JUMLAHINC        NUMBER(32),
+    TGLOUTGOING      DATE,
+    NUMERAWALOUTG    VARCHAR2(13),
+    NUMERAKHIROUTG   VARCHAR2(13),
+    JUMLAHOUTG       NUMBER(32),
+    NUMERAWALOUTS    VARCHAR2(13),
+    NUMERAKHIROUTS   VARCHAR2(13),
+    JUMLAHOUTS       NUMBER(32),
+    TINCOMINGFK      NUMBER(32)
+        constraint TREGISTERSTOCK_FK1
+            references TINCOMING,
+    BRANCHLEVEL      NUMBER(32)
+)
+/
+
+create table TMANUALACTV
+(
+    TMANUALACTVPK NUMBER(32) not null
+        constraint TMANUALACTV_PKEY
+            primary key,
+    SERIALNO      VARCHAR2(20),
+    ITEMQTY       NUMBER(32)  default 0,
+    QTYPERUNIT    NUMBER(32)  default 0,
+    PRODUCTNAME   VARCHAR2(70),
+    BRANCHID      VARCHAR2(4),
+    OUTLET        VARCHAR2(2),
+    STATUS        VARCHAR2(2),
+    ACCNO         VARCHAR2(20),
+    DATEACTIVATED DATE,
+    NASABAH       VARCHAR2(40),
+    LASTUPDATED   DATE,
+    UPDATEDBY     VARCHAR2(70),
+    ITEMSTATUS    VARCHAR2(1) default '8',
+    PRODUCTGROUP  VARCHAR2(2) default '04'
+)
+/
+
+create table TREPAIR
+(
+    TREPAIRPK       NUMBER(32) not null
+        constraint TREPAIR_PKEY
+            primary key,
+    MBRANCHFK       NUMBER(32)
+        constraint TREPAIR_FK1
+            references MBRANCH,
+    MPRODUCTFK      NUMBER(32)
+        constraint TREPAIR_FK2
+            references MPRODUCT,
+    REGID           VARCHAR2(20),
+    ITEMQTY         NUMBER(32) default 0,
+    STATUS          VARCHAR2(3),
+    INSERTEDBY      VARCHAR2(40),
+    INSERTTIME      TIMESTAMP(6),
+    DECISIONBY      VARCHAR2(40),
+    DECISIONTIME    TIMESTAMP(6),
+    MRETURNREASONFK NUMBER(32)
+        constraint TREPAIR_FK3
+            references MRETURNREASON,
+    MREPAIRREASONFK NUMBER(32)
+        constraint TREPAIR_FK5
+            references MREPAIRREASON
+                on delete cascade,
+    PINPADTYPE      VARCHAR2(1),
+    REPAIRFAILED    NUMBER(32) default 0,
+    FILENAME        VARCHAR2(200),
+    TOTALPROSES     NUMBER(32) default 0,
+    TGLPEMENUHAN    DATE,
+    DOCFILE         VARCHAR2(200)
+)
+/
+
+create table TREPAIRDLV
+(
+    TREPAIRDLVPK NUMBER(32) not null
+        constraint TREPAIRDLV_PKEY
+            primary key,
+    TREPAIRFK    NUMBER(32)
+        constraint TREPAIRDLV_FK1
+            references TREPAIR
+                on delete cascade,
+    DLVNO        VARCHAR2(15),
+    QUANTITY     NUMBER(32),
+    ISREPAIRDLV  VARCHAR2(1),
+    STATUS       VARCHAR2(3),
+    PROCESSBY    VARCHAR2(40),
+    PROCESSTIME  TIMESTAMP(6),
+    TOTALFAIL    NUMBER(32) default 0
+)
+/
+
+create table MUSERGROUPMENU
+(
+    MUSERGROUPMENUPK NUMBER(32) not null
+        constraint MUSERGROUPMENU_PKEY
+            primary key,
+    MUSERGROUPFK     NUMBER(32) not null
+        constraint MUSERGROUPMENU_FK1
+            references MUSERGROUPOLD
+                on delete cascade,
+    MMENUFK          NUMBER(32) not null
+        constraint MUSERGROUPMENU_FK2
+            references MMENU
+                on delete cascade
+)
+/
+
+create table TBOOKFILE
+(
+    TBOOKFILEPK  NUMBER(32) not null
+        constraint TBOOKFILE_PKEY
+            primary key,
+    TDELIVERYFK  NUMBER(32)
+        constraint TBOOKFILE_FK1
+            references TDELIVERY,
+    BOOKID       VARCHAR2(100),
+    TOTALDATA    NUMBER(32) default 0,
+    TOTALAMOUNT  NUMBER(17) default 0,
+    BOOKTIME     TIMESTAMP(6),
+    BOOKEDBY     VARCHAR2(40),
+    STATUS       VARCHAR2(3),
+    STATUSDESC   VARCHAR2(200),
+    TOTALERROR   NUMBER(32) default 0,
+    TOTALSUCCESS NUMBER(32) default 0,
+    DECISIONTIME TIMESTAMP(6),
+    DECISIONBY   VARCHAR2(40)
+)
+/
+
+create table TDERIVATIFDATA
+(
+    TDERIVATIFDATAPK    NUMBER(32) not null
+        constraint TDERIVATIFDATA_PKEY
+            primary key,
+    TDERIVATIFFK        NUMBER(32)
+        constraint TDERIVATIFDATA_FK1
+            references TDERIVATIF
+                on delete cascade,
+    TDERIVATIFPRODUCTFK NUMBER(32)
+        constraint TDERIVATIFDATA_FK2
+            references TDERIVATIFPRODUCT
+                on delete cascade,
+    TEMBOSSDATAFK       NUMBER(32) not null
+        constraint TDERIVATIFDATA_FK3
+            references TEMBOSSDATA,
+    CARDNO              VARCHAR2(20),
+    ORDERDATE           DATE,
+    REJECTMEMO          VARCHAR2(100),
+    STATUS              VARCHAR2(3)
+)
+/
+
+create table TPRODUCTMM
+(
+    TPRODUCTMMPK  NUMBER(32) not null
+        constraint TPRODUCTMM_PKEY
+            primary key,
+    TEMBOSSFILEFK NUMBER(32)
+        constraint TPRODUCTMM_FK1
+            references TEMBOSSFILE
+                on delete cascade,
+    ORDERDATE     DATE,
+    ORG           VARCHAR2(3),
+    PRODUCTTYPE   VARCHAR2(70),
+    PRODUCTCODE   VARCHAR2(5),
+    PRODUCTNAME   VARCHAR2(70),
+    TOTALDATA     NUMBER(32) default 0,
+    TOTALMERGE    NUMBER(32) default 0,
+    TOTALOS       NUMBER(32) default 0,
+    ENTRYTIME     TIMESTAMP(6),
+    REKONBY       VARCHAR2(15),
+    REKONTIME     TIMESTAMP(6),
+    ISMATCH       VARCHAR2(1)
+)
+/
+
+create table TBRANCHITEMBUCKET
+(
+    TBRANCHITEMBUCKETPK NUMBER(32) not null
+        constraint TBRANCHITEMBUCKET_PKEY
+            primary key,
+    TBRANCHSTOCKFK      NUMBER(32)
+        constraint TBRANCHITEMBUCKET_FK1
+            references TBRANCHSTOCK,
+    ORDERID             VARCHAR2(20),
+    OUTLET              VARCHAR2(2),
+    PREFIX              VARCHAR2(5),
+    ITEMSTARTNO         NUMBER(32)  default 0,
+    ITEMENDNO           NUMBER(32)  default 0,
+    CURRENTNO           NUMBER(32)  default 0,
+    TOTALITEM           NUMBER(32)  default 0,
+    OUTBOUND            NUMBER(32)  default 0,
+    ISPOD               VARCHAR2(1),
+    ISRUNOUT            VARCHAR2(1),
+    INCOMINGID          VARCHAR2(20),
+    ITEMPRICE           NUMBER(17)  default 0,
+    ISGENERATE          VARCHAR2(1) default 'N',
+    INSERTTIME          TIMESTAMP(6),
+    LASTGENERATE        TIMESTAMP(6),
+    FLATFILENAME        VARCHAR2(100),
+    ISACTV              VARCHAR2(1) default 'N'
+)
+/
+
+create index TBRANCHITEMBUCKET_UNQ1
+    on TBRANCHITEMBUCKET (ISACTV)
+/
+
+create index TBRANCHITEMBUCKET_UNQ3
+    on TBRANCHITEMBUCKET (OUTLET)
+/
+
+create index TBRANCHITEMBUCKET_UNQ2
+    on TBRANCHITEMBUCKET (ISGENERATE)
+/
+
+create table TPINMAILERDATA
+(
+    TPINMAILERDATAPK    NUMBER(32) not null
+        constraint TPINMAILERDATA_PKEY
+            primary key,
+    TPINMAILERBRANCHFK  NUMBER(32)
+        constraint TPINMAILERDATA_FK1
+            references TPINMAILERBRANCH
+                on delete cascade,
+    MPRODUCTFK          NUMBER(32)
+        constraint TPINMAILERDATA_FK2
+            references MPRODUCT,
+    CARDNO              VARCHAR2(20),
+    NAME                VARCHAR2(40),
+    ORDERDATE           DATE,
+    PRODUCTCODE         VARCHAR2(10),
+    BRANCHID            VARCHAR2(10),
+    KLNCODE             VARCHAR2(10),
+    SEQNO               VARCHAR2(10),
+    ISWITHCARD          VARCHAR2(1),
+    ISINSTANT           VARCHAR2(1),
+    TPINMAILERPRODUCTFK NUMBER(32)
+        constraint TPINMAILERDATA_FK3
+            references TPINMAILERPRODUCT
+                on delete cascade
+)
+/
+
+create table TPERSO
+(
+    TPERSOPK            NUMBER(32) not null
+        constraint TPERSO_PKEY
+            primary key,
+    TEMBOSSPRODUCTFK    NUMBER(32)
+        constraint TPERSO_FK1
+            references TEMBOSSPRODUCT,
+    MPRODUCTFK          NUMBER(32)
+        constraint TPERSO_FK2
+            references MPRODUCT,
+    MPERSOVENDORFK      NUMBER(32)
+        constraint TPERSO_FK3
+            references MPERSOVENDOR,
+    TDERIVATIFPRODUCTFK NUMBER(32)
+        constraint TPERSO_FK4
+            references TDERIVATIFPRODUCT,
+    PERSOID             VARCHAR2(15),
+    ORDERDATE           DATE,
+    STATUS              VARCHAR2(3),
+    TOTALDATA           NUMBER(32) default 0,
+    TOTALPAKET          NUMBER(32) default 0,
+    PERSOSTARTBY        VARCHAR2(15),
+    PERSOSTARTTIME      TIMESTAMP(6),
+    PERSOFINISHBY       VARCHAR2(15),
+    PERSOFINISHTIME     TIMESTAMP(6),
+    DECISIONBY          VARCHAR2(15),
+    DECISIONTIME        TIMESTAMP(6),
+    ISGETALLPAKET       VARCHAR2(1),
+    MEMO                VARCHAR2(100),
+    DECISIONMEMO        VARCHAR2(100),
+    TPERSOUPLOADFK      NUMBER(32)
+        constraint TPERSO_FK5
+            references TPERSOUPLOAD
+)
+/
+
+create table TMISSINGPRODUCT
+(
+    TMISSINGPRODUCTPK   NUMBER(32) not null
+        constraint TMISSINGPRODUCT_PKEY
+            primary key,
+    TEMBOSSPRODUCTFK    NUMBER(32)
+        constraint TMISSINGPRODUCT_FK1
+            references TEMBOSSPRODUCT
+                on delete cascade,
+    PRODUCTGROUP        VARCHAR2(2),
+    PRODUCTCODE         VARCHAR2(10),
+    ISINSTANT           VARCHAR2(1),
+    ENTRYTIME           TIMESTAMP(6),
+    ORDERDATE           DATE,
+    TOTALDATA           NUMBER(32) default 0,
+    TPINMAILERPRODUCTFK NUMBER(32)
+        constraint TMISSINGPRODUCT_FK2
+            references TPINMAILERPRODUCT
+                on delete cascade
+)
+/
+
+create table TMISSINGBRANCH
+(
+    TMISSINGBRANCHPK   NUMBER(32) not null
+        constraint TMISSINGBRANCH_PKEY
+            primary key,
+    TEMBOSSBRANCHFK    NUMBER(32)
+        constraint TMISSINGBRANCH_FK1
+            references TEMBOSSBRANCH
+                on delete cascade,
+    BRANCHID           VARCHAR2(5),
+    ENTRYTIME          TIMESTAMP(6),
+    ORDERDATE          DATE,
+    TOTALDATA          NUMBER(32) default 0,
+    TPINMAILERBRANCHFK NUMBER(32)
+        constraint TMISSINGBRANCH_FK2
+            references TPINMAILERBRANCH
+                on delete cascade
+)
+/
+
+create table TSWITCH
+(
+    TSWITCHPK    NUMBER(32) not null
+        constraint TSWITCH_PKEY
+            primary key,
+    MBRANCHFK    NUMBER(32)
+        constraint TSWITCHPK_FK1
+            references MBRANCH,
+    MPRODUCTFK   NUMBER(32)
+        constraint TSWITCHPK_FK2
+            references MPRODUCT,
+    BRANCHIDREQ  VARCHAR2(3),
+    OUTLETREQ    VARCHAR2(2),
+    BRANCHIDPOOL VARCHAR2(3),
+    OUTLETPOOL   VARCHAR2(2),
+    REGID        VARCHAR2(20),
+    ITEMQTY      NUMBER(32) default 0,
+    STATUS       VARCHAR2(3),
+    INSERTEDBY   VARCHAR2(40),
+    INSERTTIME   TIMESTAMP(6),
+    DECISIONBY   VARCHAR2(40),
+    DECISIONTIME TIMESTAMP(6),
+    TORDERFK     NUMBER(32)
+        constraint TSWITCH_FK3
+            references TORDER
+)
+/
+
+create table MUSER
+(
+    MUSERPK        NUMBER(32) not null
+        constraint MUSER_PKEY
+            primary key,
+    MUSERGROUPFK   NUMBER(32)
+        constraint MUSER_FK1
+            references MUSERGROUPOLD,
+    USERID         VARCHAR2(15),
+    USERNAME       VARCHAR2(40),
+    PASSWORD       VARCHAR2(70),
+    LASTUPDATED    TIMESTAMP(6),
+    UPDATEDBY      VARCHAR2(15),
+    MPERSOVENDORFK NUMBER(32)
+        constraint MUSER_FK2
+            references MPERSOVENDOR,
+    MBRANCHFK      NUMBER(32),
+    LASTLOGIN      TIMESTAMP(6)
+)
+/
+
+create index MUSER_UNQ1
+    on MUSER (USERNAME)
+/
+
+create table TPERSODATA
+(
+    TPERSODATAPK    NUMBER(32) not null
+        constraint TPERSODATA_PKEY
+            primary key,
+    TPERSOFK        NUMBER(32)
+        constraint TPERSODATA_FK1
+            references TPERSO
+                on delete cascade,
+    MBRANCHFK       NUMBER(32)
+        constraint TPERSODATA_FK2
+            references MBRANCH
+                on delete set null,
+    TEMBOSSBRANCHFK NUMBER(32)
+        constraint TPERSODATA_FK3
+            references TEMBOSSBRANCH
+                on delete set null,
+    ORDERDATE       DATE,
+    QUANTITY        NUMBER(32) default 0,
+    STATUS          VARCHAR2(3),
+    ISGETPAKET      VARCHAR2(1)
+)
+/
+
+create table TSWITCHITEM
+(
+    TSWITCHITEMPK NUMBER(32) not null
+        constraint TSWITCHITEM_TSWICTHITEM_PKEY
+            primary key,
+    TSWITCHFK     NUMBER(32)
+        constraint TSWICTHITEM_FK1
+            references TSWITCH,
+    ITEMNO        VARCHAR2(20)
+)
+/
+
+create table TPERSOOPR
+(
+    TPERSOOPRPK NUMBER(32) not null
+        constraint TPERSOOPR_KEY
+            primary key,
+    TPERSOFK    NUMBER(32) not null
+        constraint TPERSOOPR_FK1
+            references TPERSO,
+    OPRID       VARCHAR2(15),
+    OPRNAME     VARCHAR2(70)
+)
+/
+
+create table TSWITCHMEMO
+(
+    TSWITCHMEMOPK NUMBER(32) not null
+        constraint TSWITCHMEMO_PKEY
+            primary key,
+    TSWITCHFK     NUMBER(32)
+        constraint TSWITCHMEMO_FK1
+            references TSWITCH
+                on delete cascade,
+    MEMO          VARCHAR2(200),
+    MEMOBY        VARCHAR2(40),
+    MEMOTIME      TIMESTAMP(6)
+)
+/
+
+create table TREPAIRMEMO
+(
+    TREPAIRMEMOPK NUMBER(32) not null
+        constraint TREPAIRMEMO_PKEY
+            primary key,
+    TREPAIRFK     NUMBER(32)
+        constraint TREPAIRMEMO_FK1
+            references TREPAIR
+                on delete cascade,
+    MEMO          VARCHAR2(200),
+    MEMOBY        VARCHAR2(40),
+    MEMOTIME      TIMESTAMP(6)
+)
+/
+
+create table TPLANPRODUCT
+(
+    TPLANPRODUCTPK NUMBER(32) not null
+        constraint TPLANPRODUCT_PKEY
+            primary key,
+    TPLANFK        NUMBER(32)
+        constraint TPLANPRODUCT_FK1
+            references TPLAN
+                on delete cascade,
+    MPRODUCTTYPEFK NUMBER(32)
+        constraint TPLANPRODUCT_FK2
+            references MPRODUCTTYPE,
+    UNITQTY        NUMBER(32) default 0,
+    TOTALPROCESS   NUMBER(32) default 0,
+    QTYPERUNIT     NUMBER(32) default 0
+)
+/
+
+create table TTOKENITEM
+(
+    TTOKENITEMPK NUMBER(32) not null
+        constraint TTOKENITEM_PKEY
+            primary key,
+    TINCOMINGFK  NUMBER(32)
+        constraint TTOKENITEM_FK1
+            references TINCOMING
+                on delete cascade,
+    ITEMNO       VARCHAR2(20),
+    ITEMNOINJECT VARCHAR2(20),
+    STATUS       VARCHAR2(3)
+)
+/
+
+create unique index TTOKENITEM_ITEMNO_KEY
+    on TTOKENITEM (ITEMNO)
+/
+
+create table TPLANDOC
+(
+    TPLANDOCPK  NUMBER(32) not null
+        constraint TPLANDOC_PKEY
+            primary key,
+    TPLANFK     NUMBER(32)
+        constraint TPLANDOC_FK1
+            references TPLAN
+                on delete cascade,
+    DOCFILEORI  VARCHAR2(200),
+    DOCFILEID   VARCHAR2(200),
+    DOCFILESIZE NUMBER(32) default 0,
+    DOCTIME     TIMESTAMP(6)
+)
+/
+
+create table TPINPADORDERPRODUCT
+(
+    TPINPADORDERPRODUCTPK NUMBER(32) not null
+        constraint TPINPADORDERPRODUCT_PKEY
+            primary key,
+    TORDERFK              NUMBER(32)
+        constraint TPINPADORDERPRODUCT_FK1
+            references TORDER
+                on delete cascade,
+    MPRODUCTFK            NUMBER(32)
+        constraint TPINPADORDERPRODUCT_FK2
+            references MPRODUCT,
+    PRODUCTCODE           VARCHAR2(10),
+    STATUS                VARCHAR2(3),
+    QUANTITY              NUMBER(32) default 0
+)
+/
+
+create table TINCOMINGVENDOR
+(
+    TINCOMINGVENDORPK NUMBER(32) not null
+        constraint TINCOMINGVENDOR_PKEY
+            primary key,
+    TINCOMINGFK       NUMBER(32)
+        constraint TINCOMINGVENDORPK_FK1
+            references TINCOMING
+                on delete cascade,
+    MSUPPLIERFK       NUMBER(32)
+        constraint TINCOMINGVENDORPK_FK2
+            references MSUPPLIER,
+    SUPPLIERNAME      VARCHAR2(70),
+    PICNAME           VARCHAR2(40),
+    PICHP             VARCHAR2(40)
+)
+/
+
+create table TPAKET
+(
+    TPAKETPK              NUMBER(32) not null
+        constraint TPAKET_PKEY
+            primary key,
+    TPERSOFK              NUMBER(32)
+        constraint TPAKET_FK1
+            references TPERSO
+                on delete cascade,
+    TEMBOSSPRODUCTFK      NUMBER(32)
+        constraint TPAKET_FK3
+            references TEMBOSSPRODUCT,
+    TDERIVATIFPRODUCTFK   NUMBER(32)
+        constraint TPAKET_FK2
+            references TDERIVATIFPRODUCT
+                on delete cascade,
+    MPRODUCTFK            NUMBER(32)
+        constraint TPAKET_FK4
+            references MPRODUCT,
+    PAKETID               VARCHAR2(15),
+    ORDERDATE             DATE,
+    PRODUCTGROUP          VARCHAR2(3),
+    STATUS                VARCHAR2(3),
+    TOTALDATA             NUMBER(32) default 0,
+    TOTALDONE             NUMBER(32) default 0,
+    PROCESSTIME           TIMESTAMP(6),
+    PROCESSEDBY           VARCHAR2(15),
+    TORDERFK              NUMBER(32)
+        constraint TPAKET_FK5
+            references TORDER
+                on delete cascade,
+    TRETURNFK             NUMBER(32)
+        constraint TPAKET_FK6
+            references TRETURN,
+    TSWITCHFK             NUMBER(32)
+        constraint TPAKET_FK7
+            references TSWITCH,
+    BRANCHPOOL            VARCHAR2(3),
+    TREPAIRDLVFK          NUMBER(32)
+        constraint TPAKET_FK9
+            references TREPAIRDLV,
+    TPINPADORDERPRODUCTFK NUMBER(32)
+        constraint TPAKET_FK8
+            references TPINPADORDERPRODUCT
+)
+/
+
+create table TRETURNITEM
+(
+    TRETURNITEMPK NUMBER(32) not null
+        constraint TRETURNITEM_PKEY
+            primary key,
+    TRETURNFK     NUMBER(32)
+        constraint TRETURNITEM_FK1
+            references TRETURN
+                on delete cascade,
+    ITEMNO        VARCHAR2(20),
+    ITEMSTATUS    VARCHAR2(3),
+    ITEMPRICE     NUMBER(17) default 0
+)
+/
+
+create table TRETURNMEMO
+(
+    TRETURNMEMOPK NUMBER(32) not null
+        constraint TRETURNMEMO_PKEY
+            primary key,
+    TRETURNFK     NUMBER(32)
+        constraint TRETURNMEMO_FK1
+            references TRETURN
+                on delete cascade,
+    MEMO          VARCHAR2(200),
+    MEMOBY        VARCHAR2(40),
+    MEMOTIME      TIMESTAMP(6)
+)
+/
+
+create table TRETURNTRACK
+(
+    TRETURNTRACKPK NUMBER(32) not null
+        constraint TRETURNTRACK_PKEY
+            primary key,
+    TRETURNFK      NUMBER(32)
+        constraint TRETURNTRACK_FK1
+            references TRETURN
+                on delete cascade,
+    TRACKTIME      TIMESTAMP(6),
+    TRACKSTATUS    VARCHAR2(3),
+    TRACKDESC      VARCHAR2(100)
+)
+/
+
+create table TPAKETDATA
+(
+    TPAKETDATAPK       NUMBER(32) not null
+        constraint TPAKETDATA_PKEY
+            primary key,
+    TPAKETFK           NUMBER(32)
+        constraint TPAKETDATA_FK1
+            references TPAKET
+                on delete cascade,
+    TEMBOSSBRANCHFK    NUMBER(32)
+        constraint TPAKETDATA_FK3
+            references TEMBOSSBRANCH,
+    MBRANCHFK          NUMBER(32)
+        constraint TPAKETDATA_FK2
+            references MBRANCH,
+    PRODUCTGROUP       VARCHAR2(3),
+    NOPAKET            VARCHAR2(15),
+    ORDERDATE          DATE,
+    QUANTITY           NUMBER(32) default 0,
+    STATUS             VARCHAR2(3),
+    PAKETSTARTBY       VARCHAR2(15),
+    PAKETSTARTTIME     TIMESTAMP(6),
+    PAKETFINISHBY      VARCHAR2(15),
+    PAKETFINISHTIME    TIMESTAMP(6),
+    ISDLV              VARCHAR2(1),
+    TPINMAILERBRANCHFK NUMBER(32)
+        constraint TPAKETDATA_FK4
+            references TPINMAILERBRANCH,
+    ZIPCODE            VARCHAR2(5),
+    ACCNO              VARCHAR2(20),
+    CARDNO             VARCHAR2(20),
+    CUSTNAME           VARCHAR2(30),
+    ADDRESS1           VARCHAR2(40),
+    ADDRESS2           VARCHAR2(40),
+    ADDRESS3           VARCHAR2(40),
+    HPNO               VARCHAR2(20),
+    CITY               VARCHAR2(50),
+    ORDERID            VARCHAR2(20)
+)
+/
+
+create table TDELIVERYDATA
+(
+    TDELIVERYDATAPK     NUMBER(32) not null
+        constraint TDELIVERYDATA_PKEY
+            primary key,
+    TDELIVERYFK         NUMBER(32)
+        constraint TDELIVERYDATA_FK1
+            references TDELIVERY
+                on delete cascade,
+    TPAKETDATAFK        NUMBER(32)
+        constraint TDELIVERYDATA_FK2
+            references TPAKETDATA
+                on delete cascade,
+    MPRODUCTFK          NUMBER(32)
+        constraint TDELIVERYDATA_FK3
+            references MPRODUCT,
+    TDERIVATIFPRODUCTFK NUMBER(32)
+        constraint TDELIVERYDATA_FK4
+            references TDERIVATIFPRODUCT,
+    PRODUCTGROUP        VARCHAR2(30),
+    PRODUCTCODE         VARCHAR2(10),
+    PRODUCTNAME         VARCHAR2(70),
+    ORDERDATE           DATE,
+    QUANTITY            NUMBER(32) default 0,
+    TOTALPRICE          NUMBER(19) default 0,
+    ORDERID             VARCHAR2(20)
+)
+/
+
+create table TROLLBACK
+(
+    TROLLBACKPK  NUMBER(32) not null
+        constraint TROLLBACK_PKEY
+            primary key,
+    MPRODUCTFK   NUMBER(32)
+        constraint TROLLBACK_FK1
+            references MPRODUCT
+                on delete cascade,
+    MBRANCHFK    NUMBER(32)
+        constraint TROLLBACK_FK2
+            references MBRANCH
+                on delete cascade,
+    TPAKETDATAFK NUMBER(32)
+        constraint TROLLBACK_FK3
+            references TPAKETDATA
+                on delete cascade,
+    ORDERDATE    DATE,
+    TOTALDATA    NUMBER(32),
+    ROLLBACKTIME TIMESTAMP(6),
+    ROLLBACKBY   VARCHAR2(15),
+    STATUS       VARCHAR2(3),
+    TORDERFK     NUMBER(32)
+        constraint TROLLBACK_FK4
+            references TORDER
+)
+/
+
+create table TREPAIRITEM
+(
+    TREPAIRITEMPK NUMBER(32) not null
+        constraint TREPAIRITEM_PKEY
+            primary key,
+    TREPAIRFK     NUMBER(32)
+        constraint TREPAIRITEM_FK1
+            references TREPAIR
+                on delete cascade,
+    ITEMNO        VARCHAR2(20),
+    ITEMSTATUS    VARCHAR2(3),
+    PINPADTYPE    VARCHAR2(1),
+    TID           VARCHAR2(20),
+    MID           VARCHAR2(20),
+    PINPADMEMO    VARCHAR2(100),
+    ITEMPRICE     NUMBER(17) default 0,
+    TREPAIRDLVFK  NUMBER(32)
+        constraint TREPAIRITEM_FK2
+            references TREPAIRDLV
+                on delete cascade,
+    RESOLUTION    VARCHAR2(100),
+    REPLACEMENT   VARCHAR2(20)
+)
+/
+
+create table TBOOKDATA
+(
+    TBOOKDATAPK     NUMBER(32) not null
+        constraint TBOOKDATA_PKEY
+            primary key,
+    TBOOKFILEFK     NUMBER(32)
+        constraint TBOOKDATA_FK1
+            references TBOOKFILE
+                on delete cascade,
+    TDELIVERYDATAFK NUMBER(32)
+        constraint TBOOKDATA_FK2
+            references TDELIVERYDATA,
+    SEQNUM          VARCHAR2(10),
+    QUANTITY        NUMBER(32) default 0,
+    TOTALAMOUNT     NUMBER(19) default 0,
+    STATUS          VARCHAR2(3),
+    ERRCODE         VARCHAR2(4),
+    ERRDESC         VARCHAR2(30),
+    ITEMPRICE       NUMBER(19) default 0,
+    LASTUPDATED     TIMESTAMP(6)
+)
+/
+
+create table TSTOCKCARD
+(
+    TSTOCKCARDPK   NUMBER(32) not null
+        constraint TSTOCKCARD_PKEY
+            primary key,
+    MPRODUCTTYPEFK NUMBER(32)
+        constraint TSTOCKCARD_FK1
+            references MPRODUCTTYPE
+                on delete cascade,
+    PRODUCTTYPE    VARCHAR2(70),
+    TRXDATE        DATE,
+    INCOMINGTOTAL  NUMBER(32) default 0,
+    OUTGOINGTOTAL  NUMBER(32) default 0,
+    STOCK          NUMBER(32) default 0,
+    LASTUPDATED    TIMESTAMP(6),
+    UPDATEDBY      VARCHAR2(15),
+    PRODUCTGROUP   VARCHAR2(3),
+    PRODUCTORG     VARCHAR2(3),
+    VELOCITY       NUMBER(32),
+    ESTDATE        DATE,
+    ESTDAYS        NUMBER(32)
+)
+/
+
+create table TPINPADITEM
+(
+    TPINPADITEMPK NUMBER(32) not null
+        constraint TPINPADITEM_PKEY
+            primary key,
+    TINCOMINGFK   NUMBER(32)
+        constraint TPINPADITEM_FK1
+            references TINCOMING
+                on delete cascade,
+    ITEMNO        VARCHAR2(20),
+    STATUS        VARCHAR2(3)
+)
+/
+
+create unique index TPINPADITEM_ITEMNO_KEY
+    on TPINPADITEM (ITEMNO)
+/
+
+create table TSECURITIESITEM
+(
+    TSECURITIESITEMPK NUMBER(32) not null
+        constraint TSECURITIESITEM_PKEY
+            primary key,
+    TINCOMINGFK       NUMBER(32)
+        constraint TSECURITIESITEM_FK1
+            references TINCOMING
+                on delete cascade,
+    ITEMNO            VARCHAR2(20),
+    STATUS            VARCHAR2(3),
+    NUMERATOR         NUMBER(32)
+)
+/
+
+create index TSECURITIESITEM_UNQ2
+    on TSECURITIESITEM (NUMERATOR)
+/
+
+create index TSECURITIESITEM_UNQ1
+    on TSECURITIESITEM (TINCOMINGFK)
+/
+
+create table TORDERFLOW
+(
+    TORDERFLOWPK    NUMBER(32) not null
+        constraint TORDERFLOW_PKEY
+            primary key,
+    TEMBOSSBRANCHFK NUMBER(32)
+        constraint TORDERFLOW_FK1
+            references TEMBOSSBRANCH
+                on delete cascade,
+    TORDERFK        NUMBER(32)
+        constraint TORDERFLOW_FK2
+            references TORDER
+                on delete cascade,
+    PRODUCTGROUP    VARCHAR2(3),
+    FLOWNAME        VARCHAR2(40),
+    FLOWGROUP       VARCHAR2(3),
+    TOTALDATA       NUMBER(32) default 0,
+    FLOWTIME        TIMESTAMP(6),
+    FLOWUSER        VARCHAR2(15),
+    MEMO            VARCHAR2(100)
+)
+/
+
+create table TOUTGOING
+(
+    TOUTGOINGPK  NUMBER(32) not null
+        constraint TOUTGOING_PKEY
+            primary key,
+    MPRODUCTFK   NUMBER(32)
+        constraint TOUTGOING_FK4
+            references MPRODUCT
+                on delete cascade,
+    TPERSOFK     NUMBER(32)
+        constraint TOUTGOING_FK2
+            references TPERSO
+                on delete cascade,
+    TORDERFK     NUMBER(32)
+        constraint TOUTGOING_FK5
+            references TORDER
+                on delete cascade,
+    PRODUCTGROUP VARCHAR2(3),
+    OUTGOINGID   VARCHAR2(20),
+    ITEMQTY      NUMBER(32) default 0,
+    MEMO         VARCHAR2(100),
+    STATUS       VARCHAR2(3),
+    ENTRYTIME    TIMESTAMP(6),
+    ENTRYBY      VARCHAR2(40),
+    DECISIONBY   VARCHAR2(40),
+    DECISIONTIME TIMESTAMP(6),
+    DECISIONMEMO VARCHAR2(100),
+    LASTUPDATED  TIMESTAMP(6),
+    UPDATEDBY    VARCHAR2(40),
+    ISVERIFIED   VARCHAR2(1),
+    TREPAIRFK    NUMBER(32)
+)
+/
+
+create table TBRANCHITEMTRACK
+(
+    TBRANCHITEMTRACKPK NUMBER(32) not null
+        constraint TBRANCHITEMTRACK_PKEY
+            primary key,
+    MPRODUCTFK         NUMBER(32)
+        constraint TBRANCHITEMTRACK_FK1
+            references MPRODUCT,
+    PRODUCTGROUP       VARCHAR2(2),
+    ITEMNO             VARCHAR2(20),
+    TRACKTIME          TIMESTAMP(6),
+    TRACKSTATUS        VARCHAR2(3),
+    TRACKDESC          VARCHAR2(100),
+    NASABAH            VARCHAR2(40)
+)
+/
+
+create table TSCHEDULER
+(
+    TSCHEDULERPK        NUMBER(32) not null
+        constraint TSCHEDULER_PKEY
+            primary key,
+    SCHEDULERNAME       VARCHAR2(30),
+    SCHEDULERGROUP      VARCHAR2(30),
+    SCHEDULERDESC       VARCHAR2(200),
+    SCHEDULERSTATUS     VARCHAR2(3),
+    SCHEDULERREPEATTYPE VARCHAR2(10),
+    REPEATINTERVAL      NUMBER(32) default 0,
+    JOBCLASS            VARCHAR2(70),
+    LASTUPDATED         TIMESTAMP(6),
+    UPDATEDBY           VARCHAR2(30)
+)
+/
+
+create table MCOA
+(
+    MCOAPK         NUMBER(32) not null
+        constraint MCOA_PKEY
+            primary key,
+    ACCNO          VARCHAR2(20),
+    ACCNAME        VARCHAR2(100),
+    ACCTYPE        VARCHAR2(1),
+    COATYPE        VARCHAR2(1),
+    LASTUPDATED    TIMESTAMP(6),
+    UPDATEDBY      VARCHAR2(40),
+    BRANCHLEVEL    NUMBER(32),
+    MPRODUCTTYPEFK NUMBER(32)
+        constraint MCOA_FK1
+            references MPRODUCTTYPE,
+    MBRANCHFK      NUMBER(32)
+        constraint MCOA_FK2
+            references MBRANCH
+)
+/
+
+create table TBRANCHSTOCKITEM
+(
+    TBRANCHSTOCKITEMPK  NUMBER(32) not null
+        constraint TBRANCHSTOCKITEM_PKEY
+            primary key,
+    TBRANCHSTOCKFK      NUMBER(32)
+        constraint TBRANCHSTOCKITEM_FK1
+            references TBRANCHSTOCK
+                on delete cascade,
+    PRODUCTGROUP        VARCHAR2(2),
+    ITEMNO              VARCHAR2(20),
+    STATUS              VARCHAR2(3),
+    NUMERATOR           NUMBER(32),
+    ITEMPRICE           BINARY_DOUBLE default 0,
+    PINPADTYPE          VARCHAR2(1),
+    TID                 VARCHAR2(20),
+    MID                 VARCHAR2(20),
+    PINPADMEMO          VARCHAR2(100),
+    NASABAH             VARCHAR2(40),
+    TBRANCHITEMBUCKETFK NUMBER(32)
+        constraint TBRANCHSTOCKITEM_FK2
+            references TBRANCHITEMBUCKET
+                on delete cascade,
+    PREFIX              VARCHAR2(5),
+    ACCNO               VARCHAR2(20),
+    DATEACTIVATED       DATE,
+    ISACTV              VARCHAR2(1),
+    ISMANUALACTV        VARCHAR2(1)
+)
+/
+
+create index TBRANCHSTOCKITEM_UNQ6
+    on TBRANCHSTOCKITEM (ISMANUALACTV)
+/
+
+create index TBRANCHSTOCKITEM_UNQ5
+    on TBRANCHSTOCKITEM (ISACTV)
+/
+
+create index TBRANCHSTOCKITEM_ITEMNO_PRODUCTGROUP_IDX
+    on TBRANCHSTOCKITEM (ITEMNO, PRODUCTGROUP)
+/
+
+create table TPILOTING
+(
+    TPILOTINGPK         NUMBER(32) not null
+        constraint TPILOTING_PKEY
+            primary key,
+    TBRANCHITEMBUCKETFK NUMBER(32)
+        constraint TPILOTING_FK1
+            references TBRANCHITEMBUCKET,
+    OUTLET              VARCHAR2(2),
+    PREFIX              VARCHAR2(5),
+    STARTNO             NUMBER(32),
+    ENDNO               NUMBER(32),
+    TOTALITEM           NUMBER(32),
+    ITEMPRICE           NUMBER(10),
+    STATUS              VARCHAR2(2),
+    INSERTEDBY          VARCHAR2(40),
+    INSERTTIME          TIMESTAMP(6),
+    BRANCHNAME          VARCHAR2(70),
+    PRODUCTTYPE         VARCHAR2(70),
+    BRANCHID            VARCHAR2(3),
+    DECISIONBY          VARCHAR2(40),
+    DECISIONTIME        TIMESTAMP(6),
+    TOTALQTY            NUMBER(32)    default 0,
+    TINCOMINGFK         NUMBER(32)
+        constraint TPILOTING_FK2
+            references TINCOMING,
+    FILENAME            VARCHAR2(70),
+    MEMO                VARCHAR2(100),
+    SPKNO               VARCHAR2(50),
+    SPKDATE             TIMESTAMP(6),
+    PKSNO               VARCHAR2(50),
+    PKSDATE             TIMESTAMP(6),
+    VENDORLETTERNO      VARCHAR2(50),
+    VENDORLETTERDATE    TIMESTAMP(6),
+    MANUFACTUREDATE     NUMBER(32)    default 0,
+    MSUPPLIERFK         NUMBER(32)
+        constraint TPILOTING_FK23
+            references MSUPPLIER,
+    HARGA               BINARY_DOUBLE default 0,
+    ENDNOPREVIEWS       NUMBER(32),
+    CLEANFILENAME       VARCHAR2(70)
+)
+/
+
+create table MOUTLET
+(
+    MOUTLETPK  NUMBER(32) not null
+        constraint MOUTLET_PKEY
+            primary key,
+    MBRANCHFK  NUMBER(32)
+        constraint MOUTLET_FK1
+            references MBRANCH
+                on delete cascade,
+    OUTLETCODE VARCHAR2(2),
+    BICODE     VARCHAR2(9),
+    OUTLETNAME VARCHAR2(100),
+    ADDRESS    VARCHAR2(200),
+    ZIPCODE    VARCHAR2(6),
+    OUTLETCITY VARCHAR2(50),
+    STATUS     VARCHAR2(15)
+)
+/
+
+create table MPICPRODUCT
+(
+    MPICPRODUCTPK NUMBER(32) not null
+        constraint MPICPRODUCT_PKEY
+            primary key,
+    PRODUCTGROUP  VARCHAR2(3),
+    PICNAME       VARCHAR2(40),
+    PICHP         VARCHAR2(40),
+    PICEMAIL      VARCHAR2(100),
+    LASTUPDATED   TIMESTAMP(6),
+    UPDATEDBY     VARCHAR2(15),
+    MBRANCHFK     NUMBER(32)
+        constraint MPICPRODUCT_FK1
+            references MBRANCH
+)
+/
+
+create table TORDERITEM
+(
+    TORDERITEMPK          NUMBER(32) not null
+        constraint TORDERITEM_PKEY
+            primary key,
+    TORDERFK              NUMBER(32)
+        constraint TORDERITEM_FK1
+            references TORDER
+                on delete cascade,
+    TTOKENITEMFK          NUMBER(32)
+        constraint TORDERITEM_FK2
+            references TTOKENITEM,
+    TPINPADITEMFK         NUMBER(32)
+        constraint TORDERITEM_FK3
+            references TPINPADITEM,
+    TSECURITIESITEMFK     NUMBER(32)
+        constraint TORDERITEM_FK4
+            references TSECURITIESITEM,
+    PRODUCTGROUP          VARCHAR2(2),
+    ITEMNO                VARCHAR2(20),
+    TID                   VARCHAR2(20),
+    PINPADTYPE            VARCHAR2(1),
+    PINPADMEMO            VARCHAR2(100),
+    MID                   VARCHAR2(20),
+    NUMERATOR             NUMBER(32),
+    ITEMPRICE             BINARY_DOUBLE default 0,
+    PREFIX                VARCHAR2(5),
+    TPINPADORDERPRODUCTFK NUMBER(32)
+        constraint TORDERITEM_FK5
+            references TPINPADORDERPRODUCT
+                on delete cascade
+)
+/
+
+create table TUNEOD
+(
+    TUNEODPK NUMBER(32) not null
+        constraint TUNEOD_PKEY
+            primary key,
+    EODDATE  DATE
+)
+/
+
+create table MUSERGROUP
+(
+    MUSERGROUPPK  NUMBER(32),
+    USERGROUPCODE VARCHAR2(20),
+    USERGROUPNAME VARCHAR2(40),
+    USERGROUPDESC VARCHAR2(100),
+    LASTUPDATED   TIMESTAMP(6),
+    UPDATEDBY     VARCHAR2(15),
+    STATUS        VARCHAR2(255)
+)
+/
+
