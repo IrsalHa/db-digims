@@ -531,7 +531,7 @@ create table MPERSOVENDOR
     LASTUPDATED    TIMESTAMP(6),
     UPDATEDBY      CHAR(15 CHAR),
     VENDORLOGO     CHAR(50 CHAR),
-    ADDRESS        CHAR200 CHAR default ''
+    ADDRESS        CHAR(200 CHAR) default ''
 )
 /
 
@@ -574,7 +574,7 @@ create table MPRODUCTTYPE
     BOOKTYPE              CHAR(10 CHAR),
     AVG                   NUMBER(32)  default 0,
     LASTUPLOADEDAVG       DATE,
-    BINNO                 CHAR10 CHAR    default ''
+    BINNO                 CHAR(10 CHAR)    default ''
 )
 /
 
@@ -597,8 +597,8 @@ create table MPRODUCT
     ISMM           CHAR(1 CHAR)   default 'N',
     ISOPR          CHAR(1 CHAR),
     ISDLVHOME      CHAR(1 CHAR)   default 'N',
-    DESIGNIMGID    CHAR50 CHAR      default '',
-    DESIGNIMGNAME  CHAR200 CHAR     default '',
+    DESIGNIMGID    CHAR(50 CHAR)      default '',
+    DESIGNIMGNAME  CHAR(200 CHAR)     default '',
     DESIGNIMGPATH  CHAR(500 CHAR) default ''
 )
 /
@@ -772,9 +772,9 @@ create table TDELIVERY
     FILENAME           CHAR(200 CHAR),
     UPDATEDBY          CHAR(40 CHAR),
     LASTUPDATED        TIMESTAMP(6),
-    TRACKID            CHAR50 CHAR      default '',
+    TRACKID            CHAR(50 CHAR)      default '',
     TRACKTIME          TIMESTAMP(6),
-    TRACKPODBY         CHAR50 CHAR      default '',
+    TRACKPODBY         CHAR(50 CHAR)      default '',
     TRACKPODTIME       TIMESTAMP(6),
     TRACKPICT          CHAR(300 CHAR) default '',
     TRACKSIGN          CHAR(300 CHAR) default ''
@@ -1142,13 +1142,13 @@ create table TDESTROY
     INSERTTIME   TIMESTAMP(6),
     DECISIONBY   CHAR(40 CHAR),
     DECISIONTIME TIMESTAMP(6),
-    PRODUCTGROUP CHAR2 CHAR       default '',
-    DOCID        CHAR50 CHAR      default '',
-    DOCNAME      CHAR200 CHAR     default '',
+    PRODUCTGROUP CHAR(2 CHAR)       default '',
+    DOCID        CHAR(50 CHAR)      default '',
+    DOCNAME      CHAR(200 CHAR)     default '',
     DOCPATH      CHAR(500 CHAR) default '',
-    REASONCODE   CHAR2 CHAR       default '',
-    REASONDESC   CHAR200 CHAR     default '',
-    NOTE         CHAR200 CHAR
+    REASONCODE   CHAR(2 CHAR)       default '',
+    REASONDESC   CHAR(200 CHAR)     default '',
+    NOTE         CHAR(200 CHAR)
 )
 /
 
@@ -1251,18 +1251,18 @@ create table TPLAN
     DECISIONTIMEPFA  TIMESTAMP(6),
     DECISIONBYPFA    CHAR(40 CHAR),
     ISDECLINE        CHAR(1 CHAR),
-    CONTRACTNO       CHAR50 CHAR      default '',
+    CONTRACTNO       CHAR(50 CHAR)      default '',
     CONTRACTDATE     DATE,
-    CONTRACTDOCID    CHAR50 CHAR      default '',
-    CONTRACTDOCNAME  CHAR200 CHAR     default '',
+    CONTRACTDOCID    CHAR(50 CHAR)      default '',
+    CONTRACTDOCNAME  CHAR(200 CHAR)     default '',
     CONTRACTDOCPATH  CHAR(200 CHAR) default '',
     MSUPPLIERFK      NUMBER
         constraint TPLAN_FK2
             references MSUPPLIER,
-    NOTE             CHAR200 CHAR     default '',
+    NOTE             CHAR(200 CHAR)     default '',
     TOTALPROCUR      NUMBER        default 0,
     TOTALPROCURPRICE NUMBER(19)    default 0,
-    DECISIONDESCPFA  CHAR200 CHAR     default ''
+    DECISIONDESCPFA  CHAR(200 CHAR)     default ''
 )
 /
 
@@ -1802,8 +1802,8 @@ create table MUSER
             references MPERSOVENDOR,
     MBRANCHFK      NUMBER(32),
     LASTLOGIN      TIMESTAMP(6),
-    OUTLETCODE     CHAR2 CHAR   default '00',
-    OUTLETNAME     CHAR100 CHAR default ''
+    OUTLETCODE     CHAR(2 CHAR)   default '00',
+    OUTLETNAME     CHAR(100 CHAR) default ''
 )
 /
 
@@ -2490,24 +2490,24 @@ create table TPO
     MSUPPLIERFK  NUMBER
         constraint TPO_FK2
             references MSUPPLIER,
-    PRODUCTGROUP CHAR2 CHAR       default '',
-    PONO         CHAR30 CHAR      default '',
+    PRODUCTGROUP CHAR(2 CHAR)       default '',
+    PONO         CHAR(30 CHAR)      default '',
     PODATE       DATE,
     TOTALQTY     NUMBER        default 0,
     TOTALPRICE   NUMBER(19)    default 0,
     TOTALDO      NUMBER        default 0,
-    NOTE         CHAR200 CHAR     default '',
-    STATUS       CHAR2 CHAR       default '',
-    DECIDEDBY    CHAR40 CHAR      default '',
+    NOTE         CHAR(200 CHAR)     default '',
+    STATUS       CHAR(2 CHAR)       default '',
+    DECIDEDBY    CHAR(40 CHAR)      default '',
     DECIDEDAT    TIMESTAMP(6),
-    DECISIONNOTE CHAR200 CHAR     default '',
-    DOCID        CHAR50 CHAR      default '',
-    DOCNAME      CHAR200 CHAR     default '',
+    DECISIONNOTE CHAR(200 CHAR)     default '',
+    DOCID        CHAR(50 CHAR)      default '',
+    DOCNAME      CHAR(200 CHAR)     default '',
     DOCPATH      CHAR(500 CHAR) default '',
     CREATETIME   TIMESTAMP(6),
-    CREATEDBY    CHAR40 CHAR      default '',
+    CREATEDBY    CHAR(40 CHAR)      default '',
     LASTUPDATED  TIMESTAMP(6),
-    UPDATEDBY    CHAR40 CHAR      default ''
+    UPDATEDBY    CHAR(40 CHAR)      default ''
 )
 /
 
@@ -2539,22 +2539,22 @@ create table TDO
     TPOFK        NUMBER
         constraint TDO_FK1
             references TPO,
-    DONO         CHAR30 CHAR      default '',
+    DONO         CHAR(30 CHAR)      default '',
     DODATE       DATE,
     TOTALDO      NUMBER        default 0,
-    NOTE         CHAR200 CHAR     default '',
-    STATUS       CHAR2 CHAR       default '',
-    DECIDEDBY    CHAR40 CHAR      default '',
+    NOTE         CHAR(200 CHAR)     default '',
+    STATUS       CHAR(2 CHAR)       default '',
+    DECIDEDBY    CHAR(40 CHAR)      default '',
     DECIDEDAT    TIMESTAMP(6),
-    DECISIONNOTE CHAR200 CHAR     default '',
-    DOCID        CHAR50 CHAR      default '',
-    DOCNAME      CHAR200 CHAR     default '',
+    DECISIONNOTE CHAR(200 CHAR)     default '',
+    DOCID        CHAR(50 CHAR)      default '',
+    DOCNAME      CHAR(200 CHAR)     default '',
     DOCPATH      CHAR(500 CHAR) default '',
     CREATETIME   TIMESTAMP(6),
-    CREATEDBY    CHAR40 CHAR      default '',
+    CREATEDBY    CHAR(40 CHAR)      default '',
     LASTUPDATED  TIMESTAMP(6),
-    UPDATEDBY    CHAR40 CHAR      default '',
-    PREFIX       CHAR5 CHAR       default '',
+    UPDATEDBY    CHAR(40 CHAR)      default '',
+    PREFIX       CHAR(5 CHAR)       default '',
     ITEMSTARTNO  NUMBER
 )
 /
@@ -2629,16 +2629,16 @@ create table MBRANCHPAGU
     MPRODUCTFK       NUMBER
         constraint MBRANCHPAGU_FK2
             references MPRODUCT,
-    PRODUCTGROUP     CHAR2 CHAR  default '',
+    PRODUCTGROUP     CHAR(2 CHAR)  default '',
     PAGU             NUMBER   default 0,
     QUOTA            NUMBER   default 0,
     QUOTATYPE        CHAR     default '',
     QUOTATEMP        NUMBER   default 0,
     QUOTATEMPCREATED TIMESTAMP(6),
     QUOTATEMPRELEASE TIMESTAMP(6),
-    REFNO            CHAR30 CHAR default '',
+    REFNO            CHAR(30 CHAR) default '',
     REFTYPE          CHAR     default '',
-    UPDATEDBY        CHAR40 CHAR default '',
+    UPDATEDBY        CHAR(40 CHAR) default '',
     LASTUPDATED      TIMESTAMP(6),
     unique (MBRANCHFK, MPRODUCTFK)
 )
@@ -2651,28 +2651,28 @@ create table TQUOTAREQ
     MBRANCHFK       NUMBER
         constraint TQUOTAREQ_FK1
             references MBRANCH,
-    PRODUCTGROUP    CHAR2 CHAR       default '',
+    PRODUCTGROUP    CHAR(2 CHAR)       default '',
     ENTRYTYPE       CHAR          default '',
-    REQNO           CHAR30 CHAR      default '',
+    REQNO           CHAR(30 CHAR)      default '',
     REQDATE         DATE,
-    NOTE            CHAR200 CHAR     default '',
-    STATUS          CHAR2 CHAR       default '',
-    DECIDEDBY       CHAR40 CHAR      default '',
+    NOTE            CHAR(200 CHAR)     default '',
+    STATUS          CHAR(2 CHAR)       default '',
+    DECIDEDBY       CHAR(40 CHAR)      default '',
     DECIDEDAT       TIMESTAMP(6),
-    DECISIONNOTE    CHAR200 CHAR     default '',
-    DOCID           CHAR50 CHAR      default '',
+    DECISIONNOTE    CHAR(200 CHAR)     default '',
+    DOCID           CHAR(50 CHAR)      default '',
     DOCNAME         CHAR(200 CHAR) default '',
     DOCPATH         CHAR(500 CHAR) default '',
-    UPLOADDOCID     CHAR50 CHAR      default '',
+    UPLOADDOCID     CHAR(50 CHAR)      default '',
     UPLOADDOCNAME   CHAR(200 CHAR) default '',
     UPLOADDOCPATH   CHAR(500 CHAR) default '',
     CREATETIME      TIMESTAMP(6),
-    CREATEDBY       CHAR40 CHAR      default '',
-    UPDATEDBY       CHAR40 CHAR      default '',
+    CREATEDBY       CHAR(40 CHAR)      default '',
+    UPDATEDBY       CHAR(40 CHAR)      default '',
     LASTUPDATED     TIMESTAMP(6),
-    DECIDEDBYCRP    CHAR40 CHAR      default '',
+    DECIDEDBYCRP    CHAR(40 CHAR)      default '',
     DECIDEDATECRP   TIMESTAMP(6),
-    DECISIONNOTECRP CHAR200 CHAR     default ''
+    DECISIONNOTECRP CHAR(200 CHAR)     default ''
 )
 /
 
@@ -2680,18 +2680,18 @@ create table MMITRA
 (
     MMITRAPK     NUMBER not null
         primary key,
-    MITRAID      CHAR10 CHAR  default '',
-    MITRANAME    CHAR100 CHAR default '',
-    MITRAADDRESS CHAR200 CHAR default '',
-    MITRACITY    CHAR70 CHAR  default '',
-    MITRAZIPCODE CHAR5 CHAR   default '',
-    CREATEDBY    CHAR40 CHAR  default '',
+    MITRAID      CHAR(10 CHAR)  default '',
+    MITRANAME    CHAR(100 CHAR) default '',
+    MITRAADDRESS CHAR(200 CHAR) default '',
+    MITRACITY    CHAR(70 CHAR)  default '',
+    MITRAZIPCODE CHAR(5 CHAR)   default '',
+    CREATEDBY    CHAR(40 CHAR)  default '',
     CREATETIME   TIMESTAMP(6),
-    UPDATEDBY    CHAR40 CHAR  default '',
+    UPDATEDBY    CHAR(40 CHAR)  default '',
     LASTUPDATED  TIMESTAMP(6),
-    PICNAME      CHAR70 CHAR,
-    PICPHONE     CHAR14 CHAR,
-    PICEMAIL     CHAR70 CHAR
+    PICNAME      CHAR(70 CHAR),
+    PICPHONE     CHAR(14 CHAR),
+    PICEMAIL     CHAR(70 CHAR)
 )
 /
 
@@ -2705,29 +2705,29 @@ create table TORDERBRANCH
     MMITRAFK       NUMBER
         constraint TORDERBRANCH_FK2
             references MMITRA,
-    PRODUCTGROUP   CHAR2 CHAR       default '',
-    ORDERNO        CHAR30 CHAR      default '',
+    PRODUCTGROUP   CHAR(2 CHAR)       default '',
+    ORDERNO        CHAR(30 CHAR)      default '',
     ORDERDATE      DATE,
-    MEMONO         CHAR30 CHAR      default '',
+    MEMONO         CHAR(30 CHAR)      default '',
     MEMODATE       DATE,
-    NOTE           CHAR200 CHAR     default '',
+    NOTE           CHAR(200 CHAR)     default '',
     TOTALQTY       NUMBER        default 0,
     TOTALRECEIVED  NUMBER        default 0,
-    STATUS         CHAR3 CHAR       default '',
-    DECIDEDBY      CHAR40 CHAR      default '',
+    STATUS         CHAR(3 CHAR)       default '',
+    DECIDEDBY      CHAR(40 CHAR)      default '',
     DECIDEDAT      TIMESTAMP(6),
-    DECISIONNOTE   CHAR200 CHAR     default '',
-    DOCID          CHAR50 CHAR      default '',
-    DOCNAME        CHAR200 CHAR     default '',
+    DECISIONNOTE   CHAR(200 CHAR)     default '',
+    DOCID          CHAR(50 CHAR)      default '',
+    DOCNAME        CHAR(200 CHAR)     default '',
     DOCPATH        CHAR(500 CHAR) default '',
-    CREATEDBY      CHAR40 CHAR      default '',
+    CREATEDBY      CHAR(40 CHAR)      default '',
     CREATETIME     TIMESTAMP(6),
-    UPDATEDBY      CHAR40 CHAR      default '',
+    UPDATEDBY      CHAR(40 CHAR)      default '',
     LASTUPDATED    TIMESTAMP(6),
-    OUTLETCODE     CHAR2 CHAR       default '',
-    OUTLETNAME     CHAR100 CHAR     default '',
+    OUTLETCODE     CHAR(2 CHAR)       default '',
+    OUTLETNAME     CHAR(100 CHAR)     default '',
     STATUSFLOW     NUMBER,
-    BRANCHREQID    CHAR3 CHAR       default ''
+    BRANCHREQID    CHAR(3 CHAR)       default ''
 )
 /
 
@@ -2770,7 +2770,7 @@ create table TORDERPRODUCT
     ORDERQTY        NUMBER   default 0,
     RECEIVEQTY      NUMBER   default 0,
     RECEIVEDATE     DATE,
-    RECEIVER        CHAR40 CHAR default '',
+    RECEIVER        CHAR(40 CHAR) default '',
     PINTYPE         CHAR     default ''
 )
 /
@@ -2785,19 +2785,19 @@ create table TPERSOREJECT
     EMBOSSDATE     DATE,
     PERSODATE      DATE,
     REJECTQTY      NUMBER        default 0,
-    REJECTCODE     CHAR2 CHAR       default '',
-    REJECTDESC     CHAR200 CHAR     default '',
-    NOTE           CHAR200 CHAR     default '',
-    STATUS         CHAR2 CHAR       default '',
-    DECIDEDBY      CHAR40 CHAR      default '',
+    REJECTCODE     CHAR(2 CHAR)       default '',
+    REJECTDESC     CHAR(200 CHAR)     default '',
+    NOTE           CHAR(200 CHAR)     default '',
+    STATUS         CHAR(2 CHAR)       default '',
+    DECIDEDBY      CHAR(40 CHAR)      default '',
     DECIDEDAT      TIMESTAMP(6),
-    DECISIONNOTE   CHAR200 CHAR     default '',
-    DOCID          CHAR50 CHAR      default '',
-    DOCNAME        CHAR200 CHAR     default '',
+    DECISIONNOTE   CHAR(200 CHAR)     default '',
+    DOCID          CHAR(50 CHAR)      default '',
+    DOCNAME        CHAR(200 CHAR)     default '',
     DOCPATH        CHAR(500 CHAR) default '',
-    CREATEDBY      CHAR40 CHAR      default '',
+    CREATEDBY      CHAR(40 CHAR)      default '',
     CREATETIME     TIMESTAMP(6),
-    UPDATEDBY      CHAR40 CHAR      default '',
+    UPDATEDBY      CHAR(40 CHAR)      default '',
     LASTUPDATED    TIMESTAMP(6)
 )
 /
@@ -2812,34 +2812,34 @@ create table TPKS
     MPRODUCTFK       NUMBER
         constraint TPKS_FK2
             references MPRODUCT,
-    PKSNO            CHAR50 CHAR      default '',
+    PKSNO            CHAR(50 CHAR)      default '',
     PKSDATE          DATE,
-    INSTITUTENAME    CHAR100 CHAR     default '',
+    INSTITUTENAME    CHAR(100 CHAR)     default '',
     PKSDUEDATE       DATE,
-    NOTE             CHAR200 CHAR     default '',
+    NOTE             CHAR(200 CHAR)     default '',
     ISACTIVE         CHAR          default '',
-    STATUS           CHAR2 CHAR       default '',
-    DECIDEDBY        CHAR40 CHAR      default '',
+    STATUS           CHAR(2 CHAR)       default '',
+    DECIDEDBY        CHAR(40 CHAR)      default '',
     DECIDEDAT        TIMESTAMP(6),
-    DECISIONNOTE     CHAR200 CHAR     default '',
-    DOCID            CHAR50 CHAR      default '',
-    DOCNAME          CHAR200 CHAR     default '',
+    DECISIONNOTE     CHAR(200 CHAR)     default '',
+    DOCID            CHAR(50 CHAR)      default '',
+    DOCNAME          CHAR(200 CHAR)     default '',
     DOCPATH          CHAR(500 CHAR) default '',
-    DESIGNIMGID      CHAR50 CHAR      default '',
-    DESIGNIMGNAME    CHAR200 CHAR     default '',
+    DESIGNIMGID      CHAR(50 CHAR)      default '',
+    DESIGNIMGNAME    CHAR(200 CHAR)     default '',
     DESIGNIMGPATH    CHAR(500 CHAR) default '',
-    DESIGNVECTORID   CHAR50 CHAR      default '',
-    DESIGNVECTORNAME CHAR200 CHAR     default '',
+    DESIGNVECTORID   CHAR(50 CHAR)      default '',
+    DESIGNVECTORNAME CHAR(200 CHAR)     default '',
     DESIGNVECTORPATH CHAR(500 CHAR) default '',
-    DUMMYIMGID       CHAR50 CHAR      default '',
-    DUMMYIMGNAME     CHAR200 CHAR     default '',
+    DUMMYIMGID       CHAR(50 CHAR)      default '',
+    DUMMYIMGNAME     CHAR(200 CHAR)     default '',
     DUMMYIMGPATH     CHAR(500 CHAR) default '',
-    DUMMYVECTORID    CHAR50 CHAR      default '',
-    DUMMYVECTORNAME  CHAR200 CHAR     default '',
+    DUMMYVECTORID    CHAR(50 CHAR)      default '',
+    DUMMYVECTORNAME  CHAR(200 CHAR)     default '',
     DUMMYVECTORPATH  CHAR(500 CHAR) default '',
-    CREATEDBY        CHAR40 CHAR      default '',
+    CREATEDBY        CHAR(40 CHAR)      default '',
     CREATETIME       TIMESTAMP(6),
-    UPDATEDBY        CHAR40 CHAR      default '',
+    UPDATEDBY        CHAR(40 CHAR)      default '',
     LASTUPDATED      TIMESTAMP(6)
 )
 /
@@ -2851,19 +2851,19 @@ create table TCOMPLAINT
     MBRANCHFK    NUMBER
         constraint TCOMPLAINT_FK1
             references MBRANCH,
-    PRODUCTGROUP CHAR2 CHAR       default '',
-    TICKETNO     CHAR30 CHAR      default '',
+    PRODUCTGROUP CHAR(2 CHAR)       default '',
+    TICKETNO     CHAR(30 CHAR)      default '',
     TICKETDATE   DATE,
     NOTE         CHAR(500 CHAR) default '',
-    COMPLAINTBY  CHAR40 CHAR      default '',
-    STATUS       CHAR2 CHAR       default '',
+    COMPLAINTBY  CHAR(40 CHAR)      default '',
+    STATUS       CHAR(2 CHAR)       default '',
     CLOSEDAT     TIMESTAMP(6),
-    DOCID        CHAR50 CHAR      default '',
-    DOCNAME      CHAR200 CHAR     default '',
+    DOCID        CHAR(50 CHAR)      default '',
+    DOCNAME      CHAR(200 CHAR)     default '',
     DOCPATH      CHAR(500 CHAR) default '',
-    CREATEDBY    CHAR40 CHAR      default '',
+    CREATEDBY    CHAR(40 CHAR)      default '',
     CREATETIME   TIMESTAMP(6),
-    UPDATEDBY    CHAR40 CHAR      default '',
+    UPDATEDBY    CHAR(40 CHAR)      default '',
     LASTUPDATED  TIMESTAMP(6)
 )
 /
@@ -2877,10 +2877,10 @@ create table TCOMPLAINTRESPONSE
             references TCOMPLAINT,
     RESPONSE             CHAR(500 CHAR) default '',
     RESPONSEDAT          TIMESTAMP(6),
-    RESPONSEDBY          CHAR40 CHAR      default '',
-    CREATEDBY            CHAR40 CHAR      default '',
+    RESPONSEDBY          CHAR(40 CHAR)      default '',
+    CREATEDBY            CHAR(40 CHAR)      default '',
     CREATETIME           TIMESTAMP(6),
-    UPDATEDBY            CHAR40 CHAR      default '',
+    UPDATEDBY            CHAR(40 CHAR)      default '',
     LASTUPDATED          TIMESTAMP(6)
 )
 /
@@ -2898,7 +2898,7 @@ create table TQUOTAREQDATA
     QUOTATYPE       CHAR     default '',
     PAGU            NUMBER   default 0,
     QUOTA           NUMBER   default 0,
-    UPDATEDBY       CHAR40 CHAR default '',
+    UPDATEDBY       CHAR(40 CHAR) default '',
     LASTUPDATED     TIMESTAMP(6),
     SISAKUOTA       NUMBER   default 0,
     TQUOTAREQFK     NUMBER
@@ -2915,10 +2915,10 @@ create table TTRACKING
     TDELIVERYFK  NUMBER
         constraint TTRACKING_FK1
             references TDELIVERY,
-    TRACKID      CHAR50 CHAR  default '',
+    TRACKID      CHAR(50 CHAR)  default '',
     TRACKTIME    TIMESTAMP(6),
-    ACTIVITY     CHAR250 CHAR default '',
-    ACTIVITYTIME CHAR40 CHAR  default ''
+    ACTIVITY     CHAR(250 CHAR) default '',
+    ACTIVITYTIME CHAR(40 CHAR)  default ''
 )
 /
 
