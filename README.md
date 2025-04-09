@@ -55,3 +55,9 @@ BEGIN
     -- Menampilkan query untuk debugging
     RAISE NOTICE 'Generated Query: %', query;
 END $$;
+
+//untuk install posgres di sql developer * SQL*Developer Java lib/ext directory.
+
+//Untuk drop table // select 'drop table '||table_name||' cascade constraints;' from user_tables;
+
+//Untuk drop selain table // select 'drop '||object_type||' '|| object_name || ';' from user_objects where object_type in ('VIEW','PACKAGE','SEQUENCE', 'PROCEDURE', 'FUNCTION', 'INDEX')
