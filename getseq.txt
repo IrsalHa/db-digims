@@ -1,25 +1,25 @@
 SELECT
-  'DECLARE
-  cur_val NUMBER;
-  target_val NUMBER := ' || last_value || ';
-  diff NUMBER;
-BEGIN
-  SELECT ' || quote_ident(sequencename) || '.NEXTVAL INTO cur_val FROM dual;
-  diff := target_val - cur_val;
-  IF diff <> 0 THEN
-    EXECUTE IMMEDIATE ''ALTER SEQUENCE ' || quote_ident(sequencename) || ' INCREMENT BY '' || diff;
-    SELECT ' || quote_ident(sequencename) || '.NEXTVAL INTO cur_val FROM dual;
-    EXECUTE IMMEDIATE ''ALTER SEQUENCE ' || quote_ident(sequencename) ||
+    -- Statement untuk mengubah properties sequence
+    'ALTER SEQUENCE ' || sequencename ||
     ' INCREMENT BY ' || increment_by ||
     ' MINVALUE ' || min_value ||
-    ' MAXVALUE ' || max_value ||
-    ' ' || CASE
-      WHEN cycle = 'YES' THEN 'CYCLE'
-      ELSE 'NOCYCLE'
-    END || ''';
-  END IF;
-END;
-/'
-AS oracle_script
-FROM pg_sequences
-WHERE schemaname NOT IN ('pg_catalog', 'information_schema');
+    ' MAXVALUE ' || CASE WHEN max_value = 9223372036854775807 THEN 'NOMAXVALUE' ELSE max_value::text END ||
+    CASE WHEN cycle THEN ' CYCLE' ELSE ' NOCYCLE' END ||
+    CASE WHEN cache_size > 1 THEN ' CACHE ' || cache_size ELSE ' NOCACHE' END ||
+    ';' AS oracle_alter_sequence,
+
+    -- Statement untuk mengatur current value (tanpa tanda kurung)
+    'DECLARE' || chr(10) ||
+    '  current_val NUMBER;' || chr(10) ||
+    '  target_val NUMBER := ' || last_value || ';' || chr(10) ||
+    'BEGIN' || chr(10) ||
+    '  SELECT ' || sequencename || '.NEXTVAL INTO current_val FROM dual;' || chr(10) ||
+    '  EXECUTE IMMEDIATE ''ALTER SEQUENCE ' || sequencename || ' INCREMENT BY '' || (target_val - current_val);' || chr(10) ||
+    '  SELECT ' || sequencename || '.NEXTVAL INTO current_val FROM dual;' || chr(10) ||
+    '  EXECUTE IMMEDIATE ''ALTER SEQUENCE ' || sequencename || ' INCREMENT BY ' || increment_by || ''';' || chr(10) ||
+    'END;' || chr(10) ||
+    '/' AS oracle_set_current_value
+FROM
+    pg_sequences
+WHERE
+    schemaname = 'public';
