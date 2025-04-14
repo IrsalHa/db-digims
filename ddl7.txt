@@ -2366,7 +2366,7 @@ create table TBRANCHSTOCKITEM
     TID                 CHAR(20 CHAR),
     MID                 CHAR(20 CHAR),
     PINPADMEMO          CHAR(100 CHAR),
-    NASABAH             CHAR(40 CHAR),
+    NASABAH             CHAR(100 CHAR),
     TBRANCHITEMBUCKETFK NUMBER(32)
         constraint TBRANCHSTOCKITEM_FK2
             references TBRANCHITEMBUCKET
@@ -2750,7 +2750,7 @@ create table TORDERFLOW
     TOTALDATA       NUMBER(32) default 0,
     FLOWTIME        TIMESTAMP(6),
     FLOWUSER        CHAR(15 CHAR),
-    MEMO            CHAR(100 CHAR),
+    MEMO            CHAR(200 CHAR),
     TORDERBRANCHFK  NUMBER
         constraint TORDERFLOW_FK3
             references TORDERBRANCH
