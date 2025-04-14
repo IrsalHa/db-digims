@@ -1,0 +1,25 @@
+SELECT
+  'DECLARE
+  cur_val NUMBER;
+  target_val NUMBER := ' || last_value || ';
+  diff NUMBER;
+BEGIN
+  SELECT ' || quote_ident(sequencename) || '.NEXTVAL INTO cur_val FROM dual;
+  diff := target_val - cur_val;
+  IF diff <> 0 THEN
+    EXECUTE IMMEDIATE ''ALTER SEQUENCE ' || quote_ident(sequencename) || ' INCREMENT BY '' || diff;
+    SELECT ' || quote_ident(sequencename) || '.NEXTVAL INTO cur_val FROM dual;
+    EXECUTE IMMEDIATE ''ALTER SEQUENCE ' || quote_ident(sequencename) ||
+    ' INCREMENT BY ' || increment_by ||
+    ' MINVALUE ' || min_value ||
+    ' MAXVALUE ' || max_value ||
+    ' ' || CASE
+      WHEN cycle = 'YES' THEN 'CYCLE'
+      ELSE 'NOCYCLE'
+    END || ''';
+  END IF;
+END;
+/'
+AS oracle_script
+FROM pg_sequences
+WHERE schemaname NOT IN ('pg_catalog', 'information_schema');
