@@ -1,4 +1,410 @@
-create global temporary table ORCLPDB1.HTE_MUSERGROUPLEVEL
+create sequence MUSER_SEQ
+    start with 812
+    maxvalue 9223372036854775807
+    cache 2
+/
+
+create sequence MBRANCH_SEQ
+    start with 491
+/
+
+create sequence MCOURIER_SEQ
+    start with 66
+/
+
+create sequence MCOURIERVENDOR_SEQ
+    start with 88
+/
+
+create sequence MCOURIERZIPCODE_SEQ
+    start with 81
+/
+
+create sequence MHOLIDAY_SEQ
+    start with 121
+/
+
+create sequence MLETTER_SEQ
+    start with 54
+/
+
+create sequence MLETTERTYPE_SEQ
+/
+
+create sequence MNOTIF_SEQ
+/
+
+create sequence MORG_SEQ
+    start with 56
+/
+
+create sequence MOUTLET_SEQ
+    start with 3800
+/
+
+create sequence MPERSOVENDOR_SEQ
+    start with 79
+/
+
+create sequence MPICPRODUCT_SEQ
+    start with 98
+/
+
+create sequence MPRODUCT_SEQ
+    start with 4886
+/
+
+create sequence MPRODUCTREQ_SEQ
+/
+
+create sequence MPRODUCTTYPE_SEQ
+    start with 3044
+/
+
+create sequence MREGION_SEQ
+    start with 111
+/
+
+create sequence MREPAIRREASON_SEQ
+    start with 4
+/
+
+create sequence MRETURNREASON_SEQ
+    start with 54
+/
+
+create sequence MSUPPLIER_SEQ
+    start with 125
+/
+
+create sequence MSYSPARAM_SEQ
+/
+
+create sequence MUSERGROUPLEVEL_SEQ
+    start with 64
+/
+
+create sequence MUSERGROUPMENU_SEQ
+    start with 24690
+/
+
+create sequence MUSERGROUPNOTIF_SEQ
+    start with 6
+/
+
+create sequence TBOOKDATA_SEQ
+    start with 160
+/
+
+create sequence TBOOKFILE_SEQ
+    start with 170
+/
+
+create sequence TBRANCHITEMBUCKET_SEQ
+    start with 294
+/
+
+create sequence TBRANCHITEMTRACK_SEQ
+    start with 257581
+/
+
+create sequence TBRANCHSTOCK_SEQ
+    start with 973
+/
+
+create sequence TBRANCHSTOCKITEM_SEQ
+    start with 281201
+/
+
+create sequence TCOUNTERENGINE_SEQ
+/
+
+create sequence TDELIVERY_SEQ
+    start with 1442
+/
+
+create sequence TDELIVERYCOURIER_SEQ
+    start with 311
+/
+
+create sequence TDELIVERYDATA_SEQ
+    start with 7445
+/
+
+create sequence TDERIVATIF_SEQ
+    start with 64
+/
+
+create sequence TDERIVATIFDATA_SEQ
+    start with 65
+/
+
+create sequence TDERIVATIFPRODUCT_SEQ
+    start with 44
+/
+
+create sequence TEMBOSSBRANCH_SEQ
+    start with 16433
+/
+
+create sequence TEMBOSSDATA_SEQ
+    start with 480083
+/
+
+create sequence TEMBOSSFILE_SEQ
+    start with 372
+/
+
+create sequence TEMBOSSPRODUCT_SEQ
+    start with 2096
+/
+
+create sequence TFILEBRANCHACTV_TFILEBRANCHACTVPK_SEQ
+    start with 12
+/
+
+create sequence TINCOMING_SEQ
+    start with 428
+/
+
+create sequence TINCOMINGVENDOR_SEQ
+    start with 76
+/
+
+create sequence TMANUALACTV_SEQ
+    start with 83
+/
+
+create sequence TMISSINGBRANCH_SEQ
+    start with 91
+/
+
+create sequence TMISSINGPRODUCT_SEQ
+    start with 28
+/
+
+create sequence TNOTIF_SEQ
+    start with 2656
+/
+
+create sequence TORDER_SEQ
+    start with 1358
+/
+
+create sequence TORDERDOC_SEQ
+    start with 386
+/
+
+create sequence TORDERFLOW_SEQ
+    start with 1947
+/
+
+create sequence TORDERITEM_SEQ
+    start with 361166
+/
+
+create sequence TORDERMEMO_SEQ
+    start with 1840
+/
+
+create sequence TOUTGOING_SEQ
+    start with 8824
+/
+
+create sequence TPAKET_SEQ
+    start with 654
+/
+
+create sequence TPAKETDATA_SEQ
+    start with 17489
+/
+
+create sequence TPERSO_SEQ
+    start with 276
+/
+
+create sequence TPERSODATA_SEQ
+    start with 688
+/
+
+create sequence TPERSOUPLOAD_SEQ
+/
+
+create sequence TPERSOUPLOADDATA_SEQ
+/
+
+create sequence TPILOTING_SEQ
+    start with 113
+/
+
+create sequence TPINMAILERBRANCH_SEQ
+    start with 133
+/
+
+create sequence TPINMAILERDATA_SEQ
+    start with 24049
+/
+
+create sequence TPINMAILERFILE_SEQ
+    start with 7
+/
+
+create sequence TPINMAILERORDER_SEQ
+/
+
+create sequence TPINMAILERPRODUCT_SEQ
+    start with 145
+/
+
+create sequence TPINPADITEM_SEQ
+    start with 25972
+/
+
+create sequence TPINPADORDERPRODUCT_SEQ
+    start with 6
+/
+
+create sequence TPLAN_SEQ
+    start with 1237
+/
+
+create sequence TPLANDOC_SEQ
+    start with 248
+/
+
+create sequence TPLANPRODUCT_SEQ
+    start with 1542
+/
+
+create sequence TPRODUCTMM_SEQ
+    start with 942
+/
+
+create sequence TREGISTERSTOCK_SEQ
+    start with 281
+/
+
+create sequence TREPAIR_SEQ
+    start with 21
+/
+
+create sequence TREPAIRDLV_SEQ
+    start with 8
+/
+
+create sequence TREPAIRITEM_SEQ
+    start with 32
+/
+
+create sequence TREPAIRMEMO_SEQ
+    start with 581
+/
+
+create sequence TRETURN_SEQ
+    start with 176
+/
+
+create sequence TRETURNITEM_SEQ
+    start with 2201
+/
+
+create sequence TRETURNMEMO_SEQ
+    start with 125
+/
+
+create sequence TRETURNTRACK_SEQ
+    start with 3861
+/
+
+create sequence TROLLBACK_SEQ
+    start with 2
+/
+
+create sequence TSECURITIESITEM_SEQ
+    start with 8081314
+/
+
+create sequence TSTOCKCARD_SEQ
+/
+
+create sequence TSWITCH_SEQ
+    start with 1041
+/
+
+create sequence TSWITCHITEM_SEQ
+    start with 541
+/
+
+create sequence TSWITCHMEMO_SEQ
+    start with 1161
+/
+
+create sequence TTOKENITEM_SEQ
+    start with 257978
+/
+
+create sequence TUNEOD_SEQ
+/
+
+create sequence MUSERGROUP_SEQ
+    start with 197
+/
+
+create sequence TORDERPRODUCT_SEQ
+    start with 381
+/
+
+create sequence MMITRA_SEQ
+    start with 141
+/
+
+create sequence TORDERBRANCH_SEQ
+    start with 381
+/
+
+create sequence TQUOTAREQDATA_SEQ
+/
+
+create sequence TPO_SEQ
+    start with 641
+/
+
+create sequence TPOPRODUCT_SEQ
+    start with 681
+/
+
+create sequence TQUOTAREQ_SEQ
+/
+
+create sequence TTRACKING_SEQ
+/
+
+create sequence TDO_SEQ
+    start with 601
+/
+
+create sequence TFILEPHONE_SEQ
+/
+
+create sequence TDESTROY_SEQ
+    start with 121
+/
+
+create sequence TDESTROYITEM_SEQ
+    start with 101
+/
+
+create sequence TSALE_SEQ
+    start with 6
+    nocache
+/
+
+create sequence TSALEITEM_SEQ
+    start with 5
+    nocache
+/
+
+create global temporary table HTE_MUSERGROUPLEVEL
 (
     RN_               NUMBER(10) not null
         primary key,
@@ -12,7 +418,7 @@ create global temporary table ORCLPDB1.HTE_MUSERGROUPLEVEL
     on commit delete rows
 /
 
-create table ORCLPDB1.MPRODUCTGROUP
+create table MPRODUCTGROUP
 (
     MPRODUCTGROUPPK  NUMBER(32) not null
         constraint MPRODUCTGROUP_PKEY
@@ -23,7 +429,7 @@ create table ORCLPDB1.MPRODUCTGROUP
 )
 /
 
-create table ORCLPDB1.MCOURIERVENDOR
+create table MCOURIERVENDOR
 (
     MCOURIERVENDORPK NUMBER(32) not null
         constraint MCOURIERVENDOR_PKEY
@@ -43,7 +449,7 @@ create table ORCLPDB1.MCOURIERVENDOR
 )
 /
 
-create table ORCLPDB1.MREGION
+create table MREGION
 (
     MREGIONPK   NUMBER(32) not null
         constraint MREGION_PKEY
@@ -56,14 +462,14 @@ create table ORCLPDB1.MREGION
 )
 /
 
-create table ORCLPDB1.MCOURIER
+create table MCOURIER
 (
     MCOURIERPK       NUMBER(32) not null
         constraint MCOURIER_PKEY
             primary key,
     MCOURIERVENDORFK NUMBER(32) not null
         constraint MCOURIER_FK1
-            references ORCLPDB1.MCOURIERVENDOR
+            references MCOURIERVENDOR
                 on delete cascade,
     COURIERCODE      CHAR(15 char),
     COURIERNAME      CHAR(70 char),
@@ -76,14 +482,14 @@ create table ORCLPDB1.MCOURIER
 )
 /
 
-create table ORCLPDB1.MCOURIERZIPCODE
+create table MCOURIERZIPCODE
 (
     MCOURIERZIPCODEPK NUMBER(32) not null
         constraint MCOURIERZIPCODE_PKEY
             primary key,
     MCOURIERVENDORFK  NUMBER(32)
         constraint MCOURIERZIPCODE_FK1
-            references ORCLPDB1.MCOURIERVENDOR
+            references MCOURIERVENDOR
                 on delete cascade,
     ZIPCODESTART      NUMBER(32) default 0,
     ZIPCODEEND        NUMBER(32) default 0,
@@ -93,14 +499,14 @@ create table ORCLPDB1.MCOURIERZIPCODE
 )
 /
 
-create table ORCLPDB1.MBRANCH
+create table MBRANCH
 (
     MBRANCHPK        NUMBER(32) not null
         constraint MBRANCH_PKEY
             primary key,
     MREGIONFK        NUMBER(32)
         constraint MBRANCH_FK1
-            references ORCLPDB1.MREGION
+            references MREGION
                 on delete cascade,
     BRANCHID         CHAR(5 char),
     BRANCHCODE       CHAR(10 char),
@@ -111,7 +517,7 @@ create table ORCLPDB1.MBRANCH
     BRANCHCITY       CHAR(70 char),
     MCOURIERVENDORFK NUMBER(32)
         constraint MBRANCH_FK2
-            references ORCLPDB1.MCOURIERVENDOR
+            references MCOURIERVENDOR
                 on delete set null,
     ISHEADOFFICE     CHAR(1 char),
     ISINTERCITY      CHAR(1 char),
@@ -120,7 +526,7 @@ create table ORCLPDB1.MBRANCH
 )
 /
 
-create table ORCLPDB1.MHOLIDAY
+create table MHOLIDAY
 (
     MHOLIDAYPK  NUMBER(32) not null
         constraint MHOLIDAY_PKEY
@@ -132,7 +538,7 @@ create table ORCLPDB1.MHOLIDAY
 )
 /
 
-create table ORCLPDB1.MICON
+create table MICON
 (
     MICONPK  NUMBER(32) not null
         constraint MICON_PKEY
@@ -143,7 +549,7 @@ create table ORCLPDB1.MICON
 )
 /
 
-create table ORCLPDB1.MLETTER
+create table MLETTER
 (
     MLETTERPK    NUMBER(32) not null
         constraint MLETTER_PKEY
@@ -156,7 +562,7 @@ create table ORCLPDB1.MLETTER
 )
 /
 
-create table ORCLPDB1.MLETTERTYPE
+create table MLETTERTYPE
 (
     MLETTERTYPEPK NUMBER(32) not null
         constraint MLETTERTYPE_PKEY
@@ -169,7 +575,7 @@ create table ORCLPDB1.MLETTERTYPE
 )
 /
 
-create table ORCLPDB1.MUSERGROUP
+create table MUSERGROUP
 (
     MUSERGROUPPK  NUMBER(32) not null
         constraint MUSERGROUP_PKEY
@@ -183,7 +589,7 @@ create table ORCLPDB1.MUSERGROUP
 )
 /
 
-create table ORCLPDB1.MNOTIF
+create table MNOTIF
 (
     NOTIFID       CHAR(10 char) not null
         constraint MNOTIF_PKEY
@@ -194,7 +600,7 @@ create table ORCLPDB1.MNOTIF
 )
 /
 
-create table ORCLPDB1.MORG
+create table MORG
 (
     MORGPK      NUMBER(32) not null
         constraint MORG_PKEY
@@ -208,18 +614,18 @@ create table ORCLPDB1.MORG
 )
 /
 
-create table ORCLPDB1.MPRODUCTOWNER
+create table MPRODUCTOWNER
 (
     MPRODUCTOWNERPK NUMBER(32) not null
         constraint MPRODUCTOWNER_PKEY
             primary key,
     MBRANCHFK       NUMBER(32)
         constraint MPRODUCTOWNER_FK1
-            references ORCLPDB1.MBRANCH
+            references MBRANCH
 )
 /
 
-create table ORCLPDB1.MPERSOVENDOR
+create table MPERSOVENDOR
 (
     MPERSOVENDORPK NUMBER(32) not null
         constraint MPERSOVENDOR_PKEY
@@ -236,7 +642,7 @@ create table ORCLPDB1.MPERSOVENDOR
 )
 /
 
-create table ORCLPDB1.MPRODUCTTYPE
+create table MPRODUCTTYPE
 (
     MPRODUCTTYPEPK        NUMBER(32) not null
         constraint MPRODUCTTYPE_PKEY
@@ -269,7 +675,7 @@ create table ORCLPDB1.MPRODUCTTYPE
     COANO                 CHAR(20 char),
     MPRODUCTOWNERFK       NUMBER(32)
         constraint MPRODUCTTYPE_FK1
-            references ORCLPDB1.MPRODUCTOWNER,
+            references MPRODUCTOWNER,
     STOCKUNUSED           NUMBER(32)    default 0,
     GROUPTYPE             CHAR(2 char),
     BOOKTYPE              CHAR(10 char),
@@ -279,14 +685,14 @@ create table ORCLPDB1.MPRODUCTTYPE
 )
 /
 
-create table ORCLPDB1.MPRODUCT
+create table MPRODUCT
 (
     MPRODUCTPK     NUMBER(32) not null
         constraint MPRODUCT_PKEY
             primary key,
     MPRODUCTTYPEFK NUMBER(32)
         constraint MPRODUCT_FK1
-            references ORCLPDB1.MPRODUCTTYPE
+            references MPRODUCTTYPE
                 on delete cascade,
     PRODUCTCODE    CHAR(10 char),
     PRODUCTNAME    CHAR(70 char),
@@ -304,27 +710,27 @@ create table ORCLPDB1.MPRODUCT
 )
 /
 
-create index ORCLPDB1.MPRODUCT_UNQ1
-    on ORCLPDB1.MPRODUCT (PRODUCTGROUP)
+create index MPRODUCT_UNQ1
+    on MPRODUCT (PRODUCTGROUP)
 /
 
-create table ORCLPDB1.MBRANCHPRODUCTGROUP
+create table MBRANCHPRODUCTGROUP
 (
     MBRANCHPRODUCTGROUPPK NUMBER(32) not null
         constraint MBRANCHPRODUCTGROUP_PKEY
             primary key,
     MBRANCHFK             NUMBER(32)
         constraint MBRANCHPRODUCTGROUP_FK1
-            references ORCLPDB1.MBRANCH
+            references MBRANCH
                 on delete cascade,
     MPRODUCTGROUPFK       NUMBER(32)
         constraint MBRANCHPRODUCTGROUP_FK2
-            references ORCLPDB1.MPRODUCTGROUP
+            references MPRODUCTGROUP
                 on delete cascade
 )
 /
 
-create table ORCLPDB1.MPRODUCTREQ
+create table MPRODUCTREQ
 (
     MPRODUCTREQPK NUMBER(32) not null
         constraint MPRODUCTREQ_PKEY
@@ -340,17 +746,17 @@ create table ORCLPDB1.MPRODUCTREQ
 )
 /
 
-create table ORCLPDB1.TBRANCHSTOCK
+create table TBRANCHSTOCK
 (
     TBRANCHSTOCKPK NUMBER(32) not null
         constraint TBRANCHSTOCK_PKEY
             primary key,
     MBRANCHFK      NUMBER(32) not null
         constraint TBRANCHSTOCK_FK1
-            references ORCLPDB1.MBRANCH,
+            references MBRANCH,
     MPRODUCTFK     NUMBER(32) not null
         constraint TBRANCHSTOCK_FK2
-            references ORCLPDB1.MPRODUCT,
+            references MPRODUCT,
     STOCKRESERVED  NUMBER(32) default 0,
     STOCKACTIVATED NUMBER(32),
     STOCKCABANG    NUMBER(32),
@@ -361,17 +767,17 @@ create table ORCLPDB1.TBRANCHSTOCK
 )
 /
 
-create table ORCLPDB1.TDELIVERYCOURIER
+create table TDELIVERYCOURIER
 (
     TDELIVERYCOURIERPK NUMBER(32) not null
         constraint TDELIVERYCOURIER_PKEY
             primary key,
     MCOURIERVENDORFK   NUMBER(32)
         constraint TDELIVERYCOURIER_FK1
-            references ORCLPDB1.MCOURIERVENDOR,
+            references MCOURIERVENDOR,
     MCOURIERFK         NUMBER(32)
         constraint TDELIVERYCOURIER_FK2
-            references ORCLPDB1.MCOURIER,
+            references MCOURIER,
     PRODUCTGROUP       CHAR(3 char),
     DLVCOURIERID       CHAR(15 char),
     STATUS             CHAR(3 char),
@@ -384,17 +790,17 @@ create table ORCLPDB1.TDELIVERYCOURIER
 )
 /
 
-create table ORCLPDB1.TDELIVERY
+create table TDELIVERY
 (
     TDELIVERYPK        NUMBER(32) not null
         constraint TDELIVERY_PKEY
             primary key,
     MCOURIERVENDORFK   NUMBER(32)
         constraint TDELIVERY_FK1
-            references ORCLPDB1.MCOURIERVENDOR,
+            references MCOURIERVENDOR,
     MBRANCHFK          NUMBER(32)
         constraint TDELIVERY_FK2
-            references ORCLPDB1.MBRANCH,
+            references MBRANCH,
     DLVID              CHAR(30 char),
     STATUS             CHAR(3 char),
     TOTALDATA          NUMBER(32)     default 0,
@@ -404,7 +810,7 @@ create table ORCLPDB1.TDELIVERY
     PRODUCTGROUP       CHAR(3 char),
     TDELIVERYCOURIERFK NUMBER(32)
         constraint TDELIVERY_FK3
-            references ORCLPDB1.TDELIVERYCOURIER
+            references TDELIVERYCOURIER
                 on delete set null,
     LETTERTYPE         CHAR(10 char),
     ISURGENT           CHAR(1 char),
@@ -443,7 +849,7 @@ create table ORCLPDB1.TDELIVERY
 )
 /
 
-create table ORCLPDB1.MSYSPARAM
+create table MSYSPARAM
 (
     ORDERNO     NUMBER(32)   default 0,
     PARAMCODE   VARCHAR2(30 char) not null
@@ -459,14 +865,14 @@ create table ORCLPDB1.MSYSPARAM
 )
 /
 
-create table ORCLPDB1.MUSERGROUPLEVEL
+create table MUSERGROUPLEVEL
 (
     MUSERGROUPLEVELPK NUMBER(32) not null
         constraint MUSERGROUPLEVEL_PKEY
             primary key,
     MUSERGROUPFK      NUMBER(32)
         constraint MUSERGROUPLEVEL_FK1
-            references ORCLPDB1.MUSERGROUP
+            references MUSERGROUP
                 on delete cascade,
     AMOUNTSTART       NUMBER(17),
     AMOUNTEND         NUMBER(17),
@@ -475,7 +881,7 @@ create table ORCLPDB1.MUSERGROUPLEVEL
 )
 /
 
-create table ORCLPDB1.MMENU
+create table MMENU
 (
     MMENUPK          NUMBER(32) not null
         constraint MMENU_PKEY
@@ -493,7 +899,7 @@ create table ORCLPDB1.MMENU
 )
 /
 
-create table ORCLPDB1.TNOTIF
+create table TNOTIF
 (
     TNOTIFPK     NUMBER(32) not null
         constraint TNOTIF_PKEY
@@ -502,17 +908,17 @@ create table ORCLPDB1.TNOTIF
     NOTIFCOUNT   NUMBER(32) default 0,
     MMENUFK      NUMBER(32)
         constraint TNOTIF_FK1
-            references ORCLPDB1.MMENU,
+            references MMENU,
     PRODUCTGROUP CHAR(2 char),
     MBRANCHFK    NUMBER(32)
         constraint TNOTIF_FK2
-            references ORCLPDB1.MBRANCH,
+            references MBRANCH,
     BRANCHLEVEL  NUMBER(32),
     NOTIFTIME    TIMESTAMP(6)
 )
 /
 
-create table ORCLPDB1.MUSERGROUPNOTIF
+create table MUSERGROUPNOTIF
 (
     MUSERGROUPNOTIFPK NUMBER(32) not null
         constraint MUSERGROUPNOTIF_PKEY
@@ -523,7 +929,7 @@ create table ORCLPDB1.MUSERGROUPNOTIF
 )
 /
 
-create table ORCLPDB1.MYENTITY
+create table MYENTITY
 (
     ID    NUMBER(38) not null
         constraint MYENTITY_PKEY
@@ -532,7 +938,7 @@ create table ORCLPDB1.MYENTITY
 )
 /
 
-create table ORCLPDB1.TPERSOUPLOAD
+create table TPERSOUPLOAD
 (
     TPERSOUPLOADPK NUMBER(32) not null
         constraint TPERSOUPLOAD_PKEY
@@ -544,14 +950,14 @@ create table ORCLPDB1.TPERSOUPLOAD
 )
 /
 
-create table ORCLPDB1.TDERIVATIF
+create table TDERIVATIF
 (
     TDERIVATIFPK  NUMBER(32) not null
         constraint TDERIVATIF_PKEY
             primary key,
     MBRANCHFK     NUMBER(32)
         constraint TDERIVATIF_FK1
-            references ORCLPDB1.MBRANCH,
+            references MBRANCH,
     ORDERNO       CHAR(20 char),
     ORDERDATE     DATE,
     TOTALDATA     NUMBER(32) default 0,
@@ -567,7 +973,7 @@ create table ORCLPDB1.TDERIVATIF
     ENTRYBY       CHAR(15 char),
     TDELIVERYFK   NUMBER(32)
         constraint TDERIVATIF_FK2
-            references ORCLPDB1.TDELIVERY,
+            references TDELIVERY,
     PRODSLA       NUMBER(32) default 0,
     DLVSLA        NUMBER(32) default 0,
     SLATOTAL      NUMBER(32) default 0,
@@ -575,21 +981,21 @@ create table ORCLPDB1.TDERIVATIF
     DLVFINISHTIME TIMESTAMP(6),
     MPRODUCTFK    NUMBER(32)
         constraint TDERIVATIF_FK3
-            references ORCLPDB1.MPRODUCT,
+            references MPRODUCT,
     TOTALREJECT   NUMBER(32) default 0,
     FILENAME      CHAR(150 char),
     TOTALADJ      NUMBER(32) default 0
 )
 /
 
-create table ORCLPDB1.TPINMAILERFILE
+create table TPINMAILERFILE
 (
     TPINMAILERFILEPK NUMBER(32) not null
         constraint TPINMAILERFILE_PKEY
             primary key,
     MPRODUCTFK       NUMBER(32)
         constraint TPINMAILERFILE_FK1
-            references ORCLPDB1.MPRODUCT,
+            references MPRODUCT,
     BATCHID          CHAR(15 char),
     FILENAME         CHAR(70 char),
     TOTALDATA        NUMBER(32) default 0,
@@ -600,18 +1006,18 @@ create table ORCLPDB1.TPINMAILERFILE
 )
 /
 
-create table ORCLPDB1.TPINMAILERBRANCH
+create table TPINMAILERBRANCH
 (
     TPINMAILERBRANCHPK NUMBER(32) not null
         constraint TPINMAILERBRANCH_PKEY
             primary key,
     TPINMAILERFILEFK   NUMBER(32)
         constraint TPINMAILERBRANCH_FK1
-            references ORCLPDB1.TPINMAILERFILE
+            references TPINMAILERFILE
                 on delete cascade,
     MBRANCHFK          NUMBER(32)
         constraint TPINMAILERBRANCH_FK2
-            references ORCLPDB1.MBRANCH,
+            references MBRANCH,
     BRANCHID           CHAR(5 char),
     ORDERDATE          DATE,
     TOTALDATA          NUMBER(32) default 0,
@@ -619,7 +1025,7 @@ create table ORCLPDB1.TPINMAILERBRANCH
 )
 /
 
-create table ORCLPDB1.MREPAIRREASON
+create table MREPAIRREASON
 (
     MREPAIRREASONPK NUMBER(32) not null
         constraint MREPAIRREASON_PKEY
@@ -631,7 +1037,7 @@ create table ORCLPDB1.MREPAIRREASON
 )
 /
 
-create table ORCLPDB1.TCOUNTERENGINE
+create table TCOUNTERENGINE
 (
     COUNTERNAME VARCHAR2(70 char) not null
         constraint TCOUNTERENGINE_PK
@@ -640,7 +1046,7 @@ create table ORCLPDB1.TCOUNTERENGINE
 )
 /
 
-create table ORCLPDB1.MRETURNREASON
+create table MRETURNREASON
 (
     MRETURNREASONPK NUMBER(32) not null
         constraint MRETURNREASON_PKEY
@@ -653,17 +1059,17 @@ create table ORCLPDB1.MRETURNREASON
 )
 /
 
-create table ORCLPDB1.TORDER
+create table TORDER
 (
     TORDERPK         NUMBER(32) not null
         constraint TORDER_PKEY
             primary key,
     MBRANCHFK        NUMBER(32)
         constraint TORDER_FK1
-            references ORCLPDB1.MBRANCH,
+            references MBRANCH,
     MPRODUCTFK       NUMBER(32)
         constraint TORDER_FK2
-            references ORCLPDB1.MPRODUCT,
+            references MPRODUCT,
     PRODUCTGROUP     CHAR(2 char),
     ORDERID          CHAR(20 char),
     ORDERDATE        DATE,
@@ -680,7 +1086,7 @@ create table ORCLPDB1.TORDER
     MEMO             CHAR(200 char),
     TPINMAILERFILEFK NUMBER(32)
         constraint TORDER_FK10
-            references ORCLPDB1.TPINMAILERFILE
+            references TPINMAILERFILE
                 on delete cascade,
     MEMODATE         TIMESTAMP(6),
     MEMONO           CHAR(40 char),
@@ -695,14 +1101,14 @@ create table ORCLPDB1.TORDER
 )
 /
 
-create table ORCLPDB1.TDESTROY
+create table TDESTROY
 (
     TDESTROYPK   NUMBER(32) not null
         constraint TDESTROY_PKEY
             primary key,
     MBRANCHFK    NUMBER(32)
         constraint TDESTROY_FK1
-            references ORCLPDB1.MBRANCH,
+            references MBRANCH,
     MPRODUCTFK   NUMBER(32),
     REGID        CHAR(20 char),
     ITEMQTY      NUMBER(32)     default 0,
@@ -721,14 +1127,14 @@ create table ORCLPDB1.TDESTROY
 )
 /
 
-create table ORCLPDB1.TDESTROYMEMO
+create table TDESTROYMEMO
 (
     TDESTROYMEMOPK NUMBER(32) not null
         constraint TDESTROYMEMO_PKEY
             primary key,
     TDESTROYFK     NUMBER(32)
         constraint TDESTROYMEMO_FK1
-            references ORCLPDB1.TDESTROY
+            references TDESTROY
                 on delete cascade,
     MEMO           CHAR(200 char),
     MEMOBY         CHAR(40 char),
@@ -736,32 +1142,32 @@ create table ORCLPDB1.TDESTROYMEMO
 )
 /
 
-create table ORCLPDB1.TDESTROYITEM
+create table TDESTROYITEM
 (
     TDESTROYITEMPK NUMBER(32) not null
         constraint TDESTROYITEM_PKEY
             primary key,
     TDESTROYFK     NUMBER(32)
         constraint TDESTROYITEMPK_FK1
-            references ORCLPDB1.TDESTROY
+            references TDESTROY
                 on delete cascade,
     ITEMNO         CHAR(20 char),
     ITEMSTATUS     CHAR(3)
 )
 /
 
-create table ORCLPDB1.TPINMAILERPRODUCT
+create table TPINMAILERPRODUCT
 (
     TPINMAILERPRODUCTPK NUMBER(32) not null
         constraint TPINMAILERPRODUCT_PKEY
             primary key,
     TPINMAILERFILEFK    NUMBER(32)
         constraint TPINMAILERPRODUCT_FK1
-            references ORCLPDB1.TPINMAILERFILE
+            references TPINMAILERFILE
                 on delete cascade,
     MPRODUCTFK          NUMBER(32)
         constraint TPINMAILERPRODUCT_FK2
-            references ORCLPDB1.MPRODUCT,
+            references MPRODUCT,
     PRODUCTCODE         CHAR(10 char),
     ORDERDATE           DATE,
     TOTALDATA           NUMBER(32) default 0,
@@ -773,12 +1179,12 @@ create table ORCLPDB1.TPINMAILERPRODUCT
     ISINSTANT           CHAR(1 char),
     TPINMAILERBRANCHFK  NUMBER(32)
         constraint TPINMAILERBRANCHFK_FK3
-            references ORCLPDB1.TPINMAILERBRANCH
+            references TPINMAILERBRANCH
                 on delete cascade
 )
 /
 
-create table ORCLPDB1.MSUPPLIER
+create table MSUPPLIER
 (
     MSUPPLIERPK  NUMBER(32) not null
         constraint MSUPPLIER_PKEY
@@ -792,14 +1198,14 @@ create table ORCLPDB1.MSUPPLIER
 )
 /
 
-create table ORCLPDB1.TPLAN
+create table TPLAN
 (
     TPLANPK          NUMBER(32) not null
         constraint TPLAN_PKEY
             primary key,
     MBRANCHFK        NUMBER(32)
         constraint TPLAN_FK1
-            references ORCLPDB1.MBRANCH,
+            references MBRANCH,
     PRODUCTGROUP     CHAR(2 char),
     PLANNO           CHAR(20 char),
     MEMONO           CHAR(20 char),
@@ -827,7 +1233,7 @@ create table ORCLPDB1.TPLAN
     CONTRACTDOCPATH  CHAR(200 char) default '',
     MSUPPLIERFK      NUMBER
         constraint TPLAN_FK2
-            references ORCLPDB1.MSUPPLIER,
+            references MSUPPLIER,
     NOTE             CHAR(200 char) default '',
     TOTALPROCUR      NUMBER         default 0,
     TOTALPROCURPRICE NUMBER(19)     default 0,
@@ -835,14 +1241,14 @@ create table ORCLPDB1.TPLAN
 )
 /
 
-create table ORCLPDB1.TORDERDOC
+create table TORDERDOC
 (
     TORDERDOCPK NUMBER(32) not null
         constraint TORDERDOC_PKEY
             primary key,
     TORDERFK    NUMBER(32)
         constraint TORDERDOC_FK1
-            references ORCLPDB1.TORDER
+            references TORDER
                 on delete cascade,
     DOCFILEORI  CHAR(200 char),
     DOCFILEID   CHAR(200 char),
@@ -851,14 +1257,14 @@ create table ORCLPDB1.TORDERDOC
 )
 /
 
-create table ORCLPDB1.TORDERMEMO
+create table TORDERMEMO
 (
     TORDERMEMOPK NUMBER(32) not null
         constraint TORDERMEMO_PKEY
             primary key,
     TORDERFK     NUMBER(32)
         constraint TORDERMEMO_FK1
-            references ORCLPDB1.TORDER
+            references TORDER
                 on delete cascade,
     MEMO         CHAR(200 char),
     MEMOBY       CHAR(40 char),
@@ -866,17 +1272,17 @@ create table ORCLPDB1.TORDERMEMO
 )
 /
 
-create table ORCLPDB1.TRETURN
+create table TRETURN
 (
     TRETURNPK       NUMBER(32) not null
         constraint TRETURN_PKEY
             primary key,
     MBRANCHFK       NUMBER(32)
         constraint TRETURN_FK1
-            references ORCLPDB1.MBRANCH,
+            references MBRANCH,
     MPRODUCTFK      NUMBER(32)
         constraint TRETURN_FK2
-            references ORCLPDB1.MPRODUCT,
+            references MPRODUCT,
     REGID           CHAR(20 char),
     RETURNLEVEL     NUMBER(32) default 0,
     ITEMQTY         NUMBER(32) default 0,
@@ -887,7 +1293,7 @@ create table ORCLPDB1.TRETURN
     DECISIONTIME    TIMESTAMP(6),
     MRETURNREASONFK NUMBER(32)
         constraint TRETURN_FK3
-            references ORCLPDB1.MRETURNREASON,
+            references MRETURNREASON,
     LETTERTYPE      CHAR(10 char),
     FILENAME        CHAR(200 char),
     ISDESTROY       CHAR(1 char),
@@ -897,14 +1303,14 @@ create table ORCLPDB1.TRETURN
 )
 /
 
-create table ORCLPDB1.TORDERTRACK
+create table TORDERTRACK
 (
     TORDERTRACKPK NUMBER(32) not null
         constraint TORDERTRACK_PKEY
             primary key,
     TORDERFK      NUMBER(32)
         constraint TORDERTRACK_FK1
-            references ORCLPDB1.TORDER
+            references TORDER
                 on delete cascade,
     PRODUCTGROUP  CHAR(2 char),
     ITEMNO        CHAR(2 char),
@@ -914,7 +1320,7 @@ create table ORCLPDB1.TORDERTRACK
 )
 /
 
-create table ORCLPDB1.TFILEBRANCHACTV
+create table TFILEBRANCHACTV
 (
     TFILEBRANCHACTVPK NUMBER(32) not null
         constraint TFILEBRANCHACTV_PKEY
@@ -924,14 +1330,14 @@ create table ORCLPDB1.TFILEBRANCHACTV
 )
 /
 
-create table ORCLPDB1.TINCOMING
+create table TINCOMING
 (
     TINCOMINGPK      NUMBER(32) not null
         constraint TINCOMING_PKEY
             primary key,
     MPRODUCTTYPEFK   NUMBER(32) not null
         constraint TINCOMING_FK1
-            references ORCLPDB1.MPRODUCTTYPE
+            references MPRODUCTTYPE
                 on delete cascade,
     PRODUCTGROUP     CHAR(3 char),
     INCOMINGID       CHAR(20 char),
@@ -948,19 +1354,19 @@ create table ORCLPDB1.TINCOMING
     UPDATEDBY        CHAR(40 char),
     MSUPPLIERFK      NUMBER(32)
         constraint TINCOMING_FK2
-            references ORCLPDB1.MSUPPLIER,
+            references MSUPPLIER,
     SPKNO            CHAR(50 char),
     SPKDATE          DATE,
     MBRANCHFK        NUMBER(32)
         constraint TINCOMING_FK3
-            references ORCLPDB1.MBRANCH,
+            references MBRANCH,
     HARGA            BINARY_DOUBLE default 0,
     ORDERTYPE        CHAR(1 char),
     PREFIX           CHAR(5 char),
     ITEMSTARTNO      NUMBER(32),
     TPLANFK          NUMBER(32)
         constraint TINCOMING_FK7
-            references ORCLPDB1.TPLAN
+            references TPLAN
                 on delete cascade,
     VENDORLETTERNO   CHAR(20 char),
     VENDORLETTERDATE DATE,
@@ -970,11 +1376,11 @@ create table ORCLPDB1.TINCOMING
 )
 /
 
-create index ORCLPDB1.TINCOMING_UNQ1
-    on ORCLPDB1.TINCOMING (MPRODUCTTYPEFK)
+create index TINCOMING_UNQ1
+    on TINCOMING (MPRODUCTTYPEFK)
 /
 
-create table ORCLPDB1.TREGISTERSTOCK
+create table TREGISTERSTOCK
 (
     TREGISTERSTOCKPK NUMBER(32) not null
         constraint TREGISTERSTOCK_PKEY
@@ -996,12 +1402,12 @@ create table ORCLPDB1.TREGISTERSTOCK
     JUMLAHOUTS       NUMBER(32),
     TINCOMINGFK      NUMBER(32)
         constraint TREGISTERSTOCK_FK1
-            references ORCLPDB1.TINCOMING,
+            references TINCOMING,
     BRANCHLEVEL      NUMBER(32)
 )
 /
 
-create table ORCLPDB1.TMANUALACTV
+create table TMANUALACTV
 (
     TMANUALACTVPK NUMBER(32) not null
         constraint TMANUALACTV_PKEY
@@ -1023,17 +1429,17 @@ create table ORCLPDB1.TMANUALACTV
 )
 /
 
-create table ORCLPDB1.TREPAIR
+create table TREPAIR
 (
     TREPAIRPK       NUMBER(32) not null
         constraint TREPAIR_PKEY
             primary key,
     MBRANCHFK       NUMBER(32)
         constraint TREPAIR_FK1
-            references ORCLPDB1.MBRANCH,
+            references MBRANCH,
     MPRODUCTFK      NUMBER(32)
         constraint TREPAIR_FK2
-            references ORCLPDB1.MPRODUCT,
+            references MPRODUCT,
     REGID           CHAR(20 char),
     ITEMQTY         NUMBER(32) default 0,
     STATUS          CHAR(3 char),
@@ -1043,10 +1449,10 @@ create table ORCLPDB1.TREPAIR
     DECISIONTIME    TIMESTAMP(6),
     MRETURNREASONFK NUMBER(32)
         constraint TREPAIR_FK3
-            references ORCLPDB1.MRETURNREASON,
+            references MRETURNREASON,
     MREPAIRREASONFK NUMBER(32)
         constraint TREPAIR_FK5
-            references ORCLPDB1.MREPAIRREASON
+            references MREPAIRREASON
                 on delete cascade,
     PINPADTYPE      CHAR(1 char),
     REPAIRFAILED    NUMBER(32) default 0,
@@ -1057,14 +1463,14 @@ create table ORCLPDB1.TREPAIR
 )
 /
 
-create table ORCLPDB1.TREPAIRDLV
+create table TREPAIRDLV
 (
     TREPAIRDLVPK NUMBER(32) not null
         constraint TREPAIRDLV_PKEY
             primary key,
     TREPAIRFK    NUMBER(32)
         constraint TREPAIRDLV_FK1
-            references ORCLPDB1.TREPAIR
+            references TREPAIR
                 on delete cascade,
     DLVNO        CHAR(15 char),
     QUANTITY     NUMBER(32),
@@ -1076,30 +1482,30 @@ create table ORCLPDB1.TREPAIRDLV
 )
 /
 
-create table ORCLPDB1.MUSERGROUPMENU
+create table MUSERGROUPMENU
 (
     MUSERGROUPMENUPK NUMBER(32) not null
         constraint MUSERGROUPMENU_PKEY
             primary key,
     MUSERGROUPFK     NUMBER(32) not null
         constraint MUSERGROUPMENU_FK1
-            references ORCLPDB1.MUSERGROUP
+            references MUSERGROUP
                 on delete cascade,
     MMENUFK          NUMBER(32) not null
         constraint MUSERGROUPMENU_FK2
-            references ORCLPDB1.MMENU
+            references MMENU
                 on delete cascade
 )
 /
 
-create table ORCLPDB1.TBOOKFILE
+create table TBOOKFILE
 (
     TBOOKFILEPK  NUMBER(32) not null
         constraint TBOOKFILE_PKEY
             primary key,
     TDELIVERYFK  NUMBER(32)
         constraint TBOOKFILE_FK1
-            references ORCLPDB1.TDELIVERY,
+            references TDELIVERY,
     BOOKID       CHAR(100 char),
     TOTALDATA    NUMBER(32) default 0,
     TOTALAMOUNT  NUMBER(17) default 0,
@@ -1114,14 +1520,14 @@ create table ORCLPDB1.TBOOKFILE
 )
 /
 
-create table ORCLPDB1.TBRANCHITEMBUCKET
+create table TBRANCHITEMBUCKET
 (
     TBRANCHITEMBUCKETPK NUMBER(32) not null
         constraint TBRANCHITEMBUCKET_PKEY
             primary key,
     TBRANCHSTOCKFK      NUMBER(32)
         constraint TBRANCHITEMBUCKET_FK1
-            references ORCLPDB1.TBRANCHSTOCK,
+            references TBRANCHSTOCK,
     ORDERID             CHAR(20 char),
     OUTLET              CHAR(2 char),
     PREFIX              CHAR(5 char),
@@ -1142,30 +1548,30 @@ create table ORCLPDB1.TBRANCHITEMBUCKET
 )
 /
 
-create index ORCLPDB1.TBRANCHITEMBUCKET_UNQ1
-    on ORCLPDB1.TBRANCHITEMBUCKET (ISACTV)
+create index TBRANCHITEMBUCKET_UNQ1
+    on TBRANCHITEMBUCKET (ISACTV)
 /
 
-create index ORCLPDB1.TBRANCHITEMBUCKET_UNQ3
-    on ORCLPDB1.TBRANCHITEMBUCKET (OUTLET)
+create index TBRANCHITEMBUCKET_UNQ3
+    on TBRANCHITEMBUCKET (OUTLET)
 /
 
-create index ORCLPDB1.TBRANCHITEMBUCKET_UNQ2
-    on ORCLPDB1.TBRANCHITEMBUCKET (ISGENERATE)
+create index TBRANCHITEMBUCKET_UNQ2
+    on TBRANCHITEMBUCKET (ISGENERATE)
 /
 
-create table ORCLPDB1.TPINMAILERDATA
+create table TPINMAILERDATA
 (
     TPINMAILERDATAPK    NUMBER(32) not null
         constraint TPINMAILERDATA_PKEY
             primary key,
     TPINMAILERBRANCHFK  NUMBER(32)
         constraint TPINMAILERDATA_FK1
-            references ORCLPDB1.TPINMAILERBRANCH
+            references TPINMAILERBRANCH
                 on delete cascade,
     MPRODUCTFK          NUMBER(32)
         constraint TPINMAILERDATA_FK2
-            references ORCLPDB1.MPRODUCT,
+            references MPRODUCT,
     CARDNO              CHAR(20 char),
     NAME                CHAR(40 char),
     ORDERDATE           DATE,
@@ -1177,26 +1583,26 @@ create table ORCLPDB1.TPINMAILERDATA
     ISINSTANT           CHAR(1 char),
     TPINMAILERPRODUCTFK NUMBER(32)
         constraint TPINMAILERDATA_FK3
-            references ORCLPDB1.TPINMAILERPRODUCT
+            references TPINMAILERPRODUCT
                 on delete cascade
 )
 /
 
-create index ORCLPDB1.TPINMAILERDATA_UNQ1
-    on ORCLPDB1.TPINMAILERDATA (CARDNO)
+create index TPINMAILERDATA_UNQ1
+    on TPINMAILERDATA (CARDNO)
 /
 
-create table ORCLPDB1.TSWITCH
+create table TSWITCH
 (
     TSWITCHPK    NUMBER(32) not null
         constraint TSWITCH_PKEY
             primary key,
     MBRANCHFK    NUMBER(32)
         constraint TSWITCHPK_FK1
-            references ORCLPDB1.MBRANCH,
+            references MBRANCH,
     MPRODUCTFK   NUMBER(32)
         constraint TSWITCHPK_FK2
-            references ORCLPDB1.MPRODUCT,
+            references MPRODUCT,
     BRANCHIDREQ  CHAR(3 char),
     OUTLETREQ    CHAR(2 char),
     BRANCHIDPOOL CHAR(3 char),
@@ -1210,21 +1616,21 @@ create table ORCLPDB1.TSWITCH
     DECISIONTIME TIMESTAMP(6),
     TORDERFK     NUMBER(32)
         constraint TSWITCH_FK3
-            references ORCLPDB1.TORDER,
+            references TORDER,
     DOCID        CHAR(50)      default '',
     DOCNAME      CHAR(200)     default '',
     DOCPATH      VARCHAR2(500) default ''
 )
 /
 
-create table ORCLPDB1.MUSER
+create table MUSER
 (
     MUSERPK        NUMBER(32) not null
         constraint MUSER_PKEY
             primary key,
     MUSERGROUPFK   NUMBER(32) not null
         constraint MUSER_FK1
-            references ORCLPDB1.MUSERGROUP,
+            references MUSERGROUP,
     USERID         CHAR(15 char),
     USERNAME       CHAR(40 char),
     PASSWORD       CHAR(70 char),
@@ -1232,7 +1638,7 @@ create table ORCLPDB1.MUSER
     UPDATEDBY      CHAR(15 char),
     MPERSOVENDORFK NUMBER(32)
         constraint MUSER_FK2
-            references ORCLPDB1.MPERSOVENDOR,
+            references MPERSOVENDOR,
     MBRANCHFK      NUMBER(32),
     LASTLOGIN      TIMESTAMP(6),
     OUTLETCODE     CHAR(2 char)   default '00',
@@ -1240,26 +1646,26 @@ create table ORCLPDB1.MUSER
 )
 /
 
-create table ORCLPDB1.TSWITCHITEM
+create table TSWITCHITEM
 (
     TSWITCHITEMPK NUMBER(32) not null
         constraint TSWITCHITEM_TSWICTHITEM_PKEY
             primary key,
     TSWITCHFK     NUMBER(32)
         constraint TSWICTHITEM_FK1
-            references ORCLPDB1.TSWITCH,
+            references TSWITCH,
     ITEMNO        CHAR(20 char)
 )
 /
 
-create table ORCLPDB1.TSWITCHMEMO
+create table TSWITCHMEMO
 (
     TSWITCHMEMOPK NUMBER(32) not null
         constraint TSWITCHMEMO_PKEY
             primary key,
     TSWITCHFK     NUMBER(32)
         constraint TSWITCHMEMO_FK1
-            references ORCLPDB1.TSWITCH
+            references TSWITCH
                 on delete cascade,
     MEMO          CHAR(200 char),
     MEMOBY        CHAR(40 char),
@@ -1267,14 +1673,14 @@ create table ORCLPDB1.TSWITCHMEMO
 )
 /
 
-create table ORCLPDB1.TREPAIRMEMO
+create table TREPAIRMEMO
 (
     TREPAIRMEMOPK NUMBER(32) not null
         constraint TREPAIRMEMO_PKEY
             primary key,
     TREPAIRFK     NUMBER(32)
         constraint TREPAIRMEMO_FK1
-            references ORCLPDB1.TREPAIR
+            references TREPAIR
                 on delete cascade,
     MEMO          CHAR(200 char),
     MEMOBY        CHAR(40 char),
@@ -1282,18 +1688,18 @@ create table ORCLPDB1.TREPAIRMEMO
 )
 /
 
-create table ORCLPDB1.TPLANPRODUCT
+create table TPLANPRODUCT
 (
     TPLANPRODUCTPK   NUMBER(32) not null
         constraint TPLANPRODUCT_PKEY
             primary key,
     TPLANFK          NUMBER(32)
         constraint TPLANPRODUCT_FK1
-            references ORCLPDB1.TPLAN
+            references TPLAN
                 on delete cascade,
     MPRODUCTTYPEFK   NUMBER(32)
         constraint TPLANPRODUCT_FK2
-            references ORCLPDB1.MPRODUCTTYPE,
+            references MPRODUCTTYPE,
     UNITQTY          NUMBER(32) default 0,
     TOTALPROCESS     NUMBER(32) default 0,
     QTYPERUNIT       NUMBER(32) default 0,
@@ -1304,14 +1710,14 @@ create table ORCLPDB1.TPLANPRODUCT
 )
 /
 
-create table ORCLPDB1.TPLANDOC
+create table TPLANDOC
 (
     TPLANDOCPK  NUMBER(32) not null
         constraint TPLANDOC_PKEY
             primary key,
     TPLANFK     NUMBER(32)
         constraint TPLANDOC_FK1
-            references ORCLPDB1.TPLAN
+            references TPLAN
                 on delete cascade,
     DOCFILEORI  CHAR(200 char),
     DOCFILEID   CHAR(200 char),
@@ -1320,50 +1726,50 @@ create table ORCLPDB1.TPLANDOC
 )
 /
 
-create table ORCLPDB1.TPINPADORDERPRODUCT
+create table TPINPADORDERPRODUCT
 (
     TPINPADORDERPRODUCTPK NUMBER(32) not null
         constraint TPINPADORDERPRODUCT_PKEY
             primary key,
     TORDERFK              NUMBER(32)
         constraint TPINPADORDERPRODUCT_FK1
-            references ORCLPDB1.TORDER
+            references TORDER
                 on delete cascade,
     MPRODUCTFK            NUMBER(32)
         constraint TPINPADORDERPRODUCT_FK2
-            references ORCLPDB1.MPRODUCT,
+            references MPRODUCT,
     PRODUCTCODE           CHAR(10 char),
     STATUS                CHAR(3 char),
     QUANTITY              NUMBER(32) default 0
 )
 /
 
-create table ORCLPDB1.TINCOMINGVENDOR
+create table TINCOMINGVENDOR
 (
     TINCOMINGVENDORPK NUMBER(32) not null
         constraint TINCOMINGVENDOR_PKEY
             primary key,
     TINCOMINGFK       NUMBER(32)
         constraint TINCOMINGVENDORPK_FK1
-            references ORCLPDB1.TINCOMING
+            references TINCOMING
                 on delete cascade,
     MSUPPLIERFK       NUMBER(32)
         constraint TINCOMINGVENDORPK_FK2
-            references ORCLPDB1.MSUPPLIER,
+            references MSUPPLIER,
     SUPPLIERNAME      CHAR(70 char),
     PICNAME           CHAR(40 char),
     PICHP             CHAR(40 char)
 )
 /
 
-create table ORCLPDB1.TRETURNITEM
+create table TRETURNITEM
 (
     TRETURNITEMPK NUMBER(32) not null
         constraint TRETURNITEM_PKEY
             primary key,
     TRETURNFK     NUMBER(32)
         constraint TRETURNITEM_FK1
-            references ORCLPDB1.TRETURN
+            references TRETURN
                 on delete cascade,
     ITEMNO        CHAR(20 char),
     ITEMSTATUS    CHAR(3 char),
@@ -1371,18 +1777,18 @@ create table ORCLPDB1.TRETURNITEM
 )
 /
 
-create index ORCLPDB1.TRETURNITEM_UNQ1
-    on ORCLPDB1.TRETURNITEM (ITEMNO)
+create index TRETURNITEM_UNQ1
+    on TRETURNITEM (ITEMNO)
 /
 
-create table ORCLPDB1.TRETURNMEMO
+create table TRETURNMEMO
 (
     TRETURNMEMOPK NUMBER(32) not null
         constraint TRETURNMEMO_PKEY
             primary key,
     TRETURNFK     NUMBER(32)
         constraint TRETURNMEMO_FK1
-            references ORCLPDB1.TRETURN
+            references TRETURN
                 on delete cascade,
     MEMO          CHAR(200 char),
     MEMOBY        CHAR(40 char),
@@ -1390,14 +1796,14 @@ create table ORCLPDB1.TRETURNMEMO
 )
 /
 
-create table ORCLPDB1.TRETURNTRACK
+create table TRETURNTRACK
 (
     TRETURNTRACKPK NUMBER(32) not null
         constraint TRETURNTRACK_PKEY
             primary key,
     TRETURNFK      NUMBER(32)
         constraint TRETURNTRACK_FK1
-            references ORCLPDB1.TRETURN
+            references TRETURN
                 on delete cascade,
     TRACKTIME      TIMESTAMP(6),
     TRACKSTATUS    CHAR(3 char),
@@ -1405,14 +1811,14 @@ create table ORCLPDB1.TRETURNTRACK
 )
 /
 
-create table ORCLPDB1.TREPAIRITEM
+create table TREPAIRITEM
 (
     TREPAIRITEMPK NUMBER(32) not null
         constraint TREPAIRITEM_PKEY
             primary key,
     TREPAIRFK     NUMBER(32)
         constraint TREPAIRITEM_FK1
-            references ORCLPDB1.TREPAIR
+            references TREPAIR
                 on delete cascade,
     ITEMNO        CHAR(20 char),
     ITEMSTATUS    CHAR(3 char),
@@ -1423,21 +1829,21 @@ create table ORCLPDB1.TREPAIRITEM
     ITEMPRICE     NUMBER(17) default 0,
     TREPAIRDLVFK  NUMBER(32)
         constraint TREPAIRITEM_FK2
-            references ORCLPDB1.TREPAIRDLV
+            references TREPAIRDLV
                 on delete cascade,
     RESOLUTION    CHAR(100 char),
     REPLACEMENT   CHAR(20 char)
 )
 /
 
-create table ORCLPDB1.TSTOCKCARD
+create table TSTOCKCARD
 (
     TSTOCKCARDPK   NUMBER(32) not null
         constraint TSTOCKCARD_PKEY
             primary key,
     MPRODUCTTYPEFK NUMBER(32)
         constraint TSTOCKCARD_FK1
-            references ORCLPDB1.MPRODUCTTYPE
+            references MPRODUCTTYPE
                 on delete cascade,
     PRODUCTTYPE    CHAR(70 char),
     TRXDATE        DATE,
@@ -1454,14 +1860,14 @@ create table ORCLPDB1.TSTOCKCARD
 )
 /
 
-create table ORCLPDB1.TBRANCHITEMTRACK
+create table TBRANCHITEMTRACK
 (
     TBRANCHITEMTRACKPK NUMBER(32) not null
         constraint TBRANCHITEMTRACK_PKEY
             primary key,
     MPRODUCTFK         NUMBER(32)
         constraint TBRANCHITEMTRACK_FK1
-            references ORCLPDB1.MPRODUCT,
+            references MPRODUCT,
     PRODUCTGROUP       CHAR(2 char),
     ITEMNO             CHAR(20 char),
     TRACKTIME          TIMESTAMP(6),
@@ -1471,7 +1877,7 @@ create table ORCLPDB1.TBRANCHITEMTRACK
 )
 /
 
-create table ORCLPDB1.TSCHEDULER
+create table TSCHEDULER
 (
     TSCHEDULERPK        NUMBER(32) not null
         constraint TSCHEDULER_PKEY
@@ -1488,7 +1894,7 @@ create table ORCLPDB1.TSCHEDULER
 )
 /
 
-create table ORCLPDB1.MCOA
+create table MCOA
 (
     MCOAPK         NUMBER(32) not null
         constraint MCOA_PKEY
@@ -1502,21 +1908,21 @@ create table ORCLPDB1.MCOA
     BRANCHLEVEL    NUMBER(32),
     MPRODUCTTYPEFK NUMBER(32)
         constraint MCOA_FK1
-            references ORCLPDB1.MPRODUCTTYPE,
+            references MPRODUCTTYPE,
     MBRANCHFK      NUMBER(32)
         constraint MCOA_FK2
-            references ORCLPDB1.MBRANCH
+            references MBRANCH
 )
 /
 
-create table ORCLPDB1.TBRANCHSTOCKITEM
+create table TBRANCHSTOCKITEM
 (
     TBRANCHSTOCKITEMPK  NUMBER(32) not null
         constraint TBRANCHSTOCKITEM_PKEY
             primary key,
     TBRANCHSTOCKFK      NUMBER(32)
         constraint TBRANCHSTOCKITEM_FK1
-            references ORCLPDB1.TBRANCHSTOCK
+            references TBRANCHSTOCK
                 on delete cascade,
     PRODUCTGROUP        CHAR(2 char),
     ITEMNO              CHAR(20 char),
@@ -1530,7 +1936,7 @@ create table ORCLPDB1.TBRANCHSTOCKITEM
     NASABAH             CHAR(100 char),
     TBRANCHITEMBUCKETFK NUMBER(32)
         constraint TBRANCHSTOCKITEM_FK2
-            references ORCLPDB1.TBRANCHITEMBUCKET
+            references TBRANCHITEMBUCKET
                 on delete cascade,
     PREFIX              CHAR(5 char),
     ACCNO               CHAR(20 char),
@@ -1540,34 +1946,34 @@ create table ORCLPDB1.TBRANCHSTOCKITEM
 )
 /
 
-create index ORCLPDB1.TBRANCHSTOCKITEM_UNQ6
-    on ORCLPDB1.TBRANCHSTOCKITEM (ISMANUALACTV)
+create index TBRANCHSTOCKITEM_UNQ6
+    on TBRANCHSTOCKITEM (ISMANUALACTV)
 /
 
-create index ORCLPDB1.TBRANCHSTOCKITEM_UNQ5
-    on ORCLPDB1.TBRANCHSTOCKITEM (ISACTV)
+create index TBRANCHSTOCKITEM_UNQ5
+    on TBRANCHSTOCKITEM (ISACTV)
 /
 
-create index ORCLPDB1.TBRANCHSTOCKITEM_ITEMNO_PRODUCTGROUP_IDX
-    on ORCLPDB1.TBRANCHSTOCKITEM (ITEMNO, PRODUCTGROUP)
+create index TBRANCHSTOCKITEM_ITEMNO_PRODUCTGROUP_IDX
+    on TBRANCHSTOCKITEM (ITEMNO, PRODUCTGROUP)
 /
 
-create index ORCLPDB1.TBRANCHSTOCKITEM_UNQ1
-    on ORCLPDB1.TBRANCHSTOCKITEM (ITEMNO)
+create index TBRANCHSTOCKITEM_UNQ1
+    on TBRANCHSTOCKITEM (ITEMNO)
 /
 
-create index ORCLPDB1.TBRANCHSTOCKITEM_UNQ2
-    on ORCLPDB1.TBRANCHSTOCKITEM (NUMERATOR)
+create index TBRANCHSTOCKITEM_UNQ2
+    on TBRANCHSTOCKITEM (NUMERATOR)
 /
 
-create table ORCLPDB1.TPILOTING
+create table TPILOTING
 (
     TPILOTINGPK         NUMBER(32) not null
         constraint TPILOTING_PKEY
             primary key,
     TBRANCHITEMBUCKETFK NUMBER(32)
         constraint TPILOTING_FK1
-            references ORCLPDB1.TBRANCHITEMBUCKET,
+            references TBRANCHITEMBUCKET,
     OUTLET              CHAR(2 char),
     PREFIX              CHAR(5 char),
     STARTNO             NUMBER(32),
@@ -1585,7 +1991,7 @@ create table ORCLPDB1.TPILOTING
     TOTALQTY            NUMBER(32)    default 0,
     TINCOMINGFK         NUMBER(32)
         constraint TPILOTING_FK2
-            references ORCLPDB1.TINCOMING,
+            references TINCOMING,
     FILENAME            CHAR(70 char),
     MEMO                CHAR(100 char),
     SPKNO               CHAR(50 char),
@@ -1597,21 +2003,21 @@ create table ORCLPDB1.TPILOTING
     MANUFACTUREDATE     NUMBER(32)    default 0,
     MSUPPLIERFK         NUMBER(32)
         constraint TPILOTING_FK23
-            references ORCLPDB1.MSUPPLIER,
+            references MSUPPLIER,
     HARGA               BINARY_DOUBLE default 0,
     ENDNOPREVIEWS       NUMBER(32),
     CLEANFILENAME       CHAR(70 char)
 )
 /
 
-create table ORCLPDB1.MOUTLET
+create table MOUTLET
 (
     MOUTLETPK  NUMBER(32) not null
         constraint MOUTLET_PKEY
             primary key,
     MBRANCHFK  NUMBER(32)
         constraint MOUTLET_FK1
-            references ORCLPDB1.MBRANCH
+            references MBRANCH
                 on delete cascade,
     OUTLETCODE CHAR(2 char),
     BICODE     CHAR(9 char),
@@ -1623,7 +2029,7 @@ create table ORCLPDB1.MOUTLET
 )
 /
 
-create table ORCLPDB1.MPICPRODUCT
+create table MPICPRODUCT
 (
     MPICPRODUCTPK NUMBER(32) not null
         constraint MPICPRODUCT_PKEY
@@ -1636,11 +2042,11 @@ create table ORCLPDB1.MPICPRODUCT
     UPDATEDBY     CHAR(15 char),
     MBRANCHFK     NUMBER(32)
         constraint MPICPRODUCT_FK1
-            references ORCLPDB1.MBRANCH
+            references MBRANCH
 )
 /
 
-create table ORCLPDB1.TUNEOD
+create table TUNEOD
 (
     TUNEODPK NUMBER(32) not null
         constraint TUNEOD_PKEY
@@ -1649,16 +2055,16 @@ create table ORCLPDB1.TUNEOD
 )
 /
 
-create table ORCLPDB1.TPO
+create table TPO
 (
     TPOPK        NUMBER not null
         primary key,
     TPLANFK      NUMBER
         constraint TPO_FK1
-            references ORCLPDB1.TPLAN,
+            references TPLAN,
     MSUPPLIERFK  NUMBER
         constraint TPO_FK2
-            references ORCLPDB1.MSUPPLIER,
+            references MSUPPLIER,
     PRODUCTGROUP CHAR(2 char)   default '',
     PONO         CHAR(30 char)  default '',
     PODATE       DATE,
@@ -1680,16 +2086,16 @@ create table ORCLPDB1.TPO
 )
 /
 
-create table ORCLPDB1.TPOPRODUCT
+create table TPOPRODUCT
 (
     TPOPRODUCTPK   NUMBER not null
         primary key,
     TPOFK          NUMBER
         constraint TPOPRODUCT_FK1
-            references ORCLPDB1.TPO,
+            references TPO,
     MPRODUCTTYPEFK NUMBER
         constraint TPOPRODUCT_FK2
-            references ORCLPDB1.MPRODUCTTYPE
+            references MPRODUCTTYPE
                 on delete cascade,
     QTYPERUNIT     NUMBER     default 0,
     UNITQTY        NUMBER     default 0,
@@ -1701,16 +2107,16 @@ create table ORCLPDB1.TPOPRODUCT
 )
 /
 
-create table ORCLPDB1.MBRANCHPAGU
+create table MBRANCHPAGU
 (
     MBRANCHPAGUPK    NUMBER not null
         primary key,
     MBRANCHFK        NUMBER
         constraint MBRANCHPAGU_FK1
-            references ORCLPDB1.MBRANCH,
+            references MBRANCH,
     MPRODUCTFK       NUMBER
         constraint MBRANCHPAGU_FK2
-            references ORCLPDB1.MPRODUCT,
+            references MPRODUCT,
     PRODUCTGROUP     CHAR(2 char)  default '',
     PAGU             NUMBER        default 0,
     QUOTA            NUMBER        default 0,
@@ -1726,13 +2132,13 @@ create table ORCLPDB1.MBRANCHPAGU
 )
 /
 
-create table ORCLPDB1.TQUOTAREQ
+create table TQUOTAREQ
 (
     TQUOTAREQPK     NUMBER not null
         primary key,
     MBRANCHFK       NUMBER
         constraint TQUOTAREQ_FK1
-            references ORCLPDB1.MBRANCH,
+            references MBRANCH,
     PRODUCTGROUP    CHAR(2 char)   default '',
     ENTRYTYPE       CHAR           default '',
     REQNO           CHAR(30 char)  default '',
@@ -1758,7 +2164,7 @@ create table ORCLPDB1.TQUOTAREQ
 )
 /
 
-create table ORCLPDB1.MMITRA
+create table MMITRA
 (
     MMITRAPK     NUMBER not null
         primary key,
@@ -1777,16 +2183,16 @@ create table ORCLPDB1.MMITRA
 )
 /
 
-create table ORCLPDB1.TORDERBRANCH
+create table TORDERBRANCH
 (
     TORDERBRANCHPK NUMBER not null
         primary key,
     MBRANCHFK      NUMBER
         constraint TORDERBRANCH_FK1
-            references ORCLPDB1.MBRANCH,
+            references MBRANCH,
     MMITRAFK       NUMBER
         constraint TORDERBRANCH_FK2
-            references ORCLPDB1.MMITRA,
+            references MMITRA,
     PRODUCTGROUP   CHAR(2 char)   default '',
     ORDERNO        CHAR(30 char)  default '',
     ORDERDATE      DATE,
@@ -1818,7 +2224,7 @@ create table ORCLPDB1.TORDERBRANCH
 )
 /
 
-create table ORCLPDB1.TEMBOSSFILE
+create table TEMBOSSFILE
 (
     TEMBOSSFILEPK  NUMBER(32) not null
         constraint TEMBOSSFILE_PKEY
@@ -1831,22 +2237,22 @@ create table ORCLPDB1.TEMBOSSFILE
     UPLOADEDBY     CHAR(15 char),
     TORDERBRANCHFK NUMBER
         constraint TTEMBOSSFILE_FK1
-            references ORCLPDB1.TORDERBRANCH
+            references TORDERBRANCH
 )
 /
 
-create table ORCLPDB1.TEMBOSSPRODUCT
+create table TEMBOSSPRODUCT
 (
     TEMBOSSPRODUCTPK NUMBER(32) not null
         constraint TEMBOSSPRODUCT_PKEY
             primary key,
     TEMBOSSFILEFK    NUMBER(32) not null
         constraint TEMBOSSPRODUCT_FK1
-            references ORCLPDB1.TEMBOSSFILE
+            references TEMBOSSFILE
                 on delete cascade,
     MPRODUCTFK       NUMBER(32)
         constraint TEMBOSSPRODUCT_FK2
-            references ORCLPDB1.MPRODUCT,
+            references MPRODUCT,
     PRODUCTCODE      CHAR(10 char),
     ISINSTANT        CHAR(1 char),
     ORDERDATE        DATE,
@@ -1860,25 +2266,25 @@ create table ORCLPDB1.TEMBOSSPRODUCT
 )
 /
 
-create table ORCLPDB1.TEMBOSSBRANCH
+create table TEMBOSSBRANCH
 (
     TEMBOSSBRANCHPK  NUMBER(32) not null
         constraint TEMBOSSBRANCH_PKEY
             primary key,
     TEMBOSSFILEFK    NUMBER(32) not null
         constraint TEMBOSSBRANCH_FK1
-            references ORCLPDB1.TEMBOSSFILE
+            references TEMBOSSFILE
                 on delete cascade,
     TEMBOSSPRODUCTFK NUMBER(32) not null
         constraint TEMBOSSBRANCH_FK3
-            references ORCLPDB1.TEMBOSSPRODUCT
+            references TEMBOSSPRODUCT
                 on delete cascade,
     MPRODUCTFK       NUMBER(32)
         constraint TEMBOSSBRANCH_FK2
-            references ORCLPDB1.MPRODUCT,
+            references MPRODUCT,
     MBRANCHFK        NUMBER(32)
         constraint TEMBOSSBRANCH_FK4
-            references ORCLPDB1.MBRANCH,
+            references MBRANCH,
     BRANCHID         CHAR(5 char),
     ORDERDATE        DATE,
     TOTALDATA        NUMBER(32),
@@ -1894,24 +2300,24 @@ create table ORCLPDB1.TEMBOSSBRANCH
 )
 /
 
-create table ORCLPDB1.TEMBOSSDATA
+create table TEMBOSSDATA
 (
     TEMBOSSDATAPK    NUMBER(32) not null
         constraint TEMBOSSDATA_PKEY
             primary key,
     TEMBOSSFILEFK    NUMBER(32)
         constraint TEMBOSSDATA_FK1
-            references ORCLPDB1.TEMBOSSFILE
+            references TEMBOSSFILE
                 on delete cascade,
     TEMBOSSPRODUCTFK NUMBER(32),
     TEMBOSSBRANCHFK  NUMBER(32),
     MBRANCHFK        NUMBER(32)
         constraint TEMBOSSDATA_FK3
-            references ORCLPDB1.MBRANCH
+            references MBRANCH
                 on delete set null,
     MPRODUCTFK       NUMBER(32)
         constraint TEMBOSSDATA_FK2
-            references ORCLPDB1.MPRODUCT
+            references MPRODUCT
                 on delete cascade,
     CARDNO           CHAR(20 char),
     NAMEONID         CHAR(40 char),
@@ -1938,35 +2344,35 @@ create table ORCLPDB1.TEMBOSSDATA
 )
 /
 
-create table ORCLPDB1.TPERSOUPLOADDATA
+create table TPERSOUPLOADDATA
 (
     TPERSOUPLOADDATAPK NUMBER(32) not null
         constraint TPERSOUPLOADDATA_PKEY
             primary key,
     TPERSOUPLOADFK     NUMBER(32) not null
         constraint TPERSOUPLOADDATA_FK1
-            references ORCLPDB1.TPERSOUPLOAD
+            references TPERSOUPLOAD
                 on delete cascade,
     TEMBOSSDATAFK      NUMBER(32) not null
         constraint TPERSOUPLOADDATA_FK2
-            references ORCLPDB1.TEMBOSSDATA,
+            references TEMBOSSDATA,
     CARDNO             CHAR(20 char),
     ORDERDATE          DATE
 )
 /
 
-create table ORCLPDB1.TDERIVATIFPRODUCT
+create table TDERIVATIFPRODUCT
 (
     TDERIVATIFPRODUCTPK NUMBER(32) not null
         constraint TDERIVATIFPRODUCT_PKEY
             primary key,
     TDERIVATIFFK        NUMBER(32) not null
         constraint TDERIVATIFPRODUCT_FK1
-            references ORCLPDB1.TDERIVATIF
+            references TDERIVATIF
                 on delete cascade,
     MPRODUCTFK          NUMBER(32)
         constraint TDERIVATIFPRODUCT_FK2
-            references ORCLPDB1.MPRODUCT,
+            references MPRODUCT,
     ORDERDATE           DATE,
     TOTALDATA           NUMBER(32) default 0,
     ENTRYTIME           TIMESTAMP(6),
@@ -1974,27 +2380,27 @@ create table ORCLPDB1.TDERIVATIFPRODUCT
     PAKETTIME           TIMESTAMP(6),
     TEMBOSSBRANCHFK     NUMBER(32)
         constraint TDERIVATIFPRODUCT_FK3
-            references ORCLPDB1.TEMBOSSBRANCH
+            references TEMBOSSBRANCH
                 on delete set null
 )
 /
 
-create table ORCLPDB1.TDERIVATIFDATA
+create table TDERIVATIFDATA
 (
     TDERIVATIFDATAPK    NUMBER(32) not null
         constraint TDERIVATIFDATA_PKEY
             primary key,
     TDERIVATIFFK        NUMBER(32)
         constraint TDERIVATIFDATA_FK1
-            references ORCLPDB1.TDERIVATIF
+            references TDERIVATIF
                 on delete cascade,
     TDERIVATIFPRODUCTFK NUMBER(32)
         constraint TDERIVATIFDATA_FK2
-            references ORCLPDB1.TDERIVATIFPRODUCT
+            references TDERIVATIFPRODUCT
                 on delete cascade,
     TEMBOSSDATAFK       NUMBER(32) not null
         constraint TDERIVATIFDATA_FK3
-            references ORCLPDB1.TEMBOSSDATA,
+            references TEMBOSSDATA,
     CARDNO              CHAR(20 char),
     ORDERDATE           DATE,
     REJECTMEMO          CHAR(100 char),
@@ -2002,18 +2408,18 @@ create table ORCLPDB1.TDERIVATIFDATA
 )
 /
 
-create index ORCLPDB1.TDERIVATIFDATA_UNQ1
-    on ORCLPDB1.TDERIVATIFDATA (CARDNO)
+create index TDERIVATIFDATA_UNQ1
+    on TDERIVATIFDATA (CARDNO)
 /
 
-create table ORCLPDB1.TPRODUCTMM
+create table TPRODUCTMM
 (
     TPRODUCTMMPK  NUMBER(32) not null
         constraint TPRODUCTMM_PKEY
             primary key,
     TEMBOSSFILEFK NUMBER(32)
         constraint TPRODUCTMM_FK1
-            references ORCLPDB1.TEMBOSSFILE
+            references TEMBOSSFILE
                 on delete cascade,
     ORDERDATE     DATE,
     ORG           CHAR(3 char),
@@ -2030,23 +2436,23 @@ create table ORCLPDB1.TPRODUCTMM
 )
 /
 
-create table ORCLPDB1.TPERSO
+create table TPERSO
 (
     TPERSOPK            NUMBER(32) not null
         constraint TPERSO_PKEY
             primary key,
     TEMBOSSPRODUCTFK    NUMBER(32)
         constraint TPERSO_FK1
-            references ORCLPDB1.TEMBOSSPRODUCT,
+            references TEMBOSSPRODUCT,
     MPRODUCTFK          NUMBER(32)
         constraint TPERSO_FK2
-            references ORCLPDB1.MPRODUCT,
+            references MPRODUCT,
     MPERSOVENDORFK      NUMBER(32)
         constraint TPERSO_FK3
-            references ORCLPDB1.MPERSOVENDOR,
+            references MPERSOVENDOR,
     TDERIVATIFPRODUCTFK NUMBER(32)
         constraint TPERSO_FK4
-            references ORCLPDB1.TDERIVATIFPRODUCT,
+            references TDERIVATIFPRODUCT,
     PERSOID             CHAR(15 char),
     ORDERDATE           DATE,
     STATUS              CHAR(3 char),
@@ -2063,18 +2469,18 @@ create table ORCLPDB1.TPERSO
     DECISIONMEMO        CHAR(100 char),
     TPERSOUPLOADFK      NUMBER(32)
         constraint TPERSO_FK5
-            references ORCLPDB1.TPERSOUPLOAD
+            references TPERSOUPLOAD
 )
 /
 
-create table ORCLPDB1.TMISSINGPRODUCT
+create table TMISSINGPRODUCT
 (
     TMISSINGPRODUCTPK   NUMBER(32) not null
         constraint TMISSINGPRODUCT_PKEY
             primary key,
     TEMBOSSPRODUCTFK    NUMBER(32)
         constraint TMISSINGPRODUCT_FK1
-            references ORCLPDB1.TEMBOSSPRODUCT
+            references TEMBOSSPRODUCT
                 on delete cascade,
     PRODUCTGROUP        CHAR(2 char),
     PRODUCTCODE         CHAR(10 char),
@@ -2084,19 +2490,19 @@ create table ORCLPDB1.TMISSINGPRODUCT
     TOTALDATA           NUMBER(32) default 0,
     TPINMAILERPRODUCTFK NUMBER(32)
         constraint TMISSINGPRODUCT_FK2
-            references ORCLPDB1.TPINMAILERPRODUCT
+            references TPINMAILERPRODUCT
                 on delete cascade
 )
 /
 
-create table ORCLPDB1.TMISSINGBRANCH
+create table TMISSINGBRANCH
 (
     TMISSINGBRANCHPK   NUMBER(32) not null
         constraint TMISSINGBRANCH_PKEY
             primary key,
     TEMBOSSBRANCHFK    NUMBER(32)
         constraint TMISSINGBRANCH_FK1
-            references ORCLPDB1.TEMBOSSBRANCH
+            references TEMBOSSBRANCH
                 on delete cascade,
     BRANCHID           CHAR(5 char),
     ENTRYTIME          TIMESTAMP(6),
@@ -2104,27 +2510,27 @@ create table ORCLPDB1.TMISSINGBRANCH
     TOTALDATA          NUMBER(32) default 0,
     TPINMAILERBRANCHFK NUMBER(32)
         constraint TMISSINGBRANCH_FK2
-            references ORCLPDB1.TPINMAILERBRANCH
+            references TPINMAILERBRANCH
                 on delete cascade
 )
 /
 
-create table ORCLPDB1.TPERSODATA
+create table TPERSODATA
 (
     TPERSODATAPK    NUMBER(32) not null
         constraint TPERSODATA_PKEY
             primary key,
     TPERSOFK        NUMBER(32)
         constraint TPERSODATA_FK1
-            references ORCLPDB1.TPERSO
+            references TPERSO
                 on delete cascade,
     MBRANCHFK       NUMBER(32)
         constraint TPERSODATA_FK2
-            references ORCLPDB1.MBRANCH
+            references MBRANCH
                 on delete set null,
     TEMBOSSBRANCHFK NUMBER(32)
         constraint TPERSODATA_FK3
-            references ORCLPDB1.TEMBOSSBRANCH
+            references TEMBOSSBRANCH
                 on delete set null,
     ORDERDATE       DATE,
     QUANTITY        NUMBER(32) default 0,
@@ -2133,38 +2539,38 @@ create table ORCLPDB1.TPERSODATA
 )
 /
 
-create table ORCLPDB1.TPERSOOPR
+create table TPERSOOPR
 (
     TPERSOOPRPK NUMBER(32) not null
         constraint TPERSOOPR_KEY
             primary key,
     TPERSOFK    NUMBER(32) not null
         constraint TPERSOOPR_FK1
-            references ORCLPDB1.TPERSO,
+            references TPERSO,
     OPRID       CHAR(15 char),
     OPRNAME     CHAR(70 char)
 )
 /
 
-create table ORCLPDB1.TPAKET
+create table TPAKET
 (
     TPAKETPK              NUMBER(32) not null
         constraint TPAKET_PKEY
             primary key,
     TPERSOFK              NUMBER(32)
         constraint TPAKET_FK1
-            references ORCLPDB1.TPERSO
+            references TPERSO
                 on delete cascade,
     TEMBOSSPRODUCTFK      NUMBER(32)
         constraint TPAKET_FK3
-            references ORCLPDB1.TEMBOSSPRODUCT,
+            references TEMBOSSPRODUCT,
     TDERIVATIFPRODUCTFK   NUMBER(32)
         constraint TPAKET_FK2
-            references ORCLPDB1.TDERIVATIFPRODUCT
+            references TDERIVATIFPRODUCT
                 on delete cascade,
     MPRODUCTFK            NUMBER(32)
         constraint TPAKET_FK4
-            references ORCLPDB1.MPRODUCT,
+            references MPRODUCT,
     PAKETID               CHAR(15 char),
     ORDERDATE             DATE,
     PRODUCTGROUP          CHAR(3 char),
@@ -2175,39 +2581,39 @@ create table ORCLPDB1.TPAKET
     PROCESSEDBY           CHAR(15 char),
     TORDERFK              NUMBER(32)
         constraint TPAKET_FK5
-            references ORCLPDB1.TORDER
+            references TORDER
                 on delete cascade,
     TRETURNFK             NUMBER(32)
         constraint TPAKET_FK6
-            references ORCLPDB1.TRETURN,
+            references TRETURN,
     TSWITCHFK             NUMBER(32)
         constraint TPAKET_FK7
-            references ORCLPDB1.TSWITCH,
+            references TSWITCH,
     BRANCHPOOL            CHAR(3 char),
     TREPAIRDLVFK          NUMBER(32)
         constraint TPAKET_FK9
-            references ORCLPDB1.TREPAIRDLV,
+            references TREPAIRDLV,
     TPINPADORDERPRODUCTFK NUMBER(32)
         constraint TPAKET_FK8
-            references ORCLPDB1.TPINPADORDERPRODUCT
+            references TPINPADORDERPRODUCT
 )
 /
 
-create table ORCLPDB1.TPAKETDATA
+create table TPAKETDATA
 (
     TPAKETDATAPK       NUMBER(32) not null
         constraint TPAKETDATA_PKEY
             primary key,
     TPAKETFK           NUMBER(32)
         constraint TPAKETDATA_FK1
-            references ORCLPDB1.TPAKET
+            references TPAKET
                 on delete cascade,
     TEMBOSSBRANCHFK    NUMBER(32)
         constraint TPAKETDATA_FK3
-            references ORCLPDB1.TEMBOSSBRANCH,
+            references TEMBOSSBRANCH,
     MBRANCHFK          NUMBER(32)
         constraint TPAKETDATA_FK2
-            references ORCLPDB1.MBRANCH,
+            references MBRANCH,
     PRODUCTGROUP       CHAR(3 char),
     NOPAKET            CHAR(15 char),
     ORDERDATE          DATE,
@@ -2220,7 +2626,7 @@ create table ORCLPDB1.TPAKETDATA
     ISDLV              CHAR(1 char),
     TPINMAILERBRANCHFK NUMBER(32)
         constraint TPAKETDATA_FK4
-            references ORCLPDB1.TPINMAILERBRANCH,
+            references TPINMAILERBRANCH,
     ZIPCODE            CHAR(5 char),
     ACCNO              CHAR(20 char),
     CARDNO             CHAR(20 char),
@@ -2234,25 +2640,25 @@ create table ORCLPDB1.TPAKETDATA
 )
 /
 
-create table ORCLPDB1.TDELIVERYDATA
+create table TDELIVERYDATA
 (
     TDELIVERYDATAPK     NUMBER(32) not null
         constraint TDELIVERYDATA_PKEY
             primary key,
     TDELIVERYFK         NUMBER(32)
         constraint TDELIVERYDATA_FK1
-            references ORCLPDB1.TDELIVERY
+            references TDELIVERY
                 on delete cascade,
     TPAKETDATAFK        NUMBER(32)
         constraint TDELIVERYDATA_FK2
-            references ORCLPDB1.TPAKETDATA
+            references TPAKETDATA
                 on delete cascade,
     MPRODUCTFK          NUMBER(32)
         constraint TDELIVERYDATA_FK3
-            references ORCLPDB1.MPRODUCT,
+            references MPRODUCT,
     TDERIVATIFPRODUCTFK NUMBER(32)
         constraint TDELIVERYDATA_FK4
-            references ORCLPDB1.TDERIVATIFPRODUCT,
+            references TDERIVATIFPRODUCT,
     PRODUCTGROUP        CHAR(30 char),
     PRODUCTCODE         CHAR(10 char),
     PRODUCTNAME         CHAR(70 char),
@@ -2263,22 +2669,22 @@ create table ORCLPDB1.TDELIVERYDATA
 )
 /
 
-create table ORCLPDB1.TROLLBACK
+create table TROLLBACK
 (
     TROLLBACKPK  NUMBER(32) not null
         constraint TROLLBACK_PKEY
             primary key,
     MPRODUCTFK   NUMBER(32)
         constraint TROLLBACK_FK1
-            references ORCLPDB1.MPRODUCT
+            references MPRODUCT
                 on delete cascade,
     MBRANCHFK    NUMBER(32)
         constraint TROLLBACK_FK2
-            references ORCLPDB1.MBRANCH
+            references MBRANCH
                 on delete cascade,
     TPAKETDATAFK NUMBER(32)
         constraint TROLLBACK_FK3
-            references ORCLPDB1.TPAKETDATA
+            references TPAKETDATA
                 on delete cascade,
     ORDERDATE    DATE,
     TOTALDATA    NUMBER(32),
@@ -2287,22 +2693,22 @@ create table ORCLPDB1.TROLLBACK
     STATUS       CHAR(3 char),
     TORDERFK     NUMBER(32)
         constraint TROLLBACK_FK4
-            references ORCLPDB1.TORDER
+            references TORDER
 )
 /
 
-create table ORCLPDB1.TBOOKDATA
+create table TBOOKDATA
 (
     TBOOKDATAPK     NUMBER(32) not null
         constraint TBOOKDATA_PKEY
             primary key,
     TBOOKFILEFK     NUMBER(32)
         constraint TBOOKDATA_FK1
-            references ORCLPDB1.TBOOKFILE
+            references TBOOKFILE
                 on delete cascade,
     TDELIVERYDATAFK NUMBER(32)
         constraint TBOOKDATA_FK2
-            references ORCLPDB1.TDELIVERYDATA,
+            references TDELIVERYDATA,
     SEQNUM          CHAR(10 char),
     QUANTITY        NUMBER(32) default 0,
     TOTALAMOUNT     NUMBER(19) default 0,
@@ -2314,22 +2720,22 @@ create table ORCLPDB1.TBOOKDATA
 )
 /
 
-create table ORCLPDB1.TOUTGOING
+create table TOUTGOING
 (
     TOUTGOINGPK  NUMBER(32) not null
         constraint TOUTGOING_PKEY
             primary key,
     MPRODUCTFK   NUMBER(32)
         constraint TOUTGOING_FK4
-            references ORCLPDB1.MPRODUCT
+            references MPRODUCT
                 on delete cascade,
     TPERSOFK     NUMBER(32)
         constraint TOUTGOING_FK2
-            references ORCLPDB1.TPERSO
+            references TPERSO
                 on delete cascade,
     TORDERFK     NUMBER(32)
         constraint TOUTGOING_FK5
-            references ORCLPDB1.TORDER
+            references TORDER
                 on delete cascade,
     PRODUCTGROUP CHAR(3 char),
     OUTGOINGID   CHAR(20 char),
@@ -2348,18 +2754,18 @@ create table ORCLPDB1.TOUTGOING
 )
 /
 
-create table ORCLPDB1.TORDERFLOW
+create table TORDERFLOW
 (
     TORDERFLOWPK    NUMBER(32) not null
         constraint TORDERFLOW_PKEY
             primary key,
     TEMBOSSBRANCHFK NUMBER(32)
         constraint TORDERFLOW_FK1
-            references ORCLPDB1.TEMBOSSBRANCH
+            references TEMBOSSBRANCH
                 on delete cascade,
     TORDERFK        NUMBER(32)
         constraint TORDERFLOW_FK2
-            references ORCLPDB1.TORDER
+            references TORDER
                 on delete cascade,
     PRODUCTGROUP    CHAR(3 char),
     FLOWNAME        CHAR(40 char),
@@ -2370,20 +2776,20 @@ create table ORCLPDB1.TORDERFLOW
     MEMO            CHAR(200 char),
     TORDERBRANCHFK  NUMBER
         constraint TORDERFLOW_FK3
-            references ORCLPDB1.TORDERBRANCH
+            references TORDERBRANCH
 )
 /
 
-create table ORCLPDB1.TORDERPRODUCT
+create table TORDERPRODUCT
 (
     TORDERPRODUCTPK NUMBER not null
         primary key,
     TORDERBRANCHFK  NUMBER
         constraint TORDERPRODUCT_FK1
-            references ORCLPDB1.TORDERBRANCH,
+            references TORDERBRANCH,
     MPRODUCTFK      NUMBER
         constraint TORDERPRODUCT_FK2
-            references ORCLPDB1.MPRODUCT,
+            references MPRODUCT,
     ORDERQTY        NUMBER        default 0,
     RECEIVEQTY      NUMBER        default 0,
     RECEIVEDATE     DATE,
@@ -2394,13 +2800,13 @@ create table ORCLPDB1.TORDERPRODUCT
 )
 /
 
-create table ORCLPDB1.TPERSOREJECT
+create table TPERSOREJECT
 (
     TPERSOREJECTPK NUMBER not null
         primary key,
     MPRODUCTFK     NUMBER
         constraint TPERSOREJECT_FK1
-            references ORCLPDB1.MPRODUCT,
+            references MPRODUCT,
     EMBOSSDATE     DATE,
     PERSODATE      DATE,
     REJECTQTY      NUMBER         default 0,
@@ -2421,18 +2827,18 @@ create table ORCLPDB1.TPERSOREJECT
     TOTALDATA      NUMBER         default 0,
     MSUPPLIERFK    NUMBER
         constraint TPERSOREJECT_FK2
-            references ORCLPDB1.MSUPPLIER,
+            references MSUPPLIER,
     REJECTNO       CHAR(25)
 )
 /
 
-create table ORCLPDB1.TDO
+create table TDO
 (
     TDOPK          NUMBER not null
         primary key,
     TPOFK          NUMBER
         constraint TDO_FK1
-            references ORCLPDB1.TPO,
+            references TPO,
     DONO           CHAR(30 char)  default '',
     DODATE         DATE,
     TOTALDO        NUMBER         default 0,
@@ -2452,104 +2858,104 @@ create table ORCLPDB1.TDO
     ITEMSTARTNO    NUMBER,
     TPERSOREJECTFK NUMBER
         constraint TDO_FK2
-            references ORCLPDB1.TPERSOREJECT,
+            references TPERSOREJECT,
     MSUPPLIERFK    NUMBER
         constraint TDO_FK3
-            references ORCLPDB1.MSUPPLIER
+            references MSUPPLIER
 )
 /
 
-create table ORCLPDB1.TTOKENITEM
+create table TTOKENITEM
 (
     TTOKENITEMPK NUMBER(32) not null
         constraint TTOKENITEM_PKEY
             primary key,
     TINCOMINGFK  NUMBER(32)
         constraint TTOKENITEM_FK1
-            references ORCLPDB1.TINCOMING
+            references TINCOMING
                 on delete cascade,
     ITEMNO       CHAR(20 char),
     ITEMNOINJECT CHAR(20 char),
     STATUS       CHAR(3 char),
     TDOFK        NUMBER
         constraint TTOKENITEM_FK2
-            references ORCLPDB1.TDO
+            references TDO
 )
 /
 
-create unique index ORCLPDB1.TTOKENITEM_ITEMNO_KEY
-    on ORCLPDB1.TTOKENITEM (ITEMNO)
+create unique index TTOKENITEM_ITEMNO_KEY
+    on TTOKENITEM (ITEMNO)
 /
 
-create table ORCLPDB1.TPINPADITEM
+create table TPINPADITEM
 (
     TPINPADITEMPK NUMBER(32) not null
         constraint TPINPADITEM_PKEY
             primary key,
     TINCOMINGFK   NUMBER(32)
         constraint TPINPADITEM_FK1
-            references ORCLPDB1.TINCOMING
+            references TINCOMING
                 on delete cascade,
     ITEMNO        CHAR(20 char),
     STATUS        CHAR(3 char),
     TDOFK         NUMBER
         constraint TPINPADITEM_FK2
-            references ORCLPDB1.TDO
+            references TDO
 )
 /
 
-create unique index ORCLPDB1.TPINPADITEM_ITEMNO_KEY
-    on ORCLPDB1.TPINPADITEM (ITEMNO)
+create unique index TPINPADITEM_ITEMNO_KEY
+    on TPINPADITEM (ITEMNO)
 /
 
-create table ORCLPDB1.TSECURITIESITEM
+create table TSECURITIESITEM
 (
     TSECURITIESITEMPK NUMBER(32) not null
         constraint TSECURITIESITEM_PKEY
             primary key,
     TINCOMINGFK       NUMBER(32)
         constraint TSECURITIESITEM_FK1
-            references ORCLPDB1.TINCOMING
+            references TINCOMING
                 on delete cascade,
     ITEMNO            CHAR(20 char),
     STATUS            CHAR(3 char),
     NUMERATOR         NUMBER(32),
     TDOFK             NUMBER
         constraint TSECURITIESITEM_FK2
-            references ORCLPDB1.TDO
+            references TDO
 )
 /
 
-create index ORCLPDB1.TSECURITIESITEM_UNQ2
-    on ORCLPDB1.TSECURITIESITEM (NUMERATOR)
+create index TSECURITIESITEM_UNQ2
+    on TSECURITIESITEM (NUMERATOR)
 /
 
-create index ORCLPDB1.TSECURITIESITEM_UNQ1
-    on ORCLPDB1.TSECURITIESITEM (TINCOMINGFK)
+create index TSECURITIESITEM_UNQ1
+    on TSECURITIESITEM (TINCOMINGFK)
 /
 
-create index ORCLPDB1.TSECURITIESITEM_UNQ3
-    on ORCLPDB1.TSECURITIESITEM (STATUS)
+create index TSECURITIESITEM_UNQ3
+    on TSECURITIESITEM (STATUS)
 /
 
-create table ORCLPDB1.TORDERITEM
+create table TORDERITEM
 (
     TORDERITEMPK          NUMBER(32) not null
         constraint TORDERITEM_PKEY
             primary key,
     TORDERFK              NUMBER(32)
         constraint TORDERITEM_FK1
-            references ORCLPDB1.TORDER
+            references TORDER
                 on delete cascade,
     TTOKENITEMFK          NUMBER(32)
         constraint TORDERITEM_FK2
-            references ORCLPDB1.TTOKENITEM,
+            references TTOKENITEM,
     TPINPADITEMFK         NUMBER(32)
         constraint TORDERITEM_FK3
-            references ORCLPDB1.TPINPADITEM,
+            references TPINPADITEM,
     TSECURITIESITEMFK     NUMBER(32)
         constraint TORDERITEM_FK4
-            references ORCLPDB1.TSECURITIESITEM,
+            references TSECURITIESITEM,
     PRODUCTGROUP          CHAR(2 char),
     ITEMNO                CHAR(20 char),
     TID                   CHAR(20 char),
@@ -2561,21 +2967,21 @@ create table ORCLPDB1.TORDERITEM
     PREFIX                CHAR(5 char),
     TPINPADORDERPRODUCTFK NUMBER(32)
         constraint TORDERITEM_FK5
-            references ORCLPDB1.TPINPADORDERPRODUCT
+            references TPINPADORDERPRODUCT
                 on delete cascade
 )
 /
 
-create table ORCLPDB1.TPKS
+create table TPKS
 (
     TPKSPK           NUMBER not null
         primary key,
     MBRANCHFK        NUMBER
         constraint TPKS_FK1
-            references ORCLPDB1.MBRANCH,
+            references MBRANCH,
     MPRODUCTFK       NUMBER
         constraint TPKS_FK2
-            references ORCLPDB1.MPRODUCT,
+            references MPRODUCT,
     PKSNO            CHAR(50 char)  default '',
     PKSDATE          DATE,
     INSTITUTENAME    CHAR(100 char) default '',
@@ -2609,13 +3015,13 @@ create table ORCLPDB1.TPKS
 )
 /
 
-create table ORCLPDB1.TCOMPLAINT
+create table TCOMPLAINT
 (
     TCOMPLAINTPK NUMBER not null
         primary key,
     MBRANCHFK    NUMBER
         constraint TCOMPLAINT_FK1
-            references ORCLPDB1.MBRANCH,
+            references MBRANCH,
     PRODUCTGROUP CHAR(2 char)   default '',
     TICKETNO     CHAR(30 char)  default '',
     TICKETDATE   DATE,
@@ -2633,13 +3039,13 @@ create table ORCLPDB1.TCOMPLAINT
 )
 /
 
-create table ORCLPDB1.TCOMPLAINTRESPONSE
+create table TCOMPLAINTRESPONSE
 (
     TCOMPLAINTRESPONSEPK NUMBER not null
         primary key,
     TCOMPLAINTFK         NUMBER
         constraint TCOMPLAINTRESPONSE_FK1
-            references ORCLPDB1.TCOMPLAINT,
+            references TCOMPLAINT,
     RESPONSE             CHAR(500 char) default '',
     RESPONSEDAT          TIMESTAMP(6),
     RESPONSEDBY          CHAR(40 char)  default '',
@@ -2650,16 +3056,16 @@ create table ORCLPDB1.TCOMPLAINTRESPONSE
 )
 /
 
-create table ORCLPDB1.TQUOTAREQDATA
+create table TQUOTAREQDATA
 (
     TQUOTAREQDATAPK NUMBER not null
         primary key,
     MBRANCHFK       NUMBER
         constraint TQUOTAREQDATA_FK1
-            references ORCLPDB1.MBRANCH,
+            references MBRANCH,
     MPRODUCTFK      NUMBER
         constraint TQUOTAREQDATA_FK2
-            references ORCLPDB1.MPRODUCT,
+            references MPRODUCT,
     QUOTATYPE       CHAR          default '',
     PAGU            NUMBER        default 0,
     QUOTA           NUMBER        default 0,
@@ -2668,18 +3074,18 @@ create table ORCLPDB1.TQUOTAREQDATA
     SISAKUOTA       NUMBER        default 0,
     TQUOTAREQFK     NUMBER
         constraint TQUOTAREQDATA_FK3
-            references ORCLPDB1.TQUOTAREQ,
+            references TQUOTAREQ,
     unique (MBRANCHFK, MPRODUCTFK)
 )
 /
 
-create table ORCLPDB1.TTRACKING
+create table TTRACKING
 (
     TTRACKINGPK  NUMBER not null
         primary key,
     TDELIVERYFK  NUMBER
         constraint TTRACKING_FK1
-            references ORCLPDB1.TDELIVERY,
+            references TDELIVERY,
     TRACKID      CHAR(50 char) default '',
     TRACKTIME    TIMESTAMP(6),
     ACTIVITY     CHAR(250)     default '',
@@ -2687,7 +3093,7 @@ create table ORCLPDB1.TTRACKING
 )
 /
 
-create table ORCLPDB1.TFILEPHONE
+create table TFILEPHONE
 (
     TFILEPHONEPK NUMBER(32) not null
         primary key,
@@ -2696,16 +3102,16 @@ create table ORCLPDB1.TFILEPHONE
 )
 /
 
-create table ORCLPDB1.TSALE
+create table TSALE
 (
     TSALEPK    NUMBER not null
         primary key,
     MBRANCHFK  NUMBER
         constraint TSALE_FK1
-            references ORCLPDB1.MBRANCH,
+            references MBRANCH,
     MOUTLETFK  NUMBER
         constraint TSALE_FK2
-            references ORCLPDB1.MOUTLET,
+            references MOUTLET,
     SALEID     CHAR(50) default '',
     SALEDATE   DATE,
     SALECUST   CHAR(70) default '',
@@ -2715,17 +3121,868 @@ create table ORCLPDB1.TSALE
 )
 /
 
-create table ORCLPDB1.TSALEITEM
+create table TSALEITEM
 (
     TSALEITEMPK NUMBER not null
         primary key,
     TSALEFK     NUMBER
         constraint TSALEITEM_FK1
-            references ORCLPDB1.TSALE,
+            references TSALE,
     MPRODUCTFK  NUMBER
         constraint TSALEITEM_FK2
-            references ORCLPDB1.MPRODUCT,
+            references MPRODUCT,
     CARDNO      CHAR(20) default ''
 )
+/
+
+create table SYS_EXPORT_SCHEMA_01
+(
+    ABORT_STEP              NUMBER,
+    ACCESS_METHOD           VARCHAR2(16),
+    ANCESTOR_OBJECT_NAME    VARCHAR2(128),
+    ANCESTOR_OBJECT_SCHEMA  VARCHAR2(128),
+    ANCESTOR_OBJECT_TYPE    VARCHAR2(128),
+    ANCESTOR_PROCESS_ORDER  NUMBER,
+    BASE_OBJECT_NAME        VARCHAR2(128),
+    BASE_OBJECT_SCHEMA      VARCHAR2(128),
+    BASE_OBJECT_TYPE        VARCHAR2(128),
+    BASE_PROCESS_ORDER      NUMBER,
+    BLOCK_SIZE              NUMBER,
+    CLUSTER_OK              NUMBER,
+    COMPLETED_BYTES         NUMBER,
+    COMPLETED_ROWS          NUMBER,
+    COMPLETION_TIME         DATE,
+    CONTROL_QUEUE           VARCHAR2(128),
+    CREATION_LEVEL          NUMBER,
+    CREATION_TIME           DATE,
+    CUMULATIVE_TIME         NUMBER,
+    DATA_BUFFER_SIZE        NUMBER,
+    DATA_IO                 NUMBER,
+    DATAOBJ_NUM             NUMBER,
+    DB_VERSION              VARCHAR2(60),
+    DEGREE                  NUMBER,
+    DOMAIN_PROCESS_ORDER    NUMBER,
+    DUMP_ALLOCATION         NUMBER,
+    DUMP_FILEID             NUMBER,
+    DUMP_LENGTH             NUMBER,
+    DUMP_ORIG_LENGTH        NUMBER,
+    DUMP_POSITION           NUMBER,
+    DUPLICATE               NUMBER,
+    ELAPSED_TIME            NUMBER,
+    ERROR_COUNT             NUMBER,
+    EXTEND_SIZE             NUMBER,
+    FILE_MAX_SIZE           NUMBER,
+    FILE_NAME               VARCHAR2(4000),
+    FILE_TYPE               NUMBER,
+    FLAGS                   NUMBER,
+    GRANTOR                 VARCHAR2(128),
+    GRANULES                NUMBER,
+    GUID                    RAW(16),
+    IN_PROGRESS             CHAR,
+    INSTANCE                VARCHAR2(60),
+    INSTANCE_ID             NUMBER,
+    IS_DEFAULT              NUMBER,
+    JOB_MODE                VARCHAR2(21),
+    JOB_VERSION             VARCHAR2(60),
+    LAST_FILE               NUMBER,
+    LAST_UPDATE             DATE,
+    LOAD_METHOD             NUMBER,
+    METADATA_BUFFER_SIZE    NUMBER,
+    METADATA_IO             NUMBER,
+    NAME                    VARCHAR2(128),
+    OBJECT_INT_OID          VARCHAR2(130),
+    OBJECT_LONG_NAME        VARCHAR2(4000),
+    OBJECT_NAME             VARCHAR2(200),
+    OBJECT_NUMBER           NUMBER,
+    OBJECT_PATH_SEQNO       NUMBER,
+    OBJECT_ROW              NUMBER,
+    OBJECT_SCHEMA           VARCHAR2(128),
+    OBJECT_TABLESPACE       VARCHAR2(128),
+    OBJECT_TYPE             VARCHAR2(128),
+    OBJECT_TYPE_PATH        VARCHAR2(200),
+    OLD_VALUE               VARCHAR2(4000),
+    OPERATION               VARCHAR2(8),
+    OPTION_TAG              VARCHAR2(128),
+    ORIG_BASE_OBJECT_NAME   VARCHAR2(128),
+    ORIG_BASE_OBJECT_SCHEMA VARCHAR2(128),
+    ORIGINAL_OBJECT_NAME    VARCHAR2(128),
+    ORIGINAL_OBJECT_SCHEMA  VARCHAR2(128),
+    PACKET_NUMBER           NUMBER,
+    PARALLELIZATION         NUMBER,
+    PARENT_OBJECT_NAME      VARCHAR2(128),
+    PARENT_OBJECT_SCHEMA    VARCHAR2(128),
+    PARENT_PROCESS_ORDER    NUMBER,
+    PARTITION_NAME          VARCHAR2(128),
+    PHASE                   NUMBER,
+    PLATFORM                VARCHAR2(101),
+    PROCESS_NAME            VARCHAR2(128),
+    PROCESS_ORDER           NUMBER,
+    PROCESSING_STATE        CHAR,
+    PROCESSING_STATUS       CHAR,
+    PROPERTY                NUMBER,
+    PROXY_SCHEMA            VARCHAR2(128),
+    PROXY_VIEW              VARCHAR2(128),
+    QUEUE_TABNUM            NUMBER,
+    REMOTE_LINK             VARCHAR2(128),
+    SCN                     NUMBER,
+    SEED                    NUMBER,
+    SERVICE_NAME            VARCHAR2(64),
+    SIZE_ESTIMATE           NUMBER,
+    SRC_COMPAT              VARCHAR2(60),
+    START_TIME              DATE,
+    STATE                   VARCHAR2(12),
+    STATUS_QUEUE            VARCHAR2(128),
+    SUBPARTITION_NAME       VARCHAR2(128),
+    TARGET_XML_CLOB         CLOB,
+    TDE_REWRAPPED_KEY       RAW(2000),
+    TEMPLATE_TABLE          VARCHAR2(128),
+    TIMEZONE                VARCHAR2(64),
+    TOTAL_BYTES             NUMBER,
+    TRIGFLAG                NUMBER,
+    UNLOAD_METHOD           NUMBER,
+    USER_DIRECTORY          VARCHAR2(4000),
+    USER_FILE_NAME          VARCHAR2(4000),
+    USER_NAME               VARCHAR2(128),
+    VALUE_N                 NUMBER,
+    VALUE_T                 VARCHAR2(4000),
+    VERSION                 NUMBER,
+    WORK_ITEM               VARCHAR2(21),
+    XML_CLOB                CLOB
+)
+/
+
+comment on table SYS_EXPORT_SCHEMA_01 is 'Data Pump Master Table EXPORT                         SCHEMA                        '
+/
+
+create PROCEDURE COUNTSERIALSTATUS_SP (
+    p_totaldata OUT NUMBER,
+    p_outstanding OUT NUMBER,
+    p_injected OUT NUMBER,
+    p_outproduksi OUT NUMBER
+)
+IS
+BEGIN
+    SELECT
+        COUNT(*) AS totaldata,
+        COUNT(CASE WHEN status = 'S01' THEN 1 END) AS outstanding,
+        COUNT(CASE WHEN status = 'S11' THEN 1 END) AS injected,
+        COUNT(CASE WHEN status = 'S13' THEN 1 END) AS outproduksi
+    INTO 
+        p_totaldata,
+        p_outstanding,
+        p_injected,
+        p_outproduksi
+    FROM Ttokenitem;
+END COUNTSERIALSTATUS_SP;
+/
+
+create PROCEDURE            "GET_PRODUCTTYPE_BY_FILTER" (
+    p_mbranchpk IN NUMBER,             -- Parameter input: ID Cabang
+    p_productgroupcode IN VARCHAR,  -- Parameter input: Kode Grup Produk
+    p_producttype IN VARCHAR,        -- Parameter input: Product Type (LIKE)
+    p_cursor OUT SYS_REFCURSOR         -- Output: Cursor untuk hasil query
+) AS
+BEGIN
+    OPEN p_cursor FOR
+    SELECT 
+        MPRODUCTTYPEPK,
+        TRIM(productgroupcode) AS productgroupcode,
+        TRIM(productgroupname) AS productgroupname,
+        TRIM(producttype) AS producttype
+    FROM mproducttype p
+    JOIN mproductowner o ON p.mproductownerfk = o.mproductownerpk
+    JOIN mbranch b ON b.mbranchpk = o.mbranchfk
+    WHERE b.mbranchpk = p_mbranchpk
+    AND LOWER(TRIM(p.productgroupcode)) = p_productgroupcode
+    AND LOWER(TRIM(p.producttype)) LIKE LOWER(TRIM(p_producttype));
+END;
+/
+
+create PROCEDURE            "GET_REGION_BY_ID" (
+    p_mregionpk IN VARCHAR,         -- Parameter input ID region
+    p_cursor OUT SYS_REFCURSOR     -- Parameter output hasil query
+) AS
+BEGIN
+    OPEN p_cursor FOR
+    SELECT *
+    FROM mregion 
+    WHERE MREGIONPK = p_mregionpk;
+END;
+/
+
+create PROCEDURE            "LIST_DATA_PERSO_PLAN" (
+    param IN VARCHAR2,        
+    result OUT SYS_REFCURSOR
+) AS
+BEGIN
+    OPEN result  FOR
+        'select productcode, sum(totaldata) as totaldata, min(orderdate) as orderdate from tperso 
+        join mproduct on mproductfk = mproductpk where status = ''P15'' and trunc(orderdate) = TO_DATE('''|| param ||''', ''YYYY-MM-DD'') group by productcode order by orderdate';
+END;
+/
+
+create PROCEDURE            "LIST_PRODUCT_STOCK" (
+    param IN VARCHAR2,        
+    result OUT SYS_REFCURSOR
+) AS
+BEGIN
+    OPEN result  FOR
+        'SELECT MBRANCHPAGUPK, BRANCHNAME, PRODUCTNAME, QUOTA, COALESCE(PAGU, 0) PAGU, COALESCE(STOCK, 0) AS STOCK, 
+        ((COALESCE(STOCK, 0) / COALESCE(PAGU, 0)) * 100) AS PERCENT FROM
+        (SELECT MBRANCHPAGUPK, MBRANCHFK, MPRODUCTFK, BRANCHNAME, PRODUCTNAME, COALESCE(QUOTA, 0) AS QUOTA, COALESCE(PAGU, 0) AS PAGU
+        FROM MBRANCHPAGU JOIN MPRODUCT ON MPRODUCTPK = MPRODUCTFK JOIN MBRANCH ON MBRANCHFK = MBRANCHPK
+        WHERE ' || param || ') A LEFT JOIN
+        (SELECT MBRANCHFK, MPRODUCTFK,  COALESCE(STOCKCABANG, 0) AS STOCK FROM TBRANCHSTOCK WHERE OUTLET = ''00'') B
+        ON A.MBRANCHFK = B.MBRANCHFK AND A.MPRODUCTFK = B.MPRODUCTFK';
+END;
+/
+
+create PROCEDURE            "LIST_PRODUCT_STOCK_BY_OUTLET" (
+    param IN VARCHAR2,        
+    result OUT SYS_REFCURSOR
+) AS
+BEGIN
+    OPEN result  FOR
+        'SELECT MBRANCHPAGUPK, BRANCHNAME, PRODUCTNAME, QUOTA, COALESCE(PAGU, 0) PAGU, COALESCE(STOCK, 0) AS STOCK, 
+        ((COALESCE(STOCK, 0) / COALESCE(PAGU, 0)) * 100) AS PERCENT FROM
+        (SELECT MBRANCHPAGUPK, MBRANCHFK, MPRODUCTFK,BRANCHNAME, PRODUCTNAME, COALESCE(QUOTA, 0) AS QUOTA, COALESCE(PAGU, 0) AS PAGU
+        FROM MBRANCHPAGU JOIN MPRODUCT ON MPRODUCTPK = MPRODUCTFK JOIN MBRANCH ON MBRANCHFK = MBRANCHPK
+        WHERE ' || param || ') A LEFT JOIN
+        (SELECT MBRANCHFK, MPRODUCTFK,  COALESCE(STOCKCABANG, 0) AS STOCK FROM TBRANCHSTOCK WHERE OUTLET != ''00'') B
+        ON A.MBRANCHFK = B.MBRANCHFK AND A.MPRODUCTFK = B.MPRODUCTFK';
+END;
+/
+
+create PROCEDURE            "LIST_STATUS_PENDING_PERSO" (
+    result OUT SYS_REFCURSOR
+) AS
+BEGIN
+    OPEN result  FOR
+        'select extract(year from persostarttime) as year, extract(month from persostarttime) as month, status, count(*) as count, sum(totaldata) as sum 
+        from tperso where tderivatifproductfk is null and status NOT IN ('' P19 '', '' P12 '', '' P14 '') group by extract(YEAR from persostarttime), extract(month from persostarttime), status order by year, month, status';
+END;
+/
+
+create PROCEDURE            "LIST_SUM_REGULAR_ORDER" (
+    result OUT SYS_REFCURSOR
+) AS
+BEGIN
+    OPEN result  FOR
+        'select extract(year from orderdate) as year, extract(month from orderdate) as month, 
+		sum(orderos) as total, org as productorg from tembossproduct join mproduct on mproductfk = mproductpk 
+		where orderos > 0 and productgroup = ''01'' and isneeddoc = ''N''
+		group by extract(year from orderdate), extract(month from orderdate), org order by year, month';
+END;
+/
+
+create PROCEDURE MBRANCHPAGUWITHRESTSTOCK (
+    p_mbranchfk IN number,
+    p_result OUT SYS_REFCURSOR
+) AS
+BEGIN
+    OPEN p_result FOR
+        select
+mbp.mbranchpagupk,
+mbp.mbranchfk,
+mbp.mproductfk,
+trim(mbp.productgroup),
+mbp.pagu,
+mbp.quota,
+trim(mbp.quotatype),
+mbp.quotatemp,
+mbp.quotatempcreated,
+mbp.quotatemprelease,
+trim(mbp.refno),
+trim(mbp.reftype),
+trim(mbp.updatedby),
+mbp.lastupdated,
+quota - (select coalesce(stockcabang, 0) from tbranchstock tbs where tbs.mbranchfk = mbp.mbranchfk and tbs.mproductfk = mbp.mproductfk) as reststock from mbranchpagu mbp join mproduct on mproductfk = mproductpk where mbp.mbranchfk = p_mbranchfk;
+END;
+/
+
+create PROCEDURE MBRANCHPAGUWITHRESTSTOCKBYPRODUCTTYPE (
+    p_mbranchfk IN number,
+    p_producttype IN VARCHAR,
+    p_result OUT SYS_REFCURSOR
+) AS
+BEGIN
+    OPEN p_result FOR
+        select
+mbp.mbranchpagupk,
+mbp.mbranchfk,
+mbp.mproductfk,
+trim(mbp.productgroup),
+mbp.pagu,
+mbp.quota,
+trim(mbp.quotatype),
+mbp.quotatemp,
+mbp.quotatempcreated,
+mbp.quotatemprelease,
+trim(mbp.refno),
+trim(mbp.reftype),
+trim(mbp.updatedby),
+mbp.lastupdated,
+quota - (select stockcabang from tbranchstock tbs where tbs.mbranchfk = mbp.mbranchfk and tbs.mproductfk = mbp.mproductfk) as reststock from mbranchpagu mbp join mproduct on mproductfk = mproductpk join mproducttype on mproducttypefk = mproducttypepk where isinstant = 'Y' and mbp.mbranchfk = p_mbranchfk and producttype = p_producttype ;
+END;
+/
+
+create FUNCTION GETDATA_FUNC(tablename IN VARCHAR2)
+  RETURN SYS_REFCURSOR
+IS
+  v_cursor SYS_REFCURSOR;
+BEGIN
+  OPEN v_cursor FOR
+    'SELECT * FROM ' || tablename;
+  RETURN v_cursor;
+END;
+/
+
+create FUNCTION get_all_columns(v_offset number, v_fetch number)
+  RETURN SYS_REFCURSOR
+IS
+  v_cursor SYS_REFCURSOR;
+BEGIN
+    OPEN v_cursor FOR
+    select *
+    from musergroup;
+    RETURN v_cursor;
+END;
+/
+
+create PROCEDURE            "LIST_MPRODUCTTYPE_BY_PRODUCTGROUP" (
+    productgroupcode IN VARCHAR2,        
+    result OUT SYS_REFCURSOR
+) AS
+BEGIN
+    OPEN result  FOR
+        'select * from Mproducttype where productgroupcode = '''|| productgroupcode ||'''';
+END;
+/
+
+create PROCEDURE            "EXPORTLIST_INCOMING_SECURITIESITEM" (
+    param IN VARCHAR2,        
+    result OUT SYS_REFCURSOR
+) AS
+BEGIN
+    OPEN result  FOR
+        'select TSECURITIESITEM.* from TSECURITIESITEM 
+        left join tincoming on tincomingpk = tincomingfk 
+        left join mproducttype on mproducttypepk = mproducttypefk where '|| param ||' order by tsecuritiesitem.itemno';
+END;
+/
+
+create PROCEDURE            "EXPORTLIST_INCOMING_TPINPADITEM" (
+    param IN VARCHAR2,        
+    result OUT SYS_REFCURSOR
+) AS
+BEGIN
+    OPEN result  FOR
+        'select TPINPADITEM.* from TPINPADITEM 
+        left join tincoming on tincomingpk = tincomingfk 
+        left join mproducttype on mproducttypepk = mproducttypefk where '|| param ||' order by TPINPADITEM.itemno';
+    END;
+/
+
+create PROCEDURE            "EXPORTLIST_INCOMING_TTOKENITEM" (
+    param IN VARCHAR2,        
+    result OUT SYS_REFCURSOR
+) AS
+BEGIN
+    OPEN result  FOR
+        'select TTOKENITEM.* from TTOKENITEM 
+        left join tincoming on tincomingpk = tincomingfk 
+        left join mproducttype on mproducttypepk = mproducttypefk where '|| param ||' order by TTOKENITEM.itemno';
+    END;
+/
+
+create PROCEDURE            "LIST_SEBARAN_STOCK_PRODUCT" (
+    param IN VARCHAR2, 
+    currentpage IN INTEGER,
+    pagesize IN INTEGER,       
+    result OUT SYS_REFCURSOR
+) AS
+BEGIN
+    OPEN result  FOR
+        'SELECT MPRODUCTPK, TRIM(PRODUCTCODE) AS PRODUCTCODE, TRIM(PRODUCTNAME) AS PRODUCTNAME, SUM(STOCKDELIVERED) AS TOTALMASUK, 
+SUM(STOCKCABANG) AS TOTALSTOCK, SUM(STOCKACTIVATED) AS TOTALKELUAR, SUM(STOCKDESTROYED) AS TOTALDESTROY 
+FROM TBRANCHSTOCK 
+JOIN MPRODUCT ON MPRODUCTFK = MPRODUCTPK 
+JOIN MBRANCH ON MBRANCHFK = MBRANCHPK 
+WHERE '|| param ||'
+GROUP BY MPRODUCTPK, PRODUCTCODE, PRODUCTNAME ORDER BY PRODUCTCODE ASC OFFSET ' || currentpage || ' ROWS FETCH NEXT ' || pagesize || ' ROWS ONLY';
+
+END;
+/
+
+create PROCEDURE            "COUNT_TOTALMASUK_SEBARAN_STOCK" (
+    param IN VARCHAR2, 
+    result OUT SYS_REFCURSOR
+) AS
+BEGIN
+    OPEN result  FOR
+        'SELECT 
+         SUM(TOTALMASUK) AS GRANDTOTAL
+    FROM (
+          SELECT 
+            MPRODUCTPK, 
+            PRODUCTCODE, 
+            PRODUCTNAME, 
+            SUM(STOCKDELIVERED) AS TOTALMASUK, 
+            SUM(STOCKCABANG) AS TOTALSTOCK, 
+            SUM(STOCKACTIVATED) AS TOTALKELUAR, 
+            SUM(STOCKDESTROYED) AS TOTALDESTROY
+          FROM 
+            TBRANCHSTOCK 
+            JOIN MPRODUCT ON MPRODUCTFK = MPRODUCTPK 
+            JOIN MBRANCH ON MBRANCHFK = MBRANCHPK 
+         WHERE 
+            '|| param ||'
+        GROUP BY 
+            MPRODUCTPK, PRODUCTCODE, PRODUCTNAME
+        )';
+END;
+/
+
+create PROCEDURE            "COUNT_TOTALLIST_SEBARAN_STOCK" (
+    param IN VARCHAR2, 
+    currentpage IN INTEGER,
+    pagesize IN INTEGER,   
+    result OUT SYS_REFCURSOR
+) AS
+BEGIN
+    OPEN result  FOR
+        'SELECT 
+    ' || currentpage || ' AS CURRENTPAGE,
+    ' || pagesize || ' AS PAGESIZE,
+    COUNT(*) AS TOTALRECORD,
+    CEIL(COUNT(*) * 1.0 / ' || pagesize || ') AS MAXPAGE
+FROM (
+    SELECT 
+        MPRODUCTPK, 
+        PRODUCTCODE, 
+        PRODUCTNAME, 
+        SUM(STOCKDELIVERED) AS TOTALMASUK, 
+        SUM(STOCKCABANG) AS TOTALSTOCK, 
+        SUM(STOCKACTIVATED) AS TOTALKELUAR, 
+        SUM(STOCKDESTROYED) AS TOTALDESTROY 
+    FROM 
+        TBRANCHSTOCK 
+    JOIN 
+        MPRODUCT ON MPRODUCTFK = MPRODUCTPK 
+    JOIN 
+        MBRANCH ON MBRANCHFK = MBRANCHPK 
+    WHERE 
+        ' || param || '
+    GROUP BY 
+        MPRODUCTPK, PRODUCTCODE, PRODUCTNAME
+)';
+END;
+/
+
+create PROCEDURE            "EXPORTLIST_SEBARAN_STOCK_PRODUCT" (
+    param IN VARCHAR2,     
+    result OUT SYS_REFCURSOR
+) AS
+BEGIN
+    OPEN result  FOR
+        'SELECT MPRODUCTPK, TRIM(PRODUCTCODE) AS PRODUCTCODE, TRIM(PRODUCTNAME) AS PRODUCTNAME, SUM(STOCKDELIVERED) AS TOTALMASUK, 
+SUM(STOCKCABANG) AS TOTALSTOCK, SUM(STOCKACTIVATED) AS TOTALKELUAR, SUM(STOCKDESTROYED) AS TOTALDESTROY 
+FROM TBRANCHSTOCK 
+JOIN MPRODUCT ON MPRODUCTFK = MPRODUCTPK 
+JOIN MBRANCH ON MBRANCHFK = MBRANCHPK 
+WHERE '|| param ||'
+GROUP BY MPRODUCTPK, PRODUCTCODE, PRODUCTNAME ORDER BY PRODUCTCODE ASC';
+END;
+/
+
+create PROCEDURE REPORT_MONTHLY_REGULAR (
+    FILTERS IN VARCHAR2,
+    RESULT_CURSOR OUT SYS_REFCURSOR
+)
+IS
+    v_sql CLOB;
+BEGIN
+    v_sql := '
+        SELECT 
+            a.mproductfk AS id,
+            a.productorg,
+            a.producttype,
+            a.productcode,
+            a.productname,
+            COALESCE(total, 0) AS total,
+            COALESCE(perso, 0) AS perso,
+            COALESCE(pending, 0) AS pending,
+            COALESCE(delivery, 0) AS delivery
+        FROM (
+            SELECT 
+                tembossdata.mproductfk,
+                productorg,
+                producttype,
+                tembossdata.productcode,
+                productname,
+                COUNT(tembossdatapk) AS total
+            FROM tembossdata
+            JOIN mproduct ON tembossdata.mproductfk = mproductpk
+            JOIN mbranch ON tembossdata.mbranchfk = mbranchpk
+            JOIN tembossbranch ON tembossbranchfk = tembossbranchpk
+            JOIN mproducttype ON mproducttypefk = mproducttypepk
+            WHERE ' || FILTERS || '
+              AND tembossdata.mproductfk IS NOT NULL
+            GROUP BY tembossdata.mproductfk, productorg, producttype, tembossdata.productcode, productname
+        ) a
+        LEFT JOIN (
+            SELECT 
+                tembossdata.mproductfk,
+                productorg,
+                producttype,
+                tembossdata.productcode,
+                productname,
+                COUNT(tembossdatapk) AS pending
+            FROM tembossdata
+            JOIN mproduct ON tembossdata.mproductfk = mproductpk
+            JOIN mbranch ON tembossdata.mbranchfk = mbranchpk
+            JOIN tembossbranch ON tembossbranchfk = tembossbranchpk
+            JOIN mproducttype ON mproducttypefk = mproducttypepk
+            WHERE ' || FILTERS || '
+              AND tembossbranch.status = ''P01''
+              AND tembossdata.mproductfk IS NOT NULL
+            GROUP BY tembossdata.mproductfk, productorg, producttype, tembossdata.productcode, productname
+        ) b ON a.mproductfk = b.mproductfk
+        LEFT JOIN (
+            SELECT 
+                tembossdata.mproductfk,
+                productorg,
+                producttype,
+                tembossdata.productcode,
+                productname,
+                COUNT(tembossdatapk) AS perso
+            FROM tembossdata
+            LEFT JOIN tderivatifdata ON tembossdatafk = tembossdatapk
+            JOIN mproduct ON tembossdata.mproductfk = mproductpk
+            JOIN mbranch ON tembossdata.mbranchfk = mbranchpk
+            JOIN tembossbranch ON tembossbranchfk = tembossbranchpk
+            JOIN tperso ON tembossdata.tembossproductfk = tperso.tembossproductfk
+            JOIN mproducttype ON mproducttypefk = mproducttypepk
+            WHERE ' || FILTERS || '
+              AND persofinishtime IS NOT NULL
+              AND tembossdata.mproductfk IS NOT NULL
+            GROUP BY tembossdata.mproductfk, productorg, producttype, tembossdata.productcode, productname
+        ) c ON a.mproductfk = c.mproductfk
+        LEFT JOIN (
+            SELECT 
+                tembossdata.mproductfk,
+                productorg,
+                producttype,
+                tembossdata.productcode,
+                productname,
+                COUNT(tembossdatapk) AS delivery
+            FROM tembossdata
+            JOIN mproduct ON tembossdata.mproductfk = mproductpk
+            JOIN mbranch ON tembossdata.mbranchfk = mbranchpk
+            JOIN tembossbranch ON tembossbranchfk = tembossbranchpk
+            JOIN mproducttype ON mproducttypefk = mproducttypepk
+            WHERE ' || FILTERS || '
+              AND dlvfinishtime IS NOT NULL
+              AND tembossdata.mproductfk IS NOT NULL
+            GROUP BY tembossdata.mproductfk, productorg, producttype, tembossdata.productcode, productname
+        ) d ON a.mproductfk = d.mproductfk
+        ORDER BY a.productorg, a.producttype, a.productcode, a.productname';
+
+    OPEN RESULT_CURSOR FOR v_sql;
+END;
+/
+
+create PROCEDURE            "TBRANCHSTOCK_LIST" (
+    param IN VARCHAR2,   
+    currentpage IN INTEGER,
+    pagesize IN INTEGER,     
+    result OUT SYS_REFCURSOR
+) AS
+BEGIN
+    OPEN result  FOR
+        'SELECT tbranchstock.* FROM tbranchstock 
+        JOIN mbranch ON mbranchfk =  mbranchpk 
+        JOIN mproduct ON mproductfk = mproductpk WHERE ' || param || ' 
+         OFFSET ' || currentpage || ' ROWS FETCH NEXT ' || pagesize || ' ROWS ONLY';
+END;
+/
+
+create PROCEDURE            "COUNT_GRANDTOTAL_SEBARAN_STOCK" (
+    param IN VARCHAR2,     
+    result OUT SYS_REFCURSOR
+) AS
+BEGIN
+    OPEN result  FOR
+    'SELECT SUM(TOTALMASUK) AS grandtotalstock, SUM(TOTALSTOCK) AS grandtotalcabang,
+         SUM(TOTALKELUAR) AS grandtotalkeluar, SUM(TOTALDESTROY) AS grandtotaldestroy
+     FROM (
+     SELECT 
+        MPRODUCTPK, 
+        PRODUCTCODE, 
+        PRODUCTNAME, 
+        SUM(STOCKDELIVERED) AS TOTALMASUK, 
+        SUM(STOCKCABANG) AS TOTALSTOCK, 
+        SUM(STOCKACTIVATED) AS TOTALKELUAR, 
+        SUM(STOCKDESTROYED) AS TOTALDESTROY 
+     FROM 
+        TBRANCHSTOCK 
+        JOIN MPRODUCT ON MPRODUCTFK = MPRODUCTPK 
+        JOIN MBRANCH ON MBRANCHFK = MBRANCHPK 
+     WHERE ' || param || ' 
+     GROUP BY 
+        MPRODUCTPK, PRODUCTCODE, PRODUCTNAME)';
+END;
+/
+
+create PROCEDURE            "EXPORTLIST_OUTLET_STOCK_PRODUCT" (
+    param IN VARCHAR2,     
+    result OUT SYS_REFCURSOR
+) AS
+BEGIN
+    OPEN result  FOR
+        'SELECT Tbranchstock.* FROM tbranchstock 
+        JOIN mbranch ON mbranchfk =  mbranchpk 
+        JOIN mproduct ON mproductfk = mproductpk
+         WHERE '|| param || '';
+END;
+/
+
+create PROCEDURE            "COUNT_TOTALLIST_OUTLET_STOCK" (
+    param IN VARCHAR2, 
+    currentpage IN INTEGER,
+    pagesize IN INTEGER,   
+    result OUT SYS_REFCURSOR
+) AS
+BEGIN
+    OPEN result  FOR
+        'SELECT 
+    ' || currentpage || ' AS CURRENTPAGE,
+    ' || pagesize || ' AS PAGESIZE,
+    COUNT(*) AS TOTALRECORD,
+    CEIL(COUNT(*) * 1.0 / ' || pagesize || ') AS MAXPAGE
+FROM (
+   SELECT tbranchstock.* FROM tbranchstock 
+   JOIN mbranch ON mbranchfk =  mbranchpk 
+   JOIN mproduct ON mproductfk = mproductpk WHERE ' || param || '
+)';
+END;
+/
+
+create PROCEDURE            "COUNT_GRANDTOTAL_OUTLET_STOCK" (
+    param IN VARCHAR2,     
+    result OUT SYS_REFCURSOR
+) AS
+BEGIN
+    OPEN result  FOR
+    'SELECT SUM(stockdelivered) as grandtotalstock, SUM(stockcabang) as grandtotalcabang, 
+        SUM(stockactivated) as grandtotalkeluar, SUM(stockdestroyed) as grandtotaldestroy FROM tbranchstock 
+        JOIN mbranch ON mbranchfk =  mbranchpk 
+        JOIN mproduct ON mproductfk = mproductpk
+     WHERE ' || param || '';
+END;
+/
+
+create PROCEDURE            "LIST_REPORT_ORDER_CABANG" (
+    param1 IN VARCHAR2,  
+    param2 IN VARCHAR2, 
+    currentpage IN INTEGER,
+    pagesize IN INTEGER,  
+    result OUT SYS_REFCURSOR
+) AS
+BEGIN
+      OPEN result FOR 
+  'select pk1 as mbranchpk, TRIM(branchname) as branchname, mregionfk as mregionpk, orderoutlet, jumlahorder, jumlahitem, jumlahdiproses, 
+jumlahdikirim, jumlahdiproses-jumlahdikirim as outstanding from (
+  ( select mbranchpk as pk1, branchname, mregionfk, orderoutlet as a, count(torderpk) as jumlahorder, 
+    sum(totalqty) as jumlahitem, sum(totalproses) as jumlahdiproses from torder 
+    join mbranch on mbranchfk = mbranchpk where ' || param1 || ' 
+    group by mbranchpk, branchname, mregionfk, orderoutlet order by branchname ASC) ord 
+ left join (select mbranchpk as pk2, orderoutlet, sum(totalproses) as jumlahdikirim from torder 
+ join mbranch on mbranchfk = mbranchpk where ' || param2 || '
+ group by mbranchpk, orderoutlet) dlv on ord.a = dlv.orderoutlet) order by branchname ASC OFFSET ' || currentpage || ' ROWS FETCH NEXT ' || pagesize || ' ROWS ONLY';
+ END;
+/
+
+create PROCEDURE            "COUNT_TOTALLIST_REPORT_ORDER_BRANCH" (
+    param1 IN VARCHAR2, 
+    param2 IN VARCHAR2, 
+    currentpage IN INTEGER,
+    pagesize IN INTEGER,   
+    result OUT SYS_REFCURSOR
+) AS
+BEGIN
+    OPEN result  FOR
+        'SELECT 
+    ' || currentpage || ' AS CURRENTPAGE,
+    ' || pagesize || ' AS PAGESIZE,
+    COUNT(*) AS TOTALRECORD,
+    CEIL(COUNT(*) * 1.0 / ' || pagesize || ') AS MAXPAGE
+FROM (
+   select pk1 as mbranchfk, branchname, mregionfk, orderoutlet, jumlahorder, jumlahitem, jumlahdiproses, 
+jumlahdikirim, jumlahdiproses-jumlahdikirim as outstanding from (
+  ( select mbranchpk as pk1, branchname, mregionfk, orderoutlet as a, count(torderpk) as jumlahorder, 
+    sum(totalqty) as jumlahitem, sum(totalproses) as jumlahdiproses from torder 
+    join mbranch on mbranchfk = mbranchpk where ' || param1 || ' 
+    group by mbranchpk, branchname, mregionfk, orderoutlet order by branchname) ord 
+ left join (select mbranchpk as pk2, orderoutlet, sum(totalproses) as jumlahdikirim from torder 
+ join mbranch on mbranchfk = mbranchpk where ' || param2 || '
+ group by mbranchpk, orderoutlet order by branchname) dlv on ord.a = dlv.orderoutlet) order by branchname
+)';
+END;
+/
+
+create PROCEDURE            "LIST_REPORT_ORDER_NONCABANG" (
+    param1 IN VARCHAR2,  
+    param2 IN VARCHAR2, 
+    currentpage IN INTEGER,
+    pagesize IN INTEGER,  
+    result OUT SYS_REFCURSOR
+) AS
+BEGIN
+      OPEN result FOR 
+  'select pk1 as mbranchpk, TRIM(branchname) AS branchname, mregionfk as mregionpk, jumlahorder, jumlahitem, jumlahdiproses, jumlahdikirim, 
+  jumlahdiproses-jumlahdikirim as outstanding from (
+   (select mbranchpk as pk1, branchname, mregionfk, count(torderpk) as jumlahorder, sum(totalqty) as jumlahitem, 
+   sum(totalproses) as jumlahdiproses from torder join mbranch on mbranchfk = mbranchpk 
+   where ' || param1 || ' group by mbranchpk, branchname, mregionfk order by branchname) ord 
+   left join (select mbranchpk as pk2, sum(totalproses) as jumlahdikirim from torder 
+   join mbranch on mbranchfk = mbranchpk 
+   where ' || param2 || ' group by mbranchpk) dlv on ord.pk1 = dlv.pk2) order by branchname 
+   ASC OFFSET ' || currentpage || ' ROWS FETCH NEXT ' || pagesize || ' ROWS ONLY';
+ END;
+/
+
+create PROCEDURE            "COUNT_TOTALLIST_REPORT_ORDER_NONBRANCH" (
+    param1 IN VARCHAR2, 
+    param2 IN VARCHAR2, 
+    currentpage IN INTEGER,
+    pagesize IN INTEGER,   
+    result OUT SYS_REFCURSOR
+) AS
+BEGIN
+    OPEN result  FOR
+        'SELECT 
+    ' || currentpage || ' AS CURRENTPAGE,
+    ' || pagesize || ' AS PAGESIZE,
+    COUNT(*) AS TOTALRECORD,
+    CEIL(COUNT(*) * 1.0 / ' || pagesize || ') AS MAXPAGE
+FROM (
+   select pk1 as mbranchfk, branchname, mregionfk, jumlahorder, jumlahitem, jumlahdiproses, jumlahdikirim, 
+  jumlahdiproses-jumlahdikirim as outstanding from (
+   (select mbranchpk as pk1, branchname, mregionfk, count(torderpk) as jumlahorder, sum(totalqty) as jumlahitem, 
+   sum(totalproses) as jumlahdiproses from torder join mbranch on mbranchfk = mbranchpk 
+   where ' || param1 || ' group by mbranchpk, branchname, mregionfk order by branchname) ord 
+   left join (select mbranchpk as pk2, sum(totalproses) as jumlahdikirim from torder 
+   join mbranch on mbranchfk = mbranchpk 
+   where ' || param2 || ' group by mbranchpk) dlv on ord.pk1 = dlv.pk2) order by branchname ASC
+)';
+END;
+/
+
+create PROCEDURE            "LIST_REPORT_ORDER_KARTU" (
+    param IN VARCHAR2,  
+    currentpage IN INTEGER,
+    pagesize IN INTEGER,  
+    result OUT SYS_REFCURSOR
+) AS
+BEGIN
+      OPEN result FOR 
+  'select tembossbranchpk, tembossproduct.org, mproduct.productcode, productname, tembossbranch.orderdate, 
+regioncode, regionname, tembossbranch.branchid, branchname, tembossbranch.totaldata, 
+tembossbranch.status from Tembossbranch 
+join Tembossproduct on tembossproductfk = tembossproductpk join Mbranch on mbranchfk = mbranchpk 
+join Mproduct on tembossbranch.mproductfk = mproductpk join Mregion on mregionfk = mregionpk 
+where ' || param || ' order by tembossbranch.branchid, tembossbranch.orderdate ASC OFFSET ' || currentpage || ' ROWS FETCH NEXT ' || pagesize || ' ROWS ONLY';
+ END;
+/
+
+create PROCEDURE            "COUNT_TOTALLIST_REPORT_ORDER_KARTU" (
+    param IN VARCHAR2, 
+    currentpage IN INTEGER,
+    pagesize IN INTEGER,   
+    result OUT SYS_REFCURSOR
+) AS
+BEGIN
+    OPEN result  FOR
+        'SELECT 
+    ' || currentpage || ' AS CURRENTPAGE,
+    ' || pagesize || ' AS PAGESIZE,
+    COUNT(*) AS TOTALRECORD,
+    CEIL(COUNT(*) * 1.0 / ' || pagesize || ') AS MAXPAGE
+FROM (
+   select tembossbranchpk, tembossproduct.org, mproduct.productcode, productname, tembossbranch.orderdate, 
+regioncode, regionname, tembossbranch.branchid, branchname, tembossbranch.totaldata, 
+tembossbranch.status from Tembossbranch 
+join Tembossproduct on tembossproductfk = tembossproductpk join Mbranch on mbranchfk = mbranchpk 
+join Mproduct on tembossbranch.mproductfk = mproductpk join Mregion on mregionfk = mregionpk 
+where ' || param || ' order by tembossbranch.branchid, tembossbranch.orderdate
+)';
+END;
+/
+
+create PROCEDURE            "SUM_TOTALDATAORDERKARTU" (
+    param IN VARCHAR2,   
+    result OUT SYS_REFCURSOR
+) AS
+BEGIN
+    OPEN result  FOR
+        'select SUM(tembossbranch.totaldata) AS totaldata from Tembossbranch 
+join Tembossproduct on tembossproductfk = tembossproductpk join Mbranch on mbranchfk = mbranchpk 
+join Mproduct on tembossbranch.mproductfk = mproductpk join Mregion on mregionfk = mregionpk 
+where ' || param || '';
+END;
+/
+
+create PROCEDURE            "LIST_REPORT_PENGADAAN" (
+    param IN VARCHAR2,  
+    currentpage IN INTEGER,
+    pagesize IN INTEGER,  
+    result OUT SYS_REFCURSOR
+) AS
+BEGIN
+      OPEN result FOR 
+  'SELECT TRIM(memono) as memono, TRIM(branchname) as branchname, tplan.memodate, TRIM(tplan.productgroup) as productgroup, totalqty as qty, 
+anggaran, totalprocess, sum(harga * itemqty) as nominal, (totalqty - totalprocess) as totalqty, 
+(anggaran - sum(harga * itemqty)) as nominalout from tplan 
+left join tincoming on tplanpk = tplanfk join mbranch on tplan.mbranchfk = mbranchpk where ' || param || '
+group by memono, memodate, anggaran, totalprocess, totalqty, tplan.productgroup, branchname OFFSET ' || currentpage || ' ROWS FETCH NEXT ' || pagesize || ' ROWS ONLY';
+ END;
+/
+
+create PROCEDURE            "COUNT_TOTALLIST_REPORT_PENGADAAN" (
+    param IN VARCHAR2, 
+    currentpage IN INTEGER,
+    pagesize IN INTEGER,   
+    result OUT SYS_REFCURSOR
+) AS
+BEGIN
+    OPEN result  FOR
+        'SELECT 
+    ' || currentpage || ' AS CURRENTPAGE,
+    ' || pagesize || ' AS PAGESIZE,
+    COUNT(*) AS TOTALRECORD,
+    CEIL(COUNT(*) * 1.0 / ' || pagesize || ') AS MAXPAGE
+FROM (
+   SELECT memono, branchname, tplan.memodate, tplan.productgroup, totalqty as qty, 
+anggaran, totalprocess, sum(harga * itemqty) as nominal, (totalqty - totalprocess) as totalqty, 
+(anggaran - sum(harga * itemqty)) as nominalout from tplan 
+left join tincoming on tplanpk = tplanfk join mbranch on tplan.mbranchfk = mbranchpk where ' || param || '
+group by memono, memodate, anggaran, totalprocess, totalqty, tplan.productgroup, branchname
+)';
+END;
+/
+
+create PROCEDURE            "EXPORTLIST_REPORT_PENGADAAN" (
+    param IN VARCHAR2, 
+    result OUT SYS_REFCURSOR
+) AS
+BEGIN
+      OPEN result FOR 
+  'SELECT TRIM(memono) as memono, TRIM(branchname) as branchname, tplan.memodate, TRIM(tplan.productgroup) as productgroup, totalqty as qty, 
+anggaran, totalprocess, sum(harga * itemqty) as nominal, (totalqty - totalprocess) as totalqty, 
+(anggaran - sum(harga * itemqty)) as nominalout from tplan 
+left join tincoming on tplanpk = tplanfk join mbranch on tplan.mbranchfk = mbranchpk where ' || param || '
+group by memono, memodate, anggaran, totalprocess, totalqty, tplan.productgroup, branchname';
+ END;
 /
 
