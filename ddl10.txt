@@ -1,0 +1,2731 @@
+create global temporary table ORCLPDB1.HTE_MUSERGROUPLEVEL
+(
+    RN_               NUMBER(10) not null
+        primary key,
+    AMOUNTEND         NUMBER(19),
+    AMOUNTSTART       NUMBER(19),
+    BRANCHLEVEL       NUMBER(19),
+    GROUPLEVEL        NUMBER(19),
+    MUSERGROUPFK      NUMBER(19),
+    MUSERGROUPLEVELPK NUMBER(19)
+)
+    on commit delete rows
+/
+
+create table ORCLPDB1.MPRODUCTGROUP
+(
+    MPRODUCTGROUPPK  NUMBER(32) not null
+        constraint MPRODUCTGROUP_PKEY
+            primary key,
+    PRODUCTGROUPCODE CHAR(2 char),
+    PRODUCTGROUP     CHAR(40 char),
+    ISCOA            CHAR(1 char)
+)
+/
+
+create table ORCLPDB1.MCOURIERVENDOR
+(
+    MCOURIERVENDORPK NUMBER(32) not null
+        constraint MCOURIERVENDOR_PKEY
+            primary key,
+    VENDORCODE       CHAR(10 char),
+    VENDORNAME       CHAR(70 char),
+    VENDORPICNAME    CHAR(40 char),
+    VENDORPICPHONE   CHAR(20 char),
+    VENDORPICEMAIL   CHAR(100 char),
+    LASTUPDATED      TIMESTAMP(6),
+    UPDATEDBY        CHAR(15 char),
+    URLTOKEN         CHAR(200 char),
+    URLTRACKING      CHAR(200 char),
+    COSTUMERAUTH     CHAR(200 char),
+    ISTRACKING       CHAR(1 char),
+    ISINTERCITY      CHAR(1 char)
+)
+/
+
+create table ORCLPDB1.MREGION
+(
+    MREGIONPK   NUMBER(32) not null
+        constraint MREGION_PKEY
+            primary key,
+    REGIONID    CHAR(5 char),
+    REGIONCODE  CHAR(10 char),
+    REGIONNAME  CHAR(70 char),
+    LASTUPDATED TIMESTAMP(6),
+    UPDATEDBY   CHAR(15 char)
+)
+/
+
+create table ORCLPDB1.MCOURIER
+(
+    MCOURIERPK       NUMBER(32) not null
+        constraint MCOURIER_PKEY
+            primary key,
+    MCOURIERVENDORFK NUMBER(32) not null
+        constraint MCOURIER_FK1
+            references ORCLPDB1.MCOURIERVENDOR
+                on delete cascade,
+    COURIERCODE      CHAR(15 char),
+    COURIERNAME      CHAR(70 char),
+    COURIERPHONE     CHAR(20 char),
+    COURIEREMAIL     CHAR(100 char),
+    LASTUPDATED      TIMESTAMP(6),
+    UPDATEDBY        CHAR(15 char),
+    COURIERIMG       CHAR(30 char),
+    NPP              CHAR(20 char)
+)
+/
+
+create table ORCLPDB1.MCOURIERZIPCODE
+(
+    MCOURIERZIPCODEPK NUMBER(32) not null
+        constraint MCOURIERZIPCODE_PKEY
+            primary key,
+    MCOURIERVENDORFK  NUMBER(32)
+        constraint MCOURIERZIPCODE_FK1
+            references ORCLPDB1.MCOURIERVENDOR
+                on delete cascade,
+    ZIPCODESTART      NUMBER(32) default 0,
+    ZIPCODEEND        NUMBER(32) default 0,
+    DESCRIPTION       CHAR(70 char),
+    LASTUPDATED       TIMESTAMP(6),
+    UPDATEDBY         CHAR(40 char)
+)
+/
+
+create table ORCLPDB1.MBRANCH
+(
+    MBRANCHPK        NUMBER(32) not null
+        constraint MBRANCH_PKEY
+            primary key,
+    MREGIONFK        NUMBER(32)
+        constraint MBRANCH_FK1
+            references ORCLPDB1.MREGION
+                on delete cascade,
+    BRANCHID         CHAR(5 char),
+    BRANCHCODE       CHAR(10 char),
+    BRANCHNAME       CHAR(70 char),
+    LASTUPDATED      TIMESTAMP(6),
+    UPDATEDBY        CHAR(15 char),
+    BRANCHADDRESS    CHAR(200 char),
+    BRANCHCITY       CHAR(70 char),
+    MCOURIERVENDORFK NUMBER(32)
+        constraint MBRANCH_FK2
+            references ORCLPDB1.MCOURIERVENDOR
+                on delete set null,
+    ISHEADOFFICE     CHAR(1 char),
+    ISINTERCITY      CHAR(1 char),
+    BRANCHLEVEL      NUMBER(32) default 0,
+    ZIPCODE          CHAR(6 char)
+)
+/
+
+create table ORCLPDB1.MHOLIDAY
+(
+    MHOLIDAYPK  NUMBER(32) not null
+        constraint MHOLIDAY_PKEY
+            primary key,
+    HOLIDAY     DATE,
+    DESCRIPTION CHAR(70 char),
+    LASTUPDATED TIMESTAMP(6),
+    UPDATEDBY   CHAR(15 char)
+)
+/
+
+create table ORCLPDB1.MICON
+(
+    MICONPK  NUMBER(32) not null
+        constraint MICON_PKEY
+            primary key,
+    ICONNAME CHAR(15 char),
+    ICONPATH CHAR(70 char),
+    URL      CHAR(300 char)
+)
+/
+
+create table ORCLPDB1.MLETTER
+(
+    MLETTERPK    NUMBER(32) not null
+        constraint MLETTER_PKEY
+            primary key,
+    LETTERPREFIX CHAR(10 char),
+    DESCRIPTION  CHAR(70 char),
+    LASTUPDATED  TIMESTAMP(6),
+    UPDATEDBY    CHAR(15 char),
+    PRODUCTGROUP CHAR(3 char)
+)
+/
+
+create table ORCLPDB1.MLETTERTYPE
+(
+    MLETTERTYPEPK NUMBER(32) not null
+        constraint MLETTERTYPE_PKEY
+            primary key,
+    PRODUCTGROUP  CHAR(3 char),
+    LETTERTYPE    CHAR(10 char),
+    DESCRIPTION   CHAR(70 char),
+    LASTUPDATED   TIMESTAMP(6),
+    UPDATEDBY     CHAR(15 char)
+)
+/
+
+create table ORCLPDB1.MUSERGROUP
+(
+    MUSERGROUPPK  NUMBER(32) not null
+        constraint MUSERGROUP_PKEY
+            primary key,
+    USERGROUPCODE CHAR(20 char),
+    USERGROUPNAME CHAR(70 char),
+    USERGROUPDESC CHAR(100 char),
+    STATUS        CHAR(1 char),
+    LASTUPDATED   TIMESTAMP(6),
+    UPDATEDBY     CHAR(15 char)
+)
+/
+
+create table ORCLPDB1.MNOTIF
+(
+    NOTIFID       CHAR(10 char) not null
+        constraint MNOTIF_PKEY
+            primary key,
+    NOTIFNAME     CHAR(100 char),
+    NOTIFTYPE     CHAR(1 char),
+    NOTIFPAGEPATH CHAR(100 char)
+)
+/
+
+create table ORCLPDB1.MORG
+(
+    MORGPK      NUMBER(32) not null
+        constraint MORG_PKEY
+            primary key,
+    ORG         CHAR(3 char),
+    DESCRIPTION CHAR(40 char),
+    LASTUPDATED TIMESTAMP(6),
+    UPDATEDBY   CHAR(15 char),
+    OPRCAPACITY NUMBER(32) default 0,
+    ISNEEDDOC   CHAR(1 char)
+)
+/
+
+create table ORCLPDB1.MPRODUCTOWNER
+(
+    MPRODUCTOWNERPK NUMBER(32) not null
+        constraint MPRODUCTOWNER_PKEY
+            primary key,
+    MBRANCHFK       NUMBER(32)
+        constraint MPRODUCTOWNER_FK1
+            references ORCLPDB1.MBRANCH
+)
+/
+
+create table ORCLPDB1.MPERSOVENDOR
+(
+    MPERSOVENDORPK NUMBER(32) not null
+        constraint MPERSOVENDOR_PKEY
+            primary key,
+    VENDORCODE     CHAR(10 char),
+    VENDORNAME     CHAR(70 char),
+    VENDORPICNAME  CHAR(40 char),
+    VENDORPICPHONE CHAR(20 char),
+    VENDORPICEMAIL CHAR(100 char),
+    LASTUPDATED    TIMESTAMP(6),
+    UPDATEDBY      CHAR(15 char),
+    VENDORLOGO     CHAR(50 char),
+    ADDRESS        CHAR(200 char) default ''
+)
+/
+
+create table ORCLPDB1.MPRODUCTTYPE
+(
+    MPRODUCTTYPEPK        NUMBER(32) not null
+        constraint MPRODUCTTYPE_PKEY
+            primary key,
+    PRODUCTGROUPCODE      CHAR(3 char),
+    PRODUCTGROUPNAME      CHAR(70 char),
+    PRODUCTTYPE           CHAR(70 char),
+    LASTSTOCK             NUMBER(32)    default 0,
+    STOCKMIN              NUMBER(32)    default 0,
+    LASTUPDATED           TIMESTAMP(6),
+    UPDATEDBY             CHAR(15 char),
+    PRODUCTORG            CHAR(3 char),
+    STOCKRESERVED         NUMBER(32)    default 0,
+    STOCKINJECTED         NUMBER(32)    default 0,
+    PRODUCTUNIT           CHAR(1 char),
+    PRODUCTUNITQTY        NUMBER(32)    default 0,
+    ESTDAYS               NUMBER(32)    default 0,
+    ESTDATE               DATE,
+    VELOCITY              NUMBER(32)    default 0,
+    SLACOUNTERTYPE        CHAR(1 char),
+    ISALERTSTOCKPAGU      CHAR(1 char)  default 'N',
+    ALERTSTOCKPAGUDATE    DATE,
+    ALERTSTOCKPAGURELEASE DATE,
+    ISBLOCKPAGU           CHAR(1 char)  default 'N',
+    BLOCKPAGUTIME         TIMESTAMP(6),
+    UNBLOCKPAGUTIME       TIMESTAMP(6),
+    UNBLOCKPAGUBY         CHAR(15 char),
+    ISESTCOUNT            CHAR(1 char),
+    DOCTYPE               CHAR(5 char),
+    COANO                 CHAR(20 char),
+    MPRODUCTOWNERFK       NUMBER(32)
+        constraint MPRODUCTTYPE_FK1
+            references ORCLPDB1.MPRODUCTOWNER,
+    STOCKUNUSED           NUMBER(32)    default 0,
+    GROUPTYPE             CHAR(2 char),
+    BOOKTYPE              CHAR(10 char),
+    AVG                   NUMBER(32)    default 0,
+    LASTUPLOADEDAVG       DATE,
+    BINNO                 CHAR(10 char) default ''
+)
+/
+
+create table ORCLPDB1.MPRODUCT
+(
+    MPRODUCTPK     NUMBER(32) not null
+        constraint MPRODUCT_PKEY
+            primary key,
+    MPRODUCTTYPEFK NUMBER(32)
+        constraint MPRODUCT_FK1
+            references ORCLPDB1.MPRODUCTTYPE
+                on delete cascade,
+    PRODUCTCODE    CHAR(10 char),
+    PRODUCTNAME    CHAR(70 char),
+    ISINSTANT      CHAR(1 char),
+    LASTUPDATED    TIMESTAMP(6),
+    UPDATEDBY      CHAR(15 char),
+    PRODUCTGROUP   CHAR(3 char),
+    COMBOREF       NUMBER(32),
+    ISMM           CHAR(1 char)   default 'N',
+    ISOPR          CHAR(1 char),
+    ISDLVHOME      CHAR(1 char)   default 'N',
+    DESIGNIMGID    CHAR(50 char)  default '',
+    DESIGNIMGNAME  CHAR(200 char) default '',
+    DESIGNIMGPATH  CHAR(500 char) default ''
+)
+/
+
+create index ORCLPDB1.MPRODUCT_UNQ1
+    on ORCLPDB1.MPRODUCT (PRODUCTGROUP)
+/
+
+create table ORCLPDB1.MBRANCHPRODUCTGROUP
+(
+    MBRANCHPRODUCTGROUPPK NUMBER(32) not null
+        constraint MBRANCHPRODUCTGROUP_PKEY
+            primary key,
+    MBRANCHFK             NUMBER(32)
+        constraint MBRANCHPRODUCTGROUP_FK1
+            references ORCLPDB1.MBRANCH
+                on delete cascade,
+    MPRODUCTGROUPFK       NUMBER(32)
+        constraint MBRANCHPRODUCTGROUP_FK2
+            references ORCLPDB1.MPRODUCTGROUP
+                on delete cascade
+)
+/
+
+create table ORCLPDB1.MPRODUCTREQ
+(
+    MPRODUCTREQPK NUMBER(32) not null
+        constraint MPRODUCTREQ_PKEY
+            primary key,
+    PRODUCTCODE   CHAR(10 char),
+    PRODUCTNAME   CHAR(70 char),
+    ISINSTANT     CHAR(1 char),
+    ISDERIVATIF   CHAR(1 char),
+    STATUS        CHAR(2 char),
+    ENTRYTIME     TIMESTAMP(6),
+    LASTUPDATED   TIMESTAMP(6),
+    UPDATEDBY     CHAR(15 char)
+)
+/
+
+create table ORCLPDB1.TBRANCHSTOCK
+(
+    TBRANCHSTOCKPK NUMBER(32) not null
+        constraint TBRANCHSTOCK_PKEY
+            primary key,
+    MBRANCHFK      NUMBER(32) not null
+        constraint TBRANCHSTOCK_FK1
+            references ORCLPDB1.MBRANCH,
+    MPRODUCTFK     NUMBER(32) not null
+        constraint TBRANCHSTOCK_FK2
+            references ORCLPDB1.MPRODUCT,
+    STOCKRESERVED  NUMBER(32) default 0,
+    STOCKACTIVATED NUMBER(32),
+    STOCKCABANG    NUMBER(32),
+    STOCKDELIVERED NUMBER(32),
+    PRODUCTGROUP   CHAR(2 char),
+    OUTLET         CHAR(2 char),
+    STOCKDESTROYED NUMBER(32)
+)
+/
+
+create table ORCLPDB1.TDELIVERYCOURIER
+(
+    TDELIVERYCOURIERPK NUMBER(32) not null
+        constraint TDELIVERYCOURIER_PKEY
+            primary key,
+    MCOURIERVENDORFK   NUMBER(32)
+        constraint TDELIVERYCOURIER_FK1
+            references ORCLPDB1.MCOURIERVENDOR,
+    MCOURIERFK         NUMBER(32)
+        constraint TDELIVERYCOURIER_FK2
+            references ORCLPDB1.MCOURIER,
+    PRODUCTGROUP       CHAR(3 char),
+    DLVCOURIERID       CHAR(15 char),
+    STATUS             CHAR(3 char),
+    TOTALDATA          NUMBER(32) default 0,
+    MEMO               CHAR(100 char),
+    PROCESSTIME        TIMESTAMP(6),
+    PROCESSEDBY        CHAR(15 char),
+    ISURGENT           CHAR(1 char),
+    COURIERBRANCHPOOL  CHAR(3 char)
+)
+/
+
+create table ORCLPDB1.TDELIVERY
+(
+    TDELIVERYPK        NUMBER(32) not null
+        constraint TDELIVERY_PKEY
+            primary key,
+    MCOURIERVENDORFK   NUMBER(32)
+        constraint TDELIVERY_FK1
+            references ORCLPDB1.MCOURIERVENDOR,
+    MBRANCHFK          NUMBER(32)
+        constraint TDELIVERY_FK2
+            references ORCLPDB1.MBRANCH,
+    DLVID              CHAR(30 char),
+    STATUS             CHAR(3 char),
+    TOTALDATA          NUMBER(32)     default 0,
+    COURIERCODE        CHAR(10 char),
+    PROCESSTIME        TIMESTAMP(6),
+    PROCESSEDBY        CHAR(15 char),
+    PRODUCTGROUP       CHAR(3 char),
+    TDELIVERYCOURIERFK NUMBER(32)
+        constraint TDELIVERY_FK3
+            references ORCLPDB1.TDELIVERYCOURIER
+                on delete set null,
+    LETTERTYPE         CHAR(10 char),
+    ISURGENT           CHAR(1 char),
+    TGLTERIMA          DATE,
+    PENERIMA           CHAR(100 char),
+    AWB                CHAR(100 char),
+    ISPRODUCTPHOTO     CHAR(1 char)   default 'N',
+    MEMO               CHAR(400 char),
+    ISRETURN           CHAR(1 char),
+    BRANCHPOOL         CHAR(3 char),
+    ACCNO              CHAR(20 char),
+    CARDNO             CHAR(20 char),
+    CUSTNAME           CHAR(30 char),
+    ADDRESS1           CHAR(200 char),
+    ADDRESS2           CHAR(200 char),
+    ADDRESS3           CHAR(200 char),
+    ZIPCODE            CHAR(5 char),
+    HPNO               CHAR(20 char),
+    ISDLVCUST          CHAR(1 char)   default 'N',
+    BERATITEM          CHAR(200 char),
+    CITY               CHAR(50 char),
+    PENERIMA2          CHAR(100 char),
+    TGLTERIMA2         DATE,
+    TOTALAMOUNT        NUMBER(19)     default 0,
+    COURIERVENDOR2     CHAR(70 char),
+    ORDERID            CHAR(20 char),
+    FILENAME           CHAR(200 char),
+    UPDATEDBY          CHAR(70 char),
+    LASTUPDATED        TIMESTAMP(6),
+    TRACKID            CHAR(50 char)  default '',
+    TRACKTIME          TIMESTAMP(6),
+    TRACKPODBY         CHAR(50 char)  default '',
+    TRACKPODTIME       TIMESTAMP(6),
+    TRACKPICT          CHAR(300 char) default '',
+    TRACKSIGN          CHAR(300 char) default ''
+)
+/
+
+create table ORCLPDB1.MSYSPARAM
+(
+    ORDERNO     NUMBER(32)   default 0,
+    PARAMCODE   VARCHAR2(30 char) not null
+        constraint MSYSPARAM_PKEY
+            primary key,
+    PARAMNAME   CHAR(50 char),
+    PARAMDESC   CHAR(100 char),
+    PARAMVALUE  CHAR(100 char),
+    PARAMGROUP  CHAR(30 char),
+    ISMASKED    CHAR(1 char) default 'N',
+    LASTUPDATED TIMESTAMP(6),
+    UPDATEDBY   CHAR(15 char)
+)
+/
+
+create table ORCLPDB1.MUSERGROUPLEVEL
+(
+    MUSERGROUPLEVELPK NUMBER(32) not null
+        constraint MUSERGROUPLEVEL_PKEY
+            primary key,
+    MUSERGROUPFK      NUMBER(32)
+        constraint MUSERGROUPLEVEL_FK1
+            references ORCLPDB1.MUSERGROUP
+                on delete cascade,
+    AMOUNTSTART       NUMBER(17),
+    AMOUNTEND         NUMBER(17),
+    GROUPLEVEL        NUMBER(32) default 0,
+    BRANCHLEVEL       NUMBER(32) default 0
+)
+/
+
+create table ORCLPDB1.MMENU
+(
+    MMENUPK          NUMBER(32) not null
+        constraint MMENU_PKEY
+            primary key,
+    MENUORDERNO      NUMBER(32) default 0,
+    MENUGROUP        CHAR(50 char),
+    MENUSUBGROUP     CHAR(50 char),
+    MENUNAME         CHAR(40 char),
+    MENUPATH         CHAR(70 char),
+    MENUPARAMNAME    CHAR(10 char),
+    MENUPARAMVALUE   CHAR(20 char),
+    MENUGROUPICON    CHAR(50 char),
+    MENUSUBGROUPICON CHAR(50 char),
+    MENUICON         CHAR(50 char)
+)
+/
+
+create table ORCLPDB1.TNOTIF
+(
+    TNOTIFPK     NUMBER(32) not null
+        constraint TNOTIF_PKEY
+            primary key,
+    NOTIFTXT     CHAR(100 char),
+    NOTIFCOUNT   NUMBER(32) default 0,
+    MMENUFK      NUMBER(32)
+        constraint TNOTIF_FK1
+            references ORCLPDB1.MMENU,
+    PRODUCTGROUP CHAR(2 char),
+    MBRANCHFK    NUMBER(32)
+        constraint TNOTIF_FK2
+            references ORCLPDB1.MBRANCH,
+    BRANCHLEVEL  NUMBER(32),
+    NOTIFTIME    TIMESTAMP(6)
+)
+/
+
+create table ORCLPDB1.MUSERGROUPNOTIF
+(
+    MUSERGROUPNOTIFPK NUMBER(32) not null
+        constraint MUSERGROUPNOTIF_PKEY
+            primary key,
+    MUSERGROUPFK      NUMBER(32),
+    NOTIFID           CHAR(10 char),
+    NOTIFTYPE         CHAR(1 char)
+)
+/
+
+create table ORCLPDB1.MYENTITY
+(
+    ID    NUMBER(38) not null
+        constraint MYENTITY_PKEY
+            primary key,
+    FIELD CHAR(255 char)
+)
+/
+
+create table ORCLPDB1.TPERSOUPLOAD
+(
+    TPERSOUPLOADPK NUMBER(32) not null
+        constraint TPERSOUPLOAD_PKEY
+            primary key,
+    FILENAME       CHAR(70 char),
+    TOTALDATA      NUMBER(32) default 0,
+    UPLOADTIME     TIMESTAMP(6),
+    UPLOADEDBY     CHAR(15 char)
+)
+/
+
+create table ORCLPDB1.TDERIVATIF
+(
+    TDERIVATIFPK  NUMBER(32) not null
+        constraint TDERIVATIF_PKEY
+            primary key,
+    MBRANCHFK     NUMBER(32)
+        constraint TDERIVATIF_FK1
+            references ORCLPDB1.MBRANCH,
+    ORDERNO       CHAR(20 char),
+    ORDERDATE     DATE,
+    TOTALDATA     NUMBER(32) default 0,
+    MEMO          CHAR(100 char),
+    ISSCAN        CHAR(1 char),
+    ISCROP        CHAR(1 char),
+    ISMERGE       CHAR(1 char),
+    SCANDATE      DATE,
+    CROPDATE      DATE,
+    MERGEDATE     DATE,
+    STATUS        NUMBER(32) default 0,
+    ENTRYTIME     TIMESTAMP(6),
+    ENTRYBY       CHAR(15 char),
+    TDELIVERYFK   NUMBER(32)
+        constraint TDERIVATIF_FK2
+            references ORCLPDB1.TDELIVERY,
+    PRODSLA       NUMBER(32) default 0,
+    DLVSLA        NUMBER(32) default 0,
+    SLATOTAL      NUMBER(32) default 0,
+    DLVSTARTTIME  TIMESTAMP(6),
+    DLVFINISHTIME TIMESTAMP(6),
+    MPRODUCTFK    NUMBER(32)
+        constraint TDERIVATIF_FK3
+            references ORCLPDB1.MPRODUCT,
+    TOTALREJECT   NUMBER(32) default 0,
+    FILENAME      CHAR(150 char),
+    TOTALADJ      NUMBER(32) default 0
+)
+/
+
+create table ORCLPDB1.TPINMAILERFILE
+(
+    TPINMAILERFILEPK NUMBER(32) not null
+        constraint TPINMAILERFILE_PKEY
+            primary key,
+    MPRODUCTFK       NUMBER(32)
+        constraint TPINMAILERFILE_FK1
+            references ORCLPDB1.MPRODUCT,
+    BATCHID          CHAR(15 char),
+    FILENAME         CHAR(70 char),
+    TOTALDATA        NUMBER(32) default 0,
+    MEMO             CHAR(100 char),
+    UPLOADTIME       TIMESTAMP(6),
+    UPLOADEDBY       CHAR(15 char),
+    STATUS           CHAR(3 char)
+)
+/
+
+create table ORCLPDB1.TPINMAILERBRANCH
+(
+    TPINMAILERBRANCHPK NUMBER(32) not null
+        constraint TPINMAILERBRANCH_PKEY
+            primary key,
+    TPINMAILERFILEFK   NUMBER(32)
+        constraint TPINMAILERBRANCH_FK1
+            references ORCLPDB1.TPINMAILERFILE
+                on delete cascade,
+    MBRANCHFK          NUMBER(32)
+        constraint TPINMAILERBRANCH_FK2
+            references ORCLPDB1.MBRANCH,
+    BRANCHID           CHAR(5 char),
+    ORDERDATE          DATE,
+    TOTALDATA          NUMBER(32) default 0,
+    STATUS             CHAR(3 char)
+)
+/
+
+create table ORCLPDB1.MREPAIRREASON
+(
+    MREPAIRREASONPK NUMBER(32) not null
+        constraint MREPAIRREASON_PKEY
+            primary key,
+    REPAIRREASON    CHAR(40 char),
+    PINPADTYPE      CHAR(1 char),
+    UPDATEDBY       CHAR(40 char),
+    LASTUPDATED     TIMESTAMP(6)
+)
+/
+
+create table ORCLPDB1.TCOUNTERENGINE
+(
+    COUNTERNAME VARCHAR2(70 char) not null
+        constraint TCOUNTERENGINE_PK
+            primary key,
+    LASTCOUNTER NUMBER(32) default 0
+)
+/
+
+create table ORCLPDB1.MRETURNREASON
+(
+    MRETURNREASONPK NUMBER(32) not null
+        constraint MRETURNREASON_PKEY
+            primary key,
+    RETURNREASON    CHAR(100 char),
+    LASTUPDATED     TIMESTAMP(6),
+    UPDATEDBY       CHAR(15 char),
+    ISDESTROY       CHAR(1 char),
+    PRODUCTGROUP    CHAR(2 char)
+)
+/
+
+create table ORCLPDB1.TORDER
+(
+    TORDERPK         NUMBER(32) not null
+        constraint TORDER_PKEY
+            primary key,
+    MBRANCHFK        NUMBER(32)
+        constraint TORDER_FK1
+            references ORCLPDB1.MBRANCH,
+    MPRODUCTFK       NUMBER(32)
+        constraint TORDER_FK2
+            references ORCLPDB1.MPRODUCT,
+    PRODUCTGROUP     CHAR(2 char),
+    ORDERID          CHAR(20 char),
+    ORDERDATE        DATE,
+    ORDERLEVEL       NUMBER(32) default 0,
+    ORDEROUTLET      CHAR(2 char),
+    ITEMQTY          NUMBER(32) default 0,
+    STATUS           CHAR(3 char),
+    INSERTEDBY       CHAR(40 char),
+    INSERTTIME       TIMESTAMP(6),
+    DECISIONBY       CHAR(40 char),
+    DECISIONTIME     TIMESTAMP(6),
+    ORDERTYPE        CHAR(1 char),
+    TOTALPROSES      NUMBER(32) default 0,
+    MEMO             CHAR(200 char),
+    TPINMAILERFILEFK NUMBER(32)
+        constraint TORDER_FK10
+            references ORCLPDB1.TPINMAILERFILE
+                on delete cascade,
+    MEMODATE         TIMESTAMP(6),
+    MEMONO           CHAR(40 char),
+    LASTUPDATED      TIMESTAMP(6),
+    ORDERPINPADTYPE  CHAR(1 char),
+    TOTALQTY         NUMBER(32) default 0,
+    PENERIMA         CHAR(40 char),
+    FILETERIMA       CHAR(200 char),
+    TGLTERIMA        DATE,
+    TOTALCS          NUMBER(32) default 0,
+    TOTALTELLER      NUMBER(32) default 0
+)
+/
+
+create table ORCLPDB1.TDESTROY
+(
+    TDESTROYPK   NUMBER(32) not null
+        constraint TDESTROY_PKEY
+            primary key,
+    MBRANCHFK    NUMBER(32)
+        constraint TDESTROY_FK1
+            references ORCLPDB1.MBRANCH,
+    MPRODUCTFK   NUMBER(32),
+    REGID        CHAR(20 char),
+    ITEMQTY      NUMBER(32)     default 0,
+    STATUS       CHAR(3),
+    INSERTEDBY   CHAR(40 char),
+    INSERTTIME   TIMESTAMP(6),
+    DECISIONBY   CHAR(40 char),
+    DECISIONTIME TIMESTAMP(6),
+    PRODUCTGROUP CHAR(2 char)   default '',
+    DOCID        CHAR(50 char)  default '',
+    DOCNAME      CHAR(200 char) default '',
+    DOCPATH      CHAR(500 char) default '',
+    REASONCODE   CHAR(2 char)   default '',
+    REASONDESC   CHAR(200 char) default '',
+    NOTE         CHAR(200 char)
+)
+/
+
+create table ORCLPDB1.TDESTROYMEMO
+(
+    TDESTROYMEMOPK NUMBER(32) not null
+        constraint TDESTROYMEMO_PKEY
+            primary key,
+    TDESTROYFK     NUMBER(32)
+        constraint TDESTROYMEMO_FK1
+            references ORCLPDB1.TDESTROY
+                on delete cascade,
+    MEMO           CHAR(200 char),
+    MEMOBY         CHAR(40 char),
+    MEMOTIME       TIMESTAMP(6)
+)
+/
+
+create table ORCLPDB1.TDESTROYITEM
+(
+    TDESTROYITEMPK NUMBER(32) not null
+        constraint TDESTROYITEM_PKEY
+            primary key,
+    TDESTROYFK     NUMBER(32)
+        constraint TDESTROYITEMPK_FK1
+            references ORCLPDB1.TDESTROY
+                on delete cascade,
+    ITEMNO         CHAR(20 char),
+    ITEMSTATUS     CHAR(3)
+)
+/
+
+create table ORCLPDB1.TPINMAILERPRODUCT
+(
+    TPINMAILERPRODUCTPK NUMBER(32) not null
+        constraint TPINMAILERPRODUCT_PKEY
+            primary key,
+    TPINMAILERFILEFK    NUMBER(32)
+        constraint TPINMAILERPRODUCT_FK1
+            references ORCLPDB1.TPINMAILERFILE
+                on delete cascade,
+    MPRODUCTFK          NUMBER(32)
+        constraint TPINMAILERPRODUCT_FK2
+            references ORCLPDB1.MPRODUCT,
+    PRODUCTCODE         CHAR(10 char),
+    ORDERDATE           DATE,
+    TOTALDATA           NUMBER(32) default 0,
+    TOTALPROSES         NUMBER(32) default 0,
+    ORDEROS             NUMBER(32) default 0,
+    STATUS              CHAR(3 char),
+    ENTRYTIME           TIMESTAMP(6),
+    ORG                 CHAR(3 char),
+    ISINSTANT           CHAR(1 char),
+    TPINMAILERBRANCHFK  NUMBER(32)
+        constraint TPINMAILERBRANCHFK_FK3
+            references ORCLPDB1.TPINMAILERBRANCH
+                on delete cascade
+)
+/
+
+create table ORCLPDB1.MSUPPLIER
+(
+    MSUPPLIERPK  NUMBER(32) not null
+        constraint MSUPPLIER_PKEY
+            primary key,
+    SUPPLIERNAME CHAR(70 char),
+    PICNAME      CHAR(40 char),
+    PICHP        CHAR(40 char),
+    PICEMAIL     CHAR(40 char),
+    UPDATEDBY    CHAR(40 char),
+    LASTUPDATED  TIMESTAMP(6)
+)
+/
+
+create table ORCLPDB1.TPLAN
+(
+    TPLANPK          NUMBER(32) not null
+        constraint TPLAN_PKEY
+            primary key,
+    MBRANCHFK        NUMBER(32)
+        constraint TPLAN_FK1
+            references ORCLPDB1.MBRANCH,
+    PRODUCTGROUP     CHAR(2 char),
+    PLANNO           CHAR(20 char),
+    MEMONO           CHAR(20 char),
+    MEMODATE         DATE,
+    MEMOFILEORI      CHAR(100 char),
+    MEMOFILEID       CHAR(100 char),
+    ANGGARAN         NUMBER(19)     default 0,
+    TOTALQTY         NUMBER(32)     default 0,
+    STATUS           CHAR(2 char),
+    INPUTER          CHAR(40 char),
+    INPUTTIME        TIMESTAMP(6),
+    DECISIONBY       CHAR(40 char),
+    DECISIONTIME     TIMESTAMP(6),
+    DECISIONDESC     CHAR(200 char),
+    TOTALDATA        NUMBER(32)     default 0,
+    INCOMINGUSED     NUMBER(32),
+    TOTALPROCESS     NUMBER(32),
+    DECISIONTIMEPFA  TIMESTAMP(6),
+    DECISIONBYPFA    CHAR(40 char),
+    ISDECLINE        CHAR(1 char),
+    CONTRACTNO       CHAR(50 char)  default '',
+    CONTRACTDATE     DATE,
+    CONTRACTDOCID    CHAR(50 char)  default '',
+    CONTRACTDOCNAME  CHAR(200 char) default '',
+    CONTRACTDOCPATH  CHAR(200 char) default '',
+    MSUPPLIERFK      NUMBER
+        constraint TPLAN_FK2
+            references ORCLPDB1.MSUPPLIER,
+    NOTE             CHAR(200 char) default '',
+    TOTALPROCUR      NUMBER         default 0,
+    TOTALPROCURPRICE NUMBER(19)     default 0,
+    DECISIONDESCPFA  CHAR(200 char) default ''
+)
+/
+
+create table ORCLPDB1.TORDERDOC
+(
+    TORDERDOCPK NUMBER(32) not null
+        constraint TORDERDOC_PKEY
+            primary key,
+    TORDERFK    NUMBER(32)
+        constraint TORDERDOC_FK1
+            references ORCLPDB1.TORDER
+                on delete cascade,
+    DOCFILEORI  CHAR(200 char),
+    DOCFILEID   CHAR(200 char),
+    DOCFILESIZE NUMBER(32) default 0,
+    DOCTIME     TIMESTAMP(6)
+)
+/
+
+create table ORCLPDB1.TORDERMEMO
+(
+    TORDERMEMOPK NUMBER(32) not null
+        constraint TORDERMEMO_PKEY
+            primary key,
+    TORDERFK     NUMBER(32)
+        constraint TORDERMEMO_FK1
+            references ORCLPDB1.TORDER
+                on delete cascade,
+    MEMO         CHAR(200 char),
+    MEMOBY       CHAR(40 char),
+    MEMOTIME     TIMESTAMP(6)
+)
+/
+
+create table ORCLPDB1.TRETURN
+(
+    TRETURNPK       NUMBER(32) not null
+        constraint TRETURN_PKEY
+            primary key,
+    MBRANCHFK       NUMBER(32)
+        constraint TRETURN_FK1
+            references ORCLPDB1.MBRANCH,
+    MPRODUCTFK      NUMBER(32)
+        constraint TRETURN_FK2
+            references ORCLPDB1.MPRODUCT,
+    REGID           CHAR(20 char),
+    RETURNLEVEL     NUMBER(32) default 0,
+    ITEMQTY         NUMBER(32) default 0,
+    STATUS          CHAR(3 char),
+    INSERTEDBY      CHAR(40 char),
+    INSERTTIME      TIMESTAMP(6),
+    DECISIONBY      CHAR(40 char),
+    DECISIONTIME    TIMESTAMP(6),
+    MRETURNREASONFK NUMBER(32)
+        constraint TRETURN_FK3
+            references ORCLPDB1.MRETURNREASON,
+    LETTERTYPE      CHAR(10 char),
+    FILENAME        CHAR(200 char),
+    ISDESTROY       CHAR(1 char),
+    FILEID          CHAR(25)   default '',
+    MEMO            CHAR(200)  default '',
+    DECISIONMEMO    CHAR(200)  default ''
+)
+/
+
+create table ORCLPDB1.TORDERTRACK
+(
+    TORDERTRACKPK NUMBER(32) not null
+        constraint TORDERTRACK_PKEY
+            primary key,
+    TORDERFK      NUMBER(32)
+        constraint TORDERTRACK_FK1
+            references ORCLPDB1.TORDER
+                on delete cascade,
+    PRODUCTGROUP  CHAR(2 char),
+    ITEMNO        CHAR(2 char),
+    TRACKTIME     TIMESTAMP(6),
+    TRACKSTATUS   CHAR(2 char),
+    TRACKDESC     CHAR(100 char)
+)
+/
+
+create table ORCLPDB1.TFILEBRANCHACTV
+(
+    TFILEBRANCHACTVPK NUMBER(32) not null
+        constraint TFILEBRANCHACTV_PKEY
+            primary key,
+    FILENAME          CHAR(100 char),
+    FILEGETTIME       TIMESTAMP(6)
+)
+/
+
+create table ORCLPDB1.TINCOMING
+(
+    TINCOMINGPK      NUMBER(32) not null
+        constraint TINCOMING_PKEY
+            primary key,
+    MPRODUCTTYPEFK   NUMBER(32) not null
+        constraint TINCOMING_FK1
+            references ORCLPDB1.MPRODUCTTYPE
+                on delete cascade,
+    PRODUCTGROUP     CHAR(3 char),
+    INCOMINGID       CHAR(20 char),
+    FILENAME         CHAR(70 char),
+    ITEMQTY          NUMBER(32)    default 0,
+    MEMO             CHAR(100 char),
+    STATUS           CHAR(3 char),
+    ENTRYTIME        TIMESTAMP(6),
+    ENTRYBY          CHAR(40 char),
+    DECISIONBY       CHAR(40 char),
+    DECISIONTIME     TIMESTAMP(6),
+    DECISIONMEMO     CHAR(100 char),
+    LASTUPDATED      TIMESTAMP(6),
+    UPDATEDBY        CHAR(40 char),
+    MSUPPLIERFK      NUMBER(32)
+        constraint TINCOMING_FK2
+            references ORCLPDB1.MSUPPLIER,
+    SPKNO            CHAR(50 char),
+    SPKDATE          DATE,
+    MBRANCHFK        NUMBER(32)
+        constraint TINCOMING_FK3
+            references ORCLPDB1.MBRANCH,
+    HARGA            BINARY_DOUBLE default 0,
+    ORDERTYPE        CHAR(1 char),
+    PREFIX           CHAR(5 char),
+    ITEMSTARTNO      NUMBER(32),
+    TPLANFK          NUMBER(32)
+        constraint TINCOMING_FK7
+            references ORCLPDB1.TPLAN
+                on delete cascade,
+    VENDORLETTERNO   CHAR(20 char),
+    VENDORLETTERDATE DATE,
+    PKSNO            CHAR(20 char),
+    PKSDATE          DATE,
+    MANUFACTUREDATE  NUMBER(32)
+)
+/
+
+create index ORCLPDB1.TINCOMING_UNQ1
+    on ORCLPDB1.TINCOMING (MPRODUCTTYPEFK)
+/
+
+create table ORCLPDB1.TREGISTERSTOCK
+(
+    TREGISTERSTOCKPK NUMBER(32) not null
+        constraint TREGISTERSTOCK_PKEY
+            primary key,
+    BRANCH           CHAR(70 char),
+    PRODUCTGROUP     CHAR(3 char),
+    MPRODUCT         CHAR(70 char),
+    TGLINCOMING      DATE,
+    PREFIX           CHAR(5 char),
+    NUMERAWALINC     CHAR(13 char),
+    NUMERAKHIRINC    CHAR(13 char),
+    JUMLAHINC        NUMBER(32),
+    TGLOUTGOING      DATE,
+    NUMERAWALOUTG    CHAR(13 char),
+    NUMERAKHIROUTG   CHAR(13 char),
+    JUMLAHOUTG       NUMBER(32),
+    NUMERAWALOUTS    CHAR(13 char),
+    NUMERAKHIROUTS   CHAR(13 char),
+    JUMLAHOUTS       NUMBER(32),
+    TINCOMINGFK      NUMBER(32)
+        constraint TREGISTERSTOCK_FK1
+            references ORCLPDB1.TINCOMING,
+    BRANCHLEVEL      NUMBER(32)
+)
+/
+
+create table ORCLPDB1.TMANUALACTV
+(
+    TMANUALACTVPK NUMBER(32) not null
+        constraint TMANUALACTV_PKEY
+            primary key,
+    SERIALNO      CHAR(20 char),
+    ITEMQTY       NUMBER(32)   default 0,
+    QTYPERUNIT    NUMBER(32)   default 0,
+    PRODUCTNAME   CHAR(70 char),
+    BRANCHID      CHAR(4 char),
+    OUTLET        CHAR(2 char),
+    STATUS        CHAR(2 char),
+    ACCNO         CHAR(20 char),
+    DATEACTIVATED DATE,
+    NASABAH       CHAR(40 char),
+    LASTUPDATED   DATE,
+    UPDATEDBY     CHAR(70 char),
+    ITEMSTATUS    CHAR(1 char) default '8',
+    PRODUCTGROUP  CHAR(2 char) default '04'
+)
+/
+
+create table ORCLPDB1.TREPAIR
+(
+    TREPAIRPK       NUMBER(32) not null
+        constraint TREPAIR_PKEY
+            primary key,
+    MBRANCHFK       NUMBER(32)
+        constraint TREPAIR_FK1
+            references ORCLPDB1.MBRANCH,
+    MPRODUCTFK      NUMBER(32)
+        constraint TREPAIR_FK2
+            references ORCLPDB1.MPRODUCT,
+    REGID           CHAR(20 char),
+    ITEMQTY         NUMBER(32) default 0,
+    STATUS          CHAR(3 char),
+    INSERTEDBY      CHAR(40 char),
+    INSERTTIME      TIMESTAMP(6),
+    DECISIONBY      CHAR(40 char),
+    DECISIONTIME    TIMESTAMP(6),
+    MRETURNREASONFK NUMBER(32)
+        constraint TREPAIR_FK3
+            references ORCLPDB1.MRETURNREASON,
+    MREPAIRREASONFK NUMBER(32)
+        constraint TREPAIR_FK5
+            references ORCLPDB1.MREPAIRREASON
+                on delete cascade,
+    PINPADTYPE      CHAR(1 char),
+    REPAIRFAILED    NUMBER(32) default 0,
+    FILENAME        CHAR(200 char),
+    TOTALPROSES     NUMBER(32) default 0,
+    TGLPEMENUHAN    DATE,
+    DOCFILE         CHAR(200 char)
+)
+/
+
+create table ORCLPDB1.TREPAIRDLV
+(
+    TREPAIRDLVPK NUMBER(32) not null
+        constraint TREPAIRDLV_PKEY
+            primary key,
+    TREPAIRFK    NUMBER(32)
+        constraint TREPAIRDLV_FK1
+            references ORCLPDB1.TREPAIR
+                on delete cascade,
+    DLVNO        CHAR(15 char),
+    QUANTITY     NUMBER(32),
+    ISREPAIRDLV  CHAR(1 char),
+    STATUS       CHAR(3 char),
+    PROCESSBY    CHAR(40 char),
+    PROCESSTIME  TIMESTAMP(6),
+    TOTALFAIL    NUMBER(32) default 0
+)
+/
+
+create table ORCLPDB1.MUSERGROUPMENU
+(
+    MUSERGROUPMENUPK NUMBER(32) not null
+        constraint MUSERGROUPMENU_PKEY
+            primary key,
+    MUSERGROUPFK     NUMBER(32) not null
+        constraint MUSERGROUPMENU_FK1
+            references ORCLPDB1.MUSERGROUP
+                on delete cascade,
+    MMENUFK          NUMBER(32) not null
+        constraint MUSERGROUPMENU_FK2
+            references ORCLPDB1.MMENU
+                on delete cascade
+)
+/
+
+create table ORCLPDB1.TBOOKFILE
+(
+    TBOOKFILEPK  NUMBER(32) not null
+        constraint TBOOKFILE_PKEY
+            primary key,
+    TDELIVERYFK  NUMBER(32)
+        constraint TBOOKFILE_FK1
+            references ORCLPDB1.TDELIVERY,
+    BOOKID       CHAR(100 char),
+    TOTALDATA    NUMBER(32) default 0,
+    TOTALAMOUNT  NUMBER(17) default 0,
+    BOOKTIME     TIMESTAMP(6),
+    BOOKEDBY     CHAR(40 char),
+    STATUS       CHAR(3 char),
+    STATUSDESC   CHAR(200 char),
+    TOTALERROR   NUMBER(32) default 0,
+    TOTALSUCCESS NUMBER(32) default 0,
+    DECISIONTIME TIMESTAMP(6),
+    DECISIONBY   CHAR(40 char)
+)
+/
+
+create table ORCLPDB1.TBRANCHITEMBUCKET
+(
+    TBRANCHITEMBUCKETPK NUMBER(32) not null
+        constraint TBRANCHITEMBUCKET_PKEY
+            primary key,
+    TBRANCHSTOCKFK      NUMBER(32)
+        constraint TBRANCHITEMBUCKET_FK1
+            references ORCLPDB1.TBRANCHSTOCK,
+    ORDERID             CHAR(20 char),
+    OUTLET              CHAR(2 char),
+    PREFIX              CHAR(5 char),
+    ITEMSTARTNO         NUMBER(32)    default 0,
+    ITEMENDNO           NUMBER(32)    default 0,
+    CURRENTNO           NUMBER(32)    default 0,
+    TOTALITEM           NUMBER(32)    default 0,
+    OUTBOUND            NUMBER(32)    default 0,
+    ISPOD               CHAR(1 char),
+    ISRUNOUT            CHAR(1 char),
+    INCOMINGID          CHAR(20 char),
+    ITEMPRICE           NUMBER(17, 2) default 0,
+    ISGENERATE          CHAR(1 char)  default 'N',
+    INSERTTIME          TIMESTAMP(6),
+    LASTGENERATE        TIMESTAMP(6),
+    FLATFILENAME        CHAR(100 char),
+    ISACTV              CHAR(1 char)  default 'N'
+)
+/
+
+create index ORCLPDB1.TBRANCHITEMBUCKET_UNQ1
+    on ORCLPDB1.TBRANCHITEMBUCKET (ISACTV)
+/
+
+create index ORCLPDB1.TBRANCHITEMBUCKET_UNQ3
+    on ORCLPDB1.TBRANCHITEMBUCKET (OUTLET)
+/
+
+create index ORCLPDB1.TBRANCHITEMBUCKET_UNQ2
+    on ORCLPDB1.TBRANCHITEMBUCKET (ISGENERATE)
+/
+
+create table ORCLPDB1.TPINMAILERDATA
+(
+    TPINMAILERDATAPK    NUMBER(32) not null
+        constraint TPINMAILERDATA_PKEY
+            primary key,
+    TPINMAILERBRANCHFK  NUMBER(32)
+        constraint TPINMAILERDATA_FK1
+            references ORCLPDB1.TPINMAILERBRANCH
+                on delete cascade,
+    MPRODUCTFK          NUMBER(32)
+        constraint TPINMAILERDATA_FK2
+            references ORCLPDB1.MPRODUCT,
+    CARDNO              CHAR(20 char),
+    NAME                CHAR(40 char),
+    ORDERDATE           DATE,
+    PRODUCTCODE         CHAR(10 char),
+    BRANCHID            CHAR(10 char),
+    KLNCODE             CHAR(10 char),
+    SEQNO               CHAR(10 char),
+    ISWITHCARD          CHAR(1 char),
+    ISINSTANT           CHAR(1 char),
+    TPINMAILERPRODUCTFK NUMBER(32)
+        constraint TPINMAILERDATA_FK3
+            references ORCLPDB1.TPINMAILERPRODUCT
+                on delete cascade
+)
+/
+
+create index ORCLPDB1.TPINMAILERDATA_UNQ1
+    on ORCLPDB1.TPINMAILERDATA (CARDNO)
+/
+
+create table ORCLPDB1.TSWITCH
+(
+    TSWITCHPK    NUMBER(32) not null
+        constraint TSWITCH_PKEY
+            primary key,
+    MBRANCHFK    NUMBER(32)
+        constraint TSWITCHPK_FK1
+            references ORCLPDB1.MBRANCH,
+    MPRODUCTFK   NUMBER(32)
+        constraint TSWITCHPK_FK2
+            references ORCLPDB1.MPRODUCT,
+    BRANCHIDREQ  CHAR(3 char),
+    OUTLETREQ    CHAR(2 char),
+    BRANCHIDPOOL CHAR(3 char),
+    OUTLETPOOL   CHAR(2 char),
+    REGID        CHAR(20 char),
+    ITEMQTY      NUMBER(32)    default 0,
+    STATUS       CHAR(3 char),
+    INSERTEDBY   CHAR(40 char),
+    INSERTTIME   TIMESTAMP(6),
+    DECISIONBY   CHAR(40 char),
+    DECISIONTIME TIMESTAMP(6),
+    TORDERFK     NUMBER(32)
+        constraint TSWITCH_FK3
+            references ORCLPDB1.TORDER,
+    DOCID        CHAR(50)      default '',
+    DOCNAME      CHAR(200)     default '',
+    DOCPATH      VARCHAR2(500) default ''
+)
+/
+
+create table ORCLPDB1.MUSER
+(
+    MUSERPK        NUMBER(32) not null
+        constraint MUSER_PKEY
+            primary key,
+    MUSERGROUPFK   NUMBER(32) not null
+        constraint MUSER_FK1
+            references ORCLPDB1.MUSERGROUP,
+    USERID         CHAR(15 char),
+    USERNAME       CHAR(40 char),
+    PASSWORD       CHAR(70 char),
+    LASTUPDATED    TIMESTAMP(6),
+    UPDATEDBY      CHAR(15 char),
+    MPERSOVENDORFK NUMBER(32)
+        constraint MUSER_FK2
+            references ORCLPDB1.MPERSOVENDOR,
+    MBRANCHFK      NUMBER(32),
+    LASTLOGIN      TIMESTAMP(6),
+    OUTLETCODE     CHAR(2 char)   default '00',
+    OUTLETNAME     CHAR(100 char) default ''
+)
+/
+
+create table ORCLPDB1.TSWITCHITEM
+(
+    TSWITCHITEMPK NUMBER(32) not null
+        constraint TSWITCHITEM_TSWICTHITEM_PKEY
+            primary key,
+    TSWITCHFK     NUMBER(32)
+        constraint TSWICTHITEM_FK1
+            references ORCLPDB1.TSWITCH,
+    ITEMNO        CHAR(20 char)
+)
+/
+
+create table ORCLPDB1.TSWITCHMEMO
+(
+    TSWITCHMEMOPK NUMBER(32) not null
+        constraint TSWITCHMEMO_PKEY
+            primary key,
+    TSWITCHFK     NUMBER(32)
+        constraint TSWITCHMEMO_FK1
+            references ORCLPDB1.TSWITCH
+                on delete cascade,
+    MEMO          CHAR(200 char),
+    MEMOBY        CHAR(40 char),
+    MEMOTIME      TIMESTAMP(6)
+)
+/
+
+create table ORCLPDB1.TREPAIRMEMO
+(
+    TREPAIRMEMOPK NUMBER(32) not null
+        constraint TREPAIRMEMO_PKEY
+            primary key,
+    TREPAIRFK     NUMBER(32)
+        constraint TREPAIRMEMO_FK1
+            references ORCLPDB1.TREPAIR
+                on delete cascade,
+    MEMO          CHAR(200 char),
+    MEMOBY        CHAR(40 char),
+    MEMOTIME      TIMESTAMP(6)
+)
+/
+
+create table ORCLPDB1.TPLANPRODUCT
+(
+    TPLANPRODUCTPK   NUMBER(32) not null
+        constraint TPLANPRODUCT_PKEY
+            primary key,
+    TPLANFK          NUMBER(32)
+        constraint TPLANPRODUCT_FK1
+            references ORCLPDB1.TPLAN
+                on delete cascade,
+    MPRODUCTTYPEFK   NUMBER(32)
+        constraint TPLANPRODUCT_FK2
+            references ORCLPDB1.MPRODUCTTYPE,
+    UNITQTY          NUMBER(32) default 0,
+    TOTALPROCESS     NUMBER(32) default 0,
+    QTYPERUNIT       NUMBER(32) default 0,
+    PRICE            NUMBER(11) default 0,
+    TOTALPRICE       NUMBER(19) default 0,
+    UNITQTYPROCUR    NUMBER     default 0,
+    QTYPROCURPERUNIT NUMBER     default 0
+)
+/
+
+create table ORCLPDB1.TPLANDOC
+(
+    TPLANDOCPK  NUMBER(32) not null
+        constraint TPLANDOC_PKEY
+            primary key,
+    TPLANFK     NUMBER(32)
+        constraint TPLANDOC_FK1
+            references ORCLPDB1.TPLAN
+                on delete cascade,
+    DOCFILEORI  CHAR(200 char),
+    DOCFILEID   CHAR(200 char),
+    DOCFILESIZE NUMBER(32) default 0,
+    DOCTIME     TIMESTAMP(6)
+)
+/
+
+create table ORCLPDB1.TPINPADORDERPRODUCT
+(
+    TPINPADORDERPRODUCTPK NUMBER(32) not null
+        constraint TPINPADORDERPRODUCT_PKEY
+            primary key,
+    TORDERFK              NUMBER(32)
+        constraint TPINPADORDERPRODUCT_FK1
+            references ORCLPDB1.TORDER
+                on delete cascade,
+    MPRODUCTFK            NUMBER(32)
+        constraint TPINPADORDERPRODUCT_FK2
+            references ORCLPDB1.MPRODUCT,
+    PRODUCTCODE           CHAR(10 char),
+    STATUS                CHAR(3 char),
+    QUANTITY              NUMBER(32) default 0
+)
+/
+
+create table ORCLPDB1.TINCOMINGVENDOR
+(
+    TINCOMINGVENDORPK NUMBER(32) not null
+        constraint TINCOMINGVENDOR_PKEY
+            primary key,
+    TINCOMINGFK       NUMBER(32)
+        constraint TINCOMINGVENDORPK_FK1
+            references ORCLPDB1.TINCOMING
+                on delete cascade,
+    MSUPPLIERFK       NUMBER(32)
+        constraint TINCOMINGVENDORPK_FK2
+            references ORCLPDB1.MSUPPLIER,
+    SUPPLIERNAME      CHAR(70 char),
+    PICNAME           CHAR(40 char),
+    PICHP             CHAR(40 char)
+)
+/
+
+create table ORCLPDB1.TRETURNITEM
+(
+    TRETURNITEMPK NUMBER(32) not null
+        constraint TRETURNITEM_PKEY
+            primary key,
+    TRETURNFK     NUMBER(32)
+        constraint TRETURNITEM_FK1
+            references ORCLPDB1.TRETURN
+                on delete cascade,
+    ITEMNO        CHAR(20 char),
+    ITEMSTATUS    CHAR(3 char),
+    ITEMPRICE     NUMBER(17) default 0
+)
+/
+
+create index ORCLPDB1.TRETURNITEM_UNQ1
+    on ORCLPDB1.TRETURNITEM (ITEMNO)
+/
+
+create table ORCLPDB1.TRETURNMEMO
+(
+    TRETURNMEMOPK NUMBER(32) not null
+        constraint TRETURNMEMO_PKEY
+            primary key,
+    TRETURNFK     NUMBER(32)
+        constraint TRETURNMEMO_FK1
+            references ORCLPDB1.TRETURN
+                on delete cascade,
+    MEMO          CHAR(200 char),
+    MEMOBY        CHAR(40 char),
+    MEMOTIME      TIMESTAMP(6)
+)
+/
+
+create table ORCLPDB1.TRETURNTRACK
+(
+    TRETURNTRACKPK NUMBER(32) not null
+        constraint TRETURNTRACK_PKEY
+            primary key,
+    TRETURNFK      NUMBER(32)
+        constraint TRETURNTRACK_FK1
+            references ORCLPDB1.TRETURN
+                on delete cascade,
+    TRACKTIME      TIMESTAMP(6),
+    TRACKSTATUS    CHAR(3 char),
+    TRACKDESC      CHAR(100 char)
+)
+/
+
+create table ORCLPDB1.TREPAIRITEM
+(
+    TREPAIRITEMPK NUMBER(32) not null
+        constraint TREPAIRITEM_PKEY
+            primary key,
+    TREPAIRFK     NUMBER(32)
+        constraint TREPAIRITEM_FK1
+            references ORCLPDB1.TREPAIR
+                on delete cascade,
+    ITEMNO        CHAR(20 char),
+    ITEMSTATUS    CHAR(3 char),
+    PINPADTYPE    CHAR(1 char),
+    TID           CHAR(20 char),
+    MID           CHAR(20 char),
+    PINPADMEMO    CHAR(100 char),
+    ITEMPRICE     NUMBER(17) default 0,
+    TREPAIRDLVFK  NUMBER(32)
+        constraint TREPAIRITEM_FK2
+            references ORCLPDB1.TREPAIRDLV
+                on delete cascade,
+    RESOLUTION    CHAR(100 char),
+    REPLACEMENT   CHAR(20 char)
+)
+/
+
+create table ORCLPDB1.TSTOCKCARD
+(
+    TSTOCKCARDPK   NUMBER(32) not null
+        constraint TSTOCKCARD_PKEY
+            primary key,
+    MPRODUCTTYPEFK NUMBER(32)
+        constraint TSTOCKCARD_FK1
+            references ORCLPDB1.MPRODUCTTYPE
+                on delete cascade,
+    PRODUCTTYPE    CHAR(70 char),
+    TRXDATE        DATE,
+    INCOMINGTOTAL  NUMBER(32) default 0,
+    OUTGOINGTOTAL  NUMBER(32) default 0,
+    STOCK          NUMBER(32) default 0,
+    LASTUPDATED    TIMESTAMP(6),
+    UPDATEDBY      CHAR(15 char),
+    PRODUCTGROUP   CHAR(3 char),
+    PRODUCTORG     CHAR(3 char),
+    VELOCITY       NUMBER(32),
+    ESTDATE        DATE,
+    ESTDAYS        NUMBER(32)
+)
+/
+
+create table ORCLPDB1.TBRANCHITEMTRACK
+(
+    TBRANCHITEMTRACKPK NUMBER(32) not null
+        constraint TBRANCHITEMTRACK_PKEY
+            primary key,
+    MPRODUCTFK         NUMBER(32)
+        constraint TBRANCHITEMTRACK_FK1
+            references ORCLPDB1.MPRODUCT,
+    PRODUCTGROUP       CHAR(2 char),
+    ITEMNO             CHAR(20 char),
+    TRACKTIME          TIMESTAMP(6),
+    TRACKSTATUS        CHAR(3 char),
+    TRACKDESC          CHAR(100 char),
+    NASABAH            CHAR(40 char)
+)
+/
+
+create table ORCLPDB1.TSCHEDULER
+(
+    TSCHEDULERPK        NUMBER(32) not null
+        constraint TSCHEDULER_PKEY
+            primary key,
+    SCHEDULERNAME       CHAR(30 char),
+    SCHEDULERGROUP      CHAR(30 char),
+    SCHEDULERDESC       CHAR(200 char),
+    SCHEDULERSTATUS     CHAR(3 char),
+    SCHEDULERREPEATTYPE CHAR(10 char),
+    REPEATINTERVAL      NUMBER(32) default 0,
+    JOBCLASS            CHAR(70 char),
+    LASTUPDATED         TIMESTAMP(6),
+    UPDATEDBY           CHAR(30 char)
+)
+/
+
+create table ORCLPDB1.MCOA
+(
+    MCOAPK         NUMBER(32) not null
+        constraint MCOA_PKEY
+            primary key,
+    ACCNO          CHAR(20 char),
+    ACCNAME        CHAR(100 char),
+    ACCTYPE        CHAR(1 char),
+    COATYPE        CHAR(1 char),
+    LASTUPDATED    TIMESTAMP(6),
+    UPDATEDBY      CHAR(40 char),
+    BRANCHLEVEL    NUMBER(32),
+    MPRODUCTTYPEFK NUMBER(32)
+        constraint MCOA_FK1
+            references ORCLPDB1.MPRODUCTTYPE,
+    MBRANCHFK      NUMBER(32)
+        constraint MCOA_FK2
+            references ORCLPDB1.MBRANCH
+)
+/
+
+create table ORCLPDB1.TBRANCHSTOCKITEM
+(
+    TBRANCHSTOCKITEMPK  NUMBER(32) not null
+        constraint TBRANCHSTOCKITEM_PKEY
+            primary key,
+    TBRANCHSTOCKFK      NUMBER(32)
+        constraint TBRANCHSTOCKITEM_FK1
+            references ORCLPDB1.TBRANCHSTOCK
+                on delete cascade,
+    PRODUCTGROUP        CHAR(2 char),
+    ITEMNO              CHAR(20 char),
+    STATUS              CHAR(3 char),
+    NUMERATOR           NUMBER(32),
+    ITEMPRICE           BINARY_DOUBLE default 0,
+    PINPADTYPE          CHAR(1 char),
+    TID                 CHAR(20 char),
+    MID                 CHAR(20 char),
+    PINPADMEMO          CHAR(100 char),
+    NASABAH             CHAR(100 char),
+    TBRANCHITEMBUCKETFK NUMBER(32)
+        constraint TBRANCHSTOCKITEM_FK2
+            references ORCLPDB1.TBRANCHITEMBUCKET
+                on delete cascade,
+    PREFIX              CHAR(5 char),
+    ACCNO               CHAR(20 char),
+    DATEACTIVATED       DATE,
+    ISACTV              CHAR(1 char),
+    ISMANUALACTV        CHAR(1 char)
+)
+/
+
+create index ORCLPDB1.TBRANCHSTOCKITEM_UNQ6
+    on ORCLPDB1.TBRANCHSTOCKITEM (ISMANUALACTV)
+/
+
+create index ORCLPDB1.TBRANCHSTOCKITEM_UNQ5
+    on ORCLPDB1.TBRANCHSTOCKITEM (ISACTV)
+/
+
+create index ORCLPDB1.TBRANCHSTOCKITEM_ITEMNO_PRODUCTGROUP_IDX
+    on ORCLPDB1.TBRANCHSTOCKITEM (ITEMNO, PRODUCTGROUP)
+/
+
+create index ORCLPDB1.TBRANCHSTOCKITEM_UNQ1
+    on ORCLPDB1.TBRANCHSTOCKITEM (ITEMNO)
+/
+
+create index ORCLPDB1.TBRANCHSTOCKITEM_UNQ2
+    on ORCLPDB1.TBRANCHSTOCKITEM (NUMERATOR)
+/
+
+create table ORCLPDB1.TPILOTING
+(
+    TPILOTINGPK         NUMBER(32) not null
+        constraint TPILOTING_PKEY
+            primary key,
+    TBRANCHITEMBUCKETFK NUMBER(32)
+        constraint TPILOTING_FK1
+            references ORCLPDB1.TBRANCHITEMBUCKET,
+    OUTLET              CHAR(2 char),
+    PREFIX              CHAR(5 char),
+    STARTNO             NUMBER(32),
+    ENDNO               NUMBER(32),
+    TOTALITEM           NUMBER(32),
+    ITEMPRICE           NUMBER(10),
+    STATUS              CHAR(2 char),
+    INSERTEDBY          CHAR(40 char),
+    INSERTTIME          TIMESTAMP(6),
+    BRANCHNAME          CHAR(70 char),
+    PRODUCTTYPE         CHAR(70 char),
+    BRANCHID            CHAR(3 char),
+    DECISIONBY          CHAR(40 char),
+    DECISIONTIME        TIMESTAMP(6),
+    TOTALQTY            NUMBER(32)    default 0,
+    TINCOMINGFK         NUMBER(32)
+        constraint TPILOTING_FK2
+            references ORCLPDB1.TINCOMING,
+    FILENAME            CHAR(70 char),
+    MEMO                CHAR(100 char),
+    SPKNO               CHAR(50 char),
+    SPKDATE             TIMESTAMP(6),
+    PKSNO               CHAR(50 char),
+    PKSDATE             TIMESTAMP(6),
+    VENDORLETTERNO      CHAR(50 char),
+    VENDORLETTERDATE    TIMESTAMP(6),
+    MANUFACTUREDATE     NUMBER(32)    default 0,
+    MSUPPLIERFK         NUMBER(32)
+        constraint TPILOTING_FK23
+            references ORCLPDB1.MSUPPLIER,
+    HARGA               BINARY_DOUBLE default 0,
+    ENDNOPREVIEWS       NUMBER(32),
+    CLEANFILENAME       CHAR(70 char)
+)
+/
+
+create table ORCLPDB1.MOUTLET
+(
+    MOUTLETPK  NUMBER(32) not null
+        constraint MOUTLET_PKEY
+            primary key,
+    MBRANCHFK  NUMBER(32)
+        constraint MOUTLET_FK1
+            references ORCLPDB1.MBRANCH
+                on delete cascade,
+    OUTLETCODE CHAR(2 char),
+    BICODE     CHAR(9 char),
+    OUTLETNAME CHAR(100 char),
+    ADDRESS    CHAR(200 char),
+    ZIPCODE    CHAR(6 char),
+    OUTLETCITY CHAR(50 char),
+    STATUS     CHAR(15 char)
+)
+/
+
+create table ORCLPDB1.MPICPRODUCT
+(
+    MPICPRODUCTPK NUMBER(32) not null
+        constraint MPICPRODUCT_PKEY
+            primary key,
+    PRODUCTGROUP  CHAR(3 char),
+    PICNAME       CHAR(40 char),
+    PICHP         CHAR(40 char),
+    PICEMAIL      CHAR(100 char),
+    LASTUPDATED   TIMESTAMP(6),
+    UPDATEDBY     CHAR(15 char),
+    MBRANCHFK     NUMBER(32)
+        constraint MPICPRODUCT_FK1
+            references ORCLPDB1.MBRANCH
+)
+/
+
+create table ORCLPDB1.TUNEOD
+(
+    TUNEODPK NUMBER(32) not null
+        constraint TUNEOD_PKEY
+            primary key,
+    EODDATE  DATE
+)
+/
+
+create table ORCLPDB1.TPO
+(
+    TPOPK        NUMBER not null
+        primary key,
+    TPLANFK      NUMBER
+        constraint TPO_FK1
+            references ORCLPDB1.TPLAN,
+    MSUPPLIERFK  NUMBER
+        constraint TPO_FK2
+            references ORCLPDB1.MSUPPLIER,
+    PRODUCTGROUP CHAR(2 char)   default '',
+    PONO         CHAR(30 char)  default '',
+    PODATE       DATE,
+    TOTALQTY     NUMBER         default 0,
+    TOTALPRICE   NUMBER(19)     default 0,
+    TOTALDO      NUMBER         default 0,
+    NOTE         CHAR(200 char) default '',
+    STATUS       CHAR(2 char)   default '',
+    DECIDEDBY    CHAR(40 char)  default '',
+    DECIDEDAT    TIMESTAMP(6),
+    DECISIONNOTE CHAR(200 char) default '',
+    DOCID        CHAR(50 char)  default '',
+    DOCNAME      CHAR(200 char) default '',
+    DOCPATH      CHAR(500 char) default '',
+    CREATETIME   TIMESTAMP(6),
+    CREATEDBY    CHAR(40 char)  default '',
+    LASTUPDATED  TIMESTAMP(6),
+    UPDATEDBY    CHAR(40 char)  default ''
+)
+/
+
+create table ORCLPDB1.TPOPRODUCT
+(
+    TPOPRODUCTPK   NUMBER not null
+        primary key,
+    TPOFK          NUMBER
+        constraint TPOPRODUCT_FK1
+            references ORCLPDB1.TPO,
+    MPRODUCTTYPEFK NUMBER
+        constraint TPOPRODUCT_FK2
+            references ORCLPDB1.MPRODUCTTYPE
+                on delete cascade,
+    QTYPERUNIT     NUMBER     default 0,
+    UNITQTY        NUMBER     default 0,
+    PRICE          NUMBER(11) default 0,
+    TOTALPRICE     NUMBER(19) default 0,
+    DOCOUNTER      NUMBER     default 0,
+    TOTALDO        NUMBER     default 0,
+    LASTDOTIME     TIMESTAMP(6)
+)
+/
+
+create table ORCLPDB1.MBRANCHPAGU
+(
+    MBRANCHPAGUPK    NUMBER not null
+        primary key,
+    MBRANCHFK        NUMBER
+        constraint MBRANCHPAGU_FK1
+            references ORCLPDB1.MBRANCH,
+    MPRODUCTFK       NUMBER
+        constraint MBRANCHPAGU_FK2
+            references ORCLPDB1.MPRODUCT,
+    PRODUCTGROUP     CHAR(2 char)  default '',
+    PAGU             NUMBER        default 0,
+    QUOTA            NUMBER        default 0,
+    QUOTATYPE        CHAR          default '',
+    QUOTATEMP        NUMBER        default 0,
+    QUOTATEMPCREATED TIMESTAMP(6),
+    QUOTATEMPRELEASE TIMESTAMP(6),
+    REFNO            CHAR(30 char) default '',
+    REFTYPE          CHAR          default '',
+    UPDATEDBY        CHAR(40 char) default '',
+    LASTUPDATED      TIMESTAMP(6),
+    unique (MBRANCHFK, MPRODUCTFK)
+)
+/
+
+create table ORCLPDB1.TQUOTAREQ
+(
+    TQUOTAREQPK     NUMBER not null
+        primary key,
+    MBRANCHFK       NUMBER
+        constraint TQUOTAREQ_FK1
+            references ORCLPDB1.MBRANCH,
+    PRODUCTGROUP    CHAR(2 char)   default '',
+    ENTRYTYPE       CHAR           default '',
+    REQNO           CHAR(30 char)  default '',
+    REQDATE         DATE,
+    NOTE            CHAR(200 char) default '',
+    STATUS          CHAR(2 char)   default '',
+    DECIDEDBY       CHAR(40 char)  default '',
+    DECIDEDAT       TIMESTAMP(6),
+    DECISIONNOTE    CHAR(200 char) default '',
+    DOCID           CHAR(50 char)  default '',
+    DOCNAME         CHAR(200 char) default '',
+    DOCPATH         CHAR(500 char) default '',
+    UPLOADDOCID     CHAR(50 char)  default '',
+    UPLOADDOCNAME   CHAR(200 char) default '',
+    UPLOADDOCPATH   CHAR(500 char) default '',
+    CREATETIME      TIMESTAMP(6),
+    CREATEDBY       CHAR(40 char)  default '',
+    UPDATEDBY       CHAR(40 char)  default '',
+    LASTUPDATED     TIMESTAMP(6),
+    DECIDEDBYCRP    CHAR(40 char)  default '',
+    DECIDEDATECRP   TIMESTAMP(6),
+    DECISIONNOTECRP CHAR(200 char) default ''
+)
+/
+
+create table ORCLPDB1.MMITRA
+(
+    MMITRAPK     NUMBER not null
+        primary key,
+    MITRAID      CHAR(10 char)  default '',
+    MITRANAME    CHAR(100 char) default '',
+    MITRAADDRESS CHAR(200 char) default '',
+    MITRACITY    CHAR(70 char)  default '',
+    MITRAZIPCODE CHAR(5 char)   default '',
+    CREATEDBY    CHAR(40 char)  default '',
+    CREATETIME   TIMESTAMP(6),
+    UPDATEDBY    CHAR(40 char)  default '',
+    LASTUPDATED  TIMESTAMP(6),
+    PICNAME      CHAR(70 char),
+    PICPHONE     CHAR(14 char),
+    PICEMAIL     CHAR(70 char)
+)
+/
+
+create table ORCLPDB1.TORDERBRANCH
+(
+    TORDERBRANCHPK NUMBER not null
+        primary key,
+    MBRANCHFK      NUMBER
+        constraint TORDERBRANCH_FK1
+            references ORCLPDB1.MBRANCH,
+    MMITRAFK       NUMBER
+        constraint TORDERBRANCH_FK2
+            references ORCLPDB1.MMITRA,
+    PRODUCTGROUP   CHAR(2 char)   default '',
+    ORDERNO        CHAR(30 char)  default '',
+    ORDERDATE      DATE,
+    MEMONO         CHAR(30 char)  default '',
+    MEMODATE       DATE,
+    NOTE           CHAR(200 char) default '',
+    TOTALQTY       NUMBER         default 0,
+    TOTALRECEIVED  NUMBER         default 0,
+    STATUS         CHAR(3 char)   default '',
+    DECIDEDBY      CHAR(40 char)  default '',
+    DECIDEDAT      TIMESTAMP(6),
+    DECISIONNOTE   CHAR(200 char) default '',
+    DOCID          CHAR(50 char)  default '',
+    DOCNAME        CHAR(200 char) default '',
+    DOCPATH        CHAR(500 char) default '',
+    CREATEDBY      CHAR(40 char)  default '',
+    CREATETIME     TIMESTAMP(6),
+    UPDATEDBY      CHAR(40 char)  default '',
+    LASTUPDATED    TIMESTAMP(6),
+    OUTLETCODE     CHAR(2 char)   default '',
+    OUTLETNAME     CHAR(100 char) default '',
+    STATUSFLOW     NUMBER,
+    BRANCHREQID    CHAR(4 char)   default '',
+    ISSWITCH       CHAR           default 'N',
+    BRANCHIDPOOL   CHAR(4)        default '',
+    BRANCHNAMEPOOL CHAR(100)      default '',
+    OUTLETCODEPOOL CHAR(2)        default '',
+    TOTALPROCESS   NUMBER         default 0
+)
+/
+
+create table ORCLPDB1.TEMBOSSFILE
+(
+    TEMBOSSFILEPK  NUMBER(32) not null
+        constraint TEMBOSSFILE_PKEY
+            primary key,
+    EMBOSSID       CHAR(15 char),
+    FILENAME       CHAR(70 char),
+    TOTALDATA      NUMBER(32) default 0,
+    MEMO           CHAR(100 char),
+    UPLOADTIME     TIMESTAMP(6),
+    UPLOADEDBY     CHAR(15 char),
+    TORDERBRANCHFK NUMBER
+        constraint TTEMBOSSFILE_FK1
+            references ORCLPDB1.TORDERBRANCH
+)
+/
+
+create table ORCLPDB1.TEMBOSSPRODUCT
+(
+    TEMBOSSPRODUCTPK NUMBER(32) not null
+        constraint TEMBOSSPRODUCT_PKEY
+            primary key,
+    TEMBOSSFILEFK    NUMBER(32) not null
+        constraint TEMBOSSPRODUCT_FK1
+            references ORCLPDB1.TEMBOSSFILE
+                on delete cascade,
+    MPRODUCTFK       NUMBER(32)
+        constraint TEMBOSSPRODUCT_FK2
+            references ORCLPDB1.MPRODUCT,
+    PRODUCTCODE      CHAR(10 char),
+    ISINSTANT        CHAR(1 char),
+    ORDERDATE        DATE,
+    TOTALDATA        NUMBER(32) default 0,
+    TOTALPROSES      NUMBER(32) default 0,
+    ORDEROS          NUMBER(32) default 0,
+    STATUS           CHAR(3 char),
+    ENTRYTIME        TIMESTAMP(6),
+    ORG              CHAR(3 char),
+    ISNEEDDOC        CHAR(1 char)
+)
+/
+
+create table ORCLPDB1.TEMBOSSBRANCH
+(
+    TEMBOSSBRANCHPK  NUMBER(32) not null
+        constraint TEMBOSSBRANCH_PKEY
+            primary key,
+    TEMBOSSFILEFK    NUMBER(32) not null
+        constraint TEMBOSSBRANCH_FK1
+            references ORCLPDB1.TEMBOSSFILE
+                on delete cascade,
+    TEMBOSSPRODUCTFK NUMBER(32) not null
+        constraint TEMBOSSBRANCH_FK3
+            references ORCLPDB1.TEMBOSSPRODUCT
+                on delete cascade,
+    MPRODUCTFK       NUMBER(32)
+        constraint TEMBOSSBRANCH_FK2
+            references ORCLPDB1.MPRODUCT,
+    MBRANCHFK        NUMBER(32)
+        constraint TEMBOSSBRANCH_FK4
+            references ORCLPDB1.MBRANCH,
+    BRANCHID         CHAR(5 char),
+    ORDERDATE        DATE,
+    TOTALDATA        NUMBER(32),
+    ENTRYTIME        TIMESTAMP(6),
+    STATUS           CHAR(3 char),
+    TOTALPROSES      NUMBER(32) default 0,
+    TOTALOS          NUMBER(32) default 0,
+    PRODSLA          NUMBER(32) default 0,
+    DLVSLA           NUMBER(32) default 0,
+    SLATOTAL         NUMBER(32) default 0,
+    DLVSTARTTIME     TIMESTAMP(6),
+    DLVFINISHTIME    TIMESTAMP(6)
+)
+/
+
+create table ORCLPDB1.TEMBOSSDATA
+(
+    TEMBOSSDATAPK    NUMBER(32) not null
+        constraint TEMBOSSDATA_PKEY
+            primary key,
+    TEMBOSSFILEFK    NUMBER(32)
+        constraint TEMBOSSDATA_FK1
+            references ORCLPDB1.TEMBOSSFILE
+                on delete cascade,
+    TEMBOSSPRODUCTFK NUMBER(32),
+    TEMBOSSBRANCHFK  NUMBER(32),
+    MBRANCHFK        NUMBER(32)
+        constraint TEMBOSSDATA_FK3
+            references ORCLPDB1.MBRANCH
+                on delete set null,
+    MPRODUCTFK       NUMBER(32)
+        constraint TEMBOSSDATA_FK2
+            references ORCLPDB1.MPRODUCT
+                on delete cascade,
+    CARDNO           CHAR(20 char),
+    NAMEONID         CHAR(40 char),
+    NAMEONCARD       CHAR(40 char),
+    ORDERDATE        DATE,
+    PRODUCTCODE      CHAR(10 char),
+    BRANCHID         CHAR(10 char),
+    BRANCHNAME       CHAR(70 char),
+    KLNCODE          CHAR(10 char),
+    KLNNAME          CHAR(70 char),
+    SEQNO            CHAR(10 char),
+    ISINSTANT        CHAR(1 char),
+    ISACTIVATED      CHAR(1 char),
+    DATEACTIVATED    DATE,
+    ACTIVATEDTIME    DATE,
+    FILEBRANCHACTV   CHAR(100 char),
+    ACCNO            CHAR(20 char),
+    ADDRESS1         CHAR(40 char),
+    ADDRESS2         CHAR(40 char),
+    ADDRESS3         CHAR(40 char),
+    ZIPCODE          CHAR(5 char),
+    HPNO             CHAR(20 char),
+    ISCLEANSING      CHAR(1 char) default 'N'
+)
+/
+
+create table ORCLPDB1.TPERSOUPLOADDATA
+(
+    TPERSOUPLOADDATAPK NUMBER(32) not null
+        constraint TPERSOUPLOADDATA_PKEY
+            primary key,
+    TPERSOUPLOADFK     NUMBER(32) not null
+        constraint TPERSOUPLOADDATA_FK1
+            references ORCLPDB1.TPERSOUPLOAD
+                on delete cascade,
+    TEMBOSSDATAFK      NUMBER(32) not null
+        constraint TPERSOUPLOADDATA_FK2
+            references ORCLPDB1.TEMBOSSDATA,
+    CARDNO             CHAR(20 char),
+    ORDERDATE          DATE
+)
+/
+
+create table ORCLPDB1.TDERIVATIFPRODUCT
+(
+    TDERIVATIFPRODUCTPK NUMBER(32) not null
+        constraint TDERIVATIFPRODUCT_PKEY
+            primary key,
+    TDERIVATIFFK        NUMBER(32) not null
+        constraint TDERIVATIFPRODUCT_FK1
+            references ORCLPDB1.TDERIVATIF
+                on delete cascade,
+    MPRODUCTFK          NUMBER(32)
+        constraint TDERIVATIFPRODUCT_FK2
+            references ORCLPDB1.MPRODUCT,
+    ORDERDATE           DATE,
+    TOTALDATA           NUMBER(32) default 0,
+    ENTRYTIME           TIMESTAMP(6),
+    NOPAKET             CHAR(15 char),
+    PAKETTIME           TIMESTAMP(6),
+    TEMBOSSBRANCHFK     NUMBER(32)
+        constraint TDERIVATIFPRODUCT_FK3
+            references ORCLPDB1.TEMBOSSBRANCH
+                on delete set null
+)
+/
+
+create table ORCLPDB1.TDERIVATIFDATA
+(
+    TDERIVATIFDATAPK    NUMBER(32) not null
+        constraint TDERIVATIFDATA_PKEY
+            primary key,
+    TDERIVATIFFK        NUMBER(32)
+        constraint TDERIVATIFDATA_FK1
+            references ORCLPDB1.TDERIVATIF
+                on delete cascade,
+    TDERIVATIFPRODUCTFK NUMBER(32)
+        constraint TDERIVATIFDATA_FK2
+            references ORCLPDB1.TDERIVATIFPRODUCT
+                on delete cascade,
+    TEMBOSSDATAFK       NUMBER(32) not null
+        constraint TDERIVATIFDATA_FK3
+            references ORCLPDB1.TEMBOSSDATA,
+    CARDNO              CHAR(20 char),
+    ORDERDATE           DATE,
+    REJECTMEMO          CHAR(100 char),
+    STATUS              CHAR(3 char)
+)
+/
+
+create index ORCLPDB1.TDERIVATIFDATA_UNQ1
+    on ORCLPDB1.TDERIVATIFDATA (CARDNO)
+/
+
+create table ORCLPDB1.TPRODUCTMM
+(
+    TPRODUCTMMPK  NUMBER(32) not null
+        constraint TPRODUCTMM_PKEY
+            primary key,
+    TEMBOSSFILEFK NUMBER(32)
+        constraint TPRODUCTMM_FK1
+            references ORCLPDB1.TEMBOSSFILE
+                on delete cascade,
+    ORDERDATE     DATE,
+    ORG           CHAR(3 char),
+    PRODUCTTYPE   CHAR(70 char),
+    PRODUCTCODE   CHAR(5 char),
+    PRODUCTNAME   CHAR(70 char),
+    TOTALDATA     NUMBER(32) default 0,
+    TOTALMERGE    NUMBER(32) default 0,
+    TOTALOS       NUMBER(32) default 0,
+    ENTRYTIME     TIMESTAMP(6),
+    REKONBY       CHAR(15 char),
+    REKONTIME     TIMESTAMP(6),
+    ISMATCH       CHAR(1 char)
+)
+/
+
+create table ORCLPDB1.TPERSO
+(
+    TPERSOPK            NUMBER(32) not null
+        constraint TPERSO_PKEY
+            primary key,
+    TEMBOSSPRODUCTFK    NUMBER(32)
+        constraint TPERSO_FK1
+            references ORCLPDB1.TEMBOSSPRODUCT,
+    MPRODUCTFK          NUMBER(32)
+        constraint TPERSO_FK2
+            references ORCLPDB1.MPRODUCT,
+    MPERSOVENDORFK      NUMBER(32)
+        constraint TPERSO_FK3
+            references ORCLPDB1.MPERSOVENDOR,
+    TDERIVATIFPRODUCTFK NUMBER(32)
+        constraint TPERSO_FK4
+            references ORCLPDB1.TDERIVATIFPRODUCT,
+    PERSOID             CHAR(15 char),
+    ORDERDATE           DATE,
+    STATUS              CHAR(3 char),
+    TOTALDATA           NUMBER(32) default 0,
+    TOTALPAKET          NUMBER(32) default 0,
+    PERSOSTARTBY        CHAR(15 char),
+    PERSOSTARTTIME      TIMESTAMP(6),
+    PERSOFINISHBY       CHAR(15 char),
+    PERSOFINISHTIME     TIMESTAMP(6),
+    DECISIONBY          CHAR(15 char),
+    DECISIONTIME        TIMESTAMP(6),
+    ISGETALLPAKET       CHAR(1 char),
+    MEMO                CHAR(100 char),
+    DECISIONMEMO        CHAR(100 char),
+    TPERSOUPLOADFK      NUMBER(32)
+        constraint TPERSO_FK5
+            references ORCLPDB1.TPERSOUPLOAD
+)
+/
+
+create table ORCLPDB1.TMISSINGPRODUCT
+(
+    TMISSINGPRODUCTPK   NUMBER(32) not null
+        constraint TMISSINGPRODUCT_PKEY
+            primary key,
+    TEMBOSSPRODUCTFK    NUMBER(32)
+        constraint TMISSINGPRODUCT_FK1
+            references ORCLPDB1.TEMBOSSPRODUCT
+                on delete cascade,
+    PRODUCTGROUP        CHAR(2 char),
+    PRODUCTCODE         CHAR(10 char),
+    ISINSTANT           CHAR(1 char),
+    ENTRYTIME           TIMESTAMP(6),
+    ORDERDATE           DATE,
+    TOTALDATA           NUMBER(32) default 0,
+    TPINMAILERPRODUCTFK NUMBER(32)
+        constraint TMISSINGPRODUCT_FK2
+            references ORCLPDB1.TPINMAILERPRODUCT
+                on delete cascade
+)
+/
+
+create table ORCLPDB1.TMISSINGBRANCH
+(
+    TMISSINGBRANCHPK   NUMBER(32) not null
+        constraint TMISSINGBRANCH_PKEY
+            primary key,
+    TEMBOSSBRANCHFK    NUMBER(32)
+        constraint TMISSINGBRANCH_FK1
+            references ORCLPDB1.TEMBOSSBRANCH
+                on delete cascade,
+    BRANCHID           CHAR(5 char),
+    ENTRYTIME          TIMESTAMP(6),
+    ORDERDATE          DATE,
+    TOTALDATA          NUMBER(32) default 0,
+    TPINMAILERBRANCHFK NUMBER(32)
+        constraint TMISSINGBRANCH_FK2
+            references ORCLPDB1.TPINMAILERBRANCH
+                on delete cascade
+)
+/
+
+create table ORCLPDB1.TPERSODATA
+(
+    TPERSODATAPK    NUMBER(32) not null
+        constraint TPERSODATA_PKEY
+            primary key,
+    TPERSOFK        NUMBER(32)
+        constraint TPERSODATA_FK1
+            references ORCLPDB1.TPERSO
+                on delete cascade,
+    MBRANCHFK       NUMBER(32)
+        constraint TPERSODATA_FK2
+            references ORCLPDB1.MBRANCH
+                on delete set null,
+    TEMBOSSBRANCHFK NUMBER(32)
+        constraint TPERSODATA_FK3
+            references ORCLPDB1.TEMBOSSBRANCH
+                on delete set null,
+    ORDERDATE       DATE,
+    QUANTITY        NUMBER(32) default 0,
+    STATUS          CHAR(3 char),
+    ISGETPAKET      CHAR(1 char)
+)
+/
+
+create table ORCLPDB1.TPERSOOPR
+(
+    TPERSOOPRPK NUMBER(32) not null
+        constraint TPERSOOPR_KEY
+            primary key,
+    TPERSOFK    NUMBER(32) not null
+        constraint TPERSOOPR_FK1
+            references ORCLPDB1.TPERSO,
+    OPRID       CHAR(15 char),
+    OPRNAME     CHAR(70 char)
+)
+/
+
+create table ORCLPDB1.TPAKET
+(
+    TPAKETPK              NUMBER(32) not null
+        constraint TPAKET_PKEY
+            primary key,
+    TPERSOFK              NUMBER(32)
+        constraint TPAKET_FK1
+            references ORCLPDB1.TPERSO
+                on delete cascade,
+    TEMBOSSPRODUCTFK      NUMBER(32)
+        constraint TPAKET_FK3
+            references ORCLPDB1.TEMBOSSPRODUCT,
+    TDERIVATIFPRODUCTFK   NUMBER(32)
+        constraint TPAKET_FK2
+            references ORCLPDB1.TDERIVATIFPRODUCT
+                on delete cascade,
+    MPRODUCTFK            NUMBER(32)
+        constraint TPAKET_FK4
+            references ORCLPDB1.MPRODUCT,
+    PAKETID               CHAR(15 char),
+    ORDERDATE             DATE,
+    PRODUCTGROUP          CHAR(3 char),
+    STATUS                CHAR(3 char),
+    TOTALDATA             NUMBER(32) default 0,
+    TOTALDONE             NUMBER(32) default 0,
+    PROCESSTIME           TIMESTAMP(6),
+    PROCESSEDBY           CHAR(15 char),
+    TORDERFK              NUMBER(32)
+        constraint TPAKET_FK5
+            references ORCLPDB1.TORDER
+                on delete cascade,
+    TRETURNFK             NUMBER(32)
+        constraint TPAKET_FK6
+            references ORCLPDB1.TRETURN,
+    TSWITCHFK             NUMBER(32)
+        constraint TPAKET_FK7
+            references ORCLPDB1.TSWITCH,
+    BRANCHPOOL            CHAR(3 char),
+    TREPAIRDLVFK          NUMBER(32)
+        constraint TPAKET_FK9
+            references ORCLPDB1.TREPAIRDLV,
+    TPINPADORDERPRODUCTFK NUMBER(32)
+        constraint TPAKET_FK8
+            references ORCLPDB1.TPINPADORDERPRODUCT
+)
+/
+
+create table ORCLPDB1.TPAKETDATA
+(
+    TPAKETDATAPK       NUMBER(32) not null
+        constraint TPAKETDATA_PKEY
+            primary key,
+    TPAKETFK           NUMBER(32)
+        constraint TPAKETDATA_FK1
+            references ORCLPDB1.TPAKET
+                on delete cascade,
+    TEMBOSSBRANCHFK    NUMBER(32)
+        constraint TPAKETDATA_FK3
+            references ORCLPDB1.TEMBOSSBRANCH,
+    MBRANCHFK          NUMBER(32)
+        constraint TPAKETDATA_FK2
+            references ORCLPDB1.MBRANCH,
+    PRODUCTGROUP       CHAR(3 char),
+    NOPAKET            CHAR(15 char),
+    ORDERDATE          DATE,
+    QUANTITY           NUMBER(32) default 0,
+    STATUS             CHAR(3 char),
+    PAKETSTARTBY       CHAR(15 char),
+    PAKETSTARTTIME     TIMESTAMP(6),
+    PAKETFINISHBY      CHAR(15 char),
+    PAKETFINISHTIME    TIMESTAMP(6),
+    ISDLV              CHAR(1 char),
+    TPINMAILERBRANCHFK NUMBER(32)
+        constraint TPAKETDATA_FK4
+            references ORCLPDB1.TPINMAILERBRANCH,
+    ZIPCODE            CHAR(5 char),
+    ACCNO              CHAR(20 char),
+    CARDNO             CHAR(20 char),
+    CUSTNAME           CHAR(30 char),
+    ADDRESS1           CHAR(40 char),
+    ADDRESS2           CHAR(40 char),
+    ADDRESS3           CHAR(40 char),
+    HPNO               CHAR(20 char),
+    CITY               CHAR(50 char),
+    ORDERID            CHAR(20 char)
+)
+/
+
+create table ORCLPDB1.TDELIVERYDATA
+(
+    TDELIVERYDATAPK     NUMBER(32) not null
+        constraint TDELIVERYDATA_PKEY
+            primary key,
+    TDELIVERYFK         NUMBER(32)
+        constraint TDELIVERYDATA_FK1
+            references ORCLPDB1.TDELIVERY
+                on delete cascade,
+    TPAKETDATAFK        NUMBER(32)
+        constraint TDELIVERYDATA_FK2
+            references ORCLPDB1.TPAKETDATA
+                on delete cascade,
+    MPRODUCTFK          NUMBER(32)
+        constraint TDELIVERYDATA_FK3
+            references ORCLPDB1.MPRODUCT,
+    TDERIVATIFPRODUCTFK NUMBER(32)
+        constraint TDELIVERYDATA_FK4
+            references ORCLPDB1.TDERIVATIFPRODUCT,
+    PRODUCTGROUP        CHAR(30 char),
+    PRODUCTCODE         CHAR(10 char),
+    PRODUCTNAME         CHAR(70 char),
+    ORDERDATE           DATE,
+    QUANTITY            NUMBER(32) default 0,
+    TOTALPRICE          NUMBER(19) default 0,
+    ORDERID             CHAR(20 char)
+)
+/
+
+create table ORCLPDB1.TROLLBACK
+(
+    TROLLBACKPK  NUMBER(32) not null
+        constraint TROLLBACK_PKEY
+            primary key,
+    MPRODUCTFK   NUMBER(32)
+        constraint TROLLBACK_FK1
+            references ORCLPDB1.MPRODUCT
+                on delete cascade,
+    MBRANCHFK    NUMBER(32)
+        constraint TROLLBACK_FK2
+            references ORCLPDB1.MBRANCH
+                on delete cascade,
+    TPAKETDATAFK NUMBER(32)
+        constraint TROLLBACK_FK3
+            references ORCLPDB1.TPAKETDATA
+                on delete cascade,
+    ORDERDATE    DATE,
+    TOTALDATA    NUMBER(32),
+    ROLLBACKTIME TIMESTAMP(6),
+    ROLLBACKBY   CHAR(15 char),
+    STATUS       CHAR(3 char),
+    TORDERFK     NUMBER(32)
+        constraint TROLLBACK_FK4
+            references ORCLPDB1.TORDER
+)
+/
+
+create table ORCLPDB1.TBOOKDATA
+(
+    TBOOKDATAPK     NUMBER(32) not null
+        constraint TBOOKDATA_PKEY
+            primary key,
+    TBOOKFILEFK     NUMBER(32)
+        constraint TBOOKDATA_FK1
+            references ORCLPDB1.TBOOKFILE
+                on delete cascade,
+    TDELIVERYDATAFK NUMBER(32)
+        constraint TBOOKDATA_FK2
+            references ORCLPDB1.TDELIVERYDATA,
+    SEQNUM          CHAR(10 char),
+    QUANTITY        NUMBER(32) default 0,
+    TOTALAMOUNT     NUMBER(19) default 0,
+    STATUS          CHAR(3 char),
+    ERRCODE         CHAR(4 char),
+    ERRDESC         CHAR(30 char),
+    ITEMPRICE       NUMBER(19) default 0,
+    LASTUPDATED     TIMESTAMP(6)
+)
+/
+
+create table ORCLPDB1.TOUTGOING
+(
+    TOUTGOINGPK  NUMBER(32) not null
+        constraint TOUTGOING_PKEY
+            primary key,
+    MPRODUCTFK   NUMBER(32)
+        constraint TOUTGOING_FK4
+            references ORCLPDB1.MPRODUCT
+                on delete cascade,
+    TPERSOFK     NUMBER(32)
+        constraint TOUTGOING_FK2
+            references ORCLPDB1.TPERSO
+                on delete cascade,
+    TORDERFK     NUMBER(32)
+        constraint TOUTGOING_FK5
+            references ORCLPDB1.TORDER
+                on delete cascade,
+    PRODUCTGROUP CHAR(3 char),
+    OUTGOINGID   CHAR(20 char),
+    ITEMQTY      NUMBER(32) default 0,
+    MEMO         CHAR(100 char),
+    STATUS       CHAR(3 char),
+    ENTRYTIME    TIMESTAMP(6),
+    ENTRYBY      CHAR(40 char),
+    DECISIONBY   CHAR(40 char),
+    DECISIONTIME TIMESTAMP(6),
+    DECISIONMEMO CHAR(100 char),
+    LASTUPDATED  TIMESTAMP(6),
+    UPDATEDBY    CHAR(40 char),
+    ISVERIFIED   CHAR(1 char),
+    TREPAIRFK    NUMBER(32)
+)
+/
+
+create table ORCLPDB1.TORDERFLOW
+(
+    TORDERFLOWPK    NUMBER(32) not null
+        constraint TORDERFLOW_PKEY
+            primary key,
+    TEMBOSSBRANCHFK NUMBER(32)
+        constraint TORDERFLOW_FK1
+            references ORCLPDB1.TEMBOSSBRANCH
+                on delete cascade,
+    TORDERFK        NUMBER(32)
+        constraint TORDERFLOW_FK2
+            references ORCLPDB1.TORDER
+                on delete cascade,
+    PRODUCTGROUP    CHAR(3 char),
+    FLOWNAME        CHAR(40 char),
+    FLOWGROUP       CHAR(3 char),
+    TOTALDATA       NUMBER(32) default 0,
+    FLOWTIME        TIMESTAMP(6),
+    FLOWUSER        CHAR(15 char),
+    MEMO            CHAR(200 char),
+    TORDERBRANCHFK  NUMBER
+        constraint TORDERFLOW_FK3
+            references ORCLPDB1.TORDERBRANCH
+)
+/
+
+create table ORCLPDB1.TORDERPRODUCT
+(
+    TORDERPRODUCTPK NUMBER not null
+        primary key,
+    TORDERBRANCHFK  NUMBER
+        constraint TORDERPRODUCT_FK1
+            references ORCLPDB1.TORDERBRANCH,
+    MPRODUCTFK      NUMBER
+        constraint TORDERPRODUCT_FK2
+            references ORCLPDB1.MPRODUCT,
+    ORDERQTY        NUMBER        default 0,
+    RECEIVEQTY      NUMBER        default 0,
+    RECEIVEDATE     DATE,
+    RECEIVER        CHAR(40 char) default '',
+    PINTYPE         CHAR          default '',
+    RESPCODE        CHAR(7)       default '',
+    TOTALPROCESS    NUMBER        default 0
+)
+/
+
+create table ORCLPDB1.TPERSOREJECT
+(
+    TPERSOREJECTPK NUMBER not null
+        primary key,
+    MPRODUCTFK     NUMBER
+        constraint TPERSOREJECT_FK1
+            references ORCLPDB1.MPRODUCT,
+    EMBOSSDATE     DATE,
+    PERSODATE      DATE,
+    REJECTQTY      NUMBER         default 0,
+    REJECTCODE     CHAR(2 char)   default '',
+    REJECTDESC     CHAR(200 char) default '',
+    NOTE           CHAR(200 char) default '',
+    STATUS         CHAR(2 char)   default '',
+    DECIDEDBY      CHAR(40 char)  default '',
+    DECIDEDAT      TIMESTAMP(6),
+    DECISIONNOTE   CHAR(200 char) default '',
+    DOCID          CHAR(50 char)  default '',
+    DOCNAME        CHAR(200 char) default '',
+    DOCPATH        CHAR(500 char) default '',
+    CREATEDBY      CHAR(40 char)  default '',
+    CREATETIME     TIMESTAMP(6),
+    UPDATEDBY      CHAR(40 char)  default '',
+    LASTUPDATED    TIMESTAMP(6),
+    TOTALDATA      NUMBER         default 0,
+    MSUPPLIERFK    NUMBER
+        constraint TPERSOREJECT_FK2
+            references ORCLPDB1.MSUPPLIER,
+    REJECTNO       CHAR(25)
+)
+/
+
+create table ORCLPDB1.TDO
+(
+    TDOPK          NUMBER not null
+        primary key,
+    TPOFK          NUMBER
+        constraint TDO_FK1
+            references ORCLPDB1.TPO,
+    DONO           CHAR(30 char)  default '',
+    DODATE         DATE,
+    TOTALDO        NUMBER         default 0,
+    NOTE           CHAR(200 char) default '',
+    STATUS         CHAR(2 char)   default '',
+    DECIDEDBY      CHAR(40 char)  default '',
+    DECIDEDAT      TIMESTAMP(6),
+    DECISIONNOTE   CHAR(200 char) default '',
+    DOCID          CHAR(50 char)  default '',
+    DOCNAME        CHAR(200 char) default '',
+    DOCPATH        CHAR(500 char) default '',
+    CREATETIME     TIMESTAMP(6),
+    CREATEDBY      CHAR(40 char)  default '',
+    LASTUPDATED    TIMESTAMP(6),
+    UPDATEDBY      CHAR(40 char)  default '',
+    PREFIX         CHAR(5 char)   default '',
+    ITEMSTARTNO    NUMBER,
+    TPERSOREJECTFK NUMBER
+        constraint TDO_FK2
+            references ORCLPDB1.TPERSOREJECT,
+    MSUPPLIERFK    NUMBER
+        constraint TDO_FK3
+            references ORCLPDB1.MSUPPLIER
+)
+/
+
+create table ORCLPDB1.TTOKENITEM
+(
+    TTOKENITEMPK NUMBER(32) not null
+        constraint TTOKENITEM_PKEY
+            primary key,
+    TINCOMINGFK  NUMBER(32)
+        constraint TTOKENITEM_FK1
+            references ORCLPDB1.TINCOMING
+                on delete cascade,
+    ITEMNO       CHAR(20 char),
+    ITEMNOINJECT CHAR(20 char),
+    STATUS       CHAR(3 char),
+    TDOFK        NUMBER
+        constraint TTOKENITEM_FK2
+            references ORCLPDB1.TDO
+)
+/
+
+create unique index ORCLPDB1.TTOKENITEM_ITEMNO_KEY
+    on ORCLPDB1.TTOKENITEM (ITEMNO)
+/
+
+create table ORCLPDB1.TPINPADITEM
+(
+    TPINPADITEMPK NUMBER(32) not null
+        constraint TPINPADITEM_PKEY
+            primary key,
+    TINCOMINGFK   NUMBER(32)
+        constraint TPINPADITEM_FK1
+            references ORCLPDB1.TINCOMING
+                on delete cascade,
+    ITEMNO        CHAR(20 char),
+    STATUS        CHAR(3 char),
+    TDOFK         NUMBER
+        constraint TPINPADITEM_FK2
+            references ORCLPDB1.TDO
+)
+/
+
+create unique index ORCLPDB1.TPINPADITEM_ITEMNO_KEY
+    on ORCLPDB1.TPINPADITEM (ITEMNO)
+/
+
+create table ORCLPDB1.TSECURITIESITEM
+(
+    TSECURITIESITEMPK NUMBER(32) not null
+        constraint TSECURITIESITEM_PKEY
+            primary key,
+    TINCOMINGFK       NUMBER(32)
+        constraint TSECURITIESITEM_FK1
+            references ORCLPDB1.TINCOMING
+                on delete cascade,
+    ITEMNO            CHAR(20 char),
+    STATUS            CHAR(3 char),
+    NUMERATOR         NUMBER(32),
+    TDOFK             NUMBER
+        constraint TSECURITIESITEM_FK2
+            references ORCLPDB1.TDO
+)
+/
+
+create index ORCLPDB1.TSECURITIESITEM_UNQ2
+    on ORCLPDB1.TSECURITIESITEM (NUMERATOR)
+/
+
+create index ORCLPDB1.TSECURITIESITEM_UNQ1
+    on ORCLPDB1.TSECURITIESITEM (TINCOMINGFK)
+/
+
+create index ORCLPDB1.TSECURITIESITEM_UNQ3
+    on ORCLPDB1.TSECURITIESITEM (STATUS)
+/
+
+create table ORCLPDB1.TORDERITEM
+(
+    TORDERITEMPK          NUMBER(32) not null
+        constraint TORDERITEM_PKEY
+            primary key,
+    TORDERFK              NUMBER(32)
+        constraint TORDERITEM_FK1
+            references ORCLPDB1.TORDER
+                on delete cascade,
+    TTOKENITEMFK          NUMBER(32)
+        constraint TORDERITEM_FK2
+            references ORCLPDB1.TTOKENITEM,
+    TPINPADITEMFK         NUMBER(32)
+        constraint TORDERITEM_FK3
+            references ORCLPDB1.TPINPADITEM,
+    TSECURITIESITEMFK     NUMBER(32)
+        constraint TORDERITEM_FK4
+            references ORCLPDB1.TSECURITIESITEM,
+    PRODUCTGROUP          CHAR(2 char),
+    ITEMNO                CHAR(20 char),
+    TID                   CHAR(20 char),
+    PINPADTYPE            CHAR(1 char),
+    PINPADMEMO            CHAR(100 char),
+    MID                   CHAR(20 char),
+    NUMERATOR             NUMBER(32),
+    ITEMPRICE             BINARY_DOUBLE default 0,
+    PREFIX                CHAR(5 char),
+    TPINPADORDERPRODUCTFK NUMBER(32)
+        constraint TORDERITEM_FK5
+            references ORCLPDB1.TPINPADORDERPRODUCT
+                on delete cascade
+)
+/
+
+create table ORCLPDB1.TPKS
+(
+    TPKSPK           NUMBER not null
+        primary key,
+    MBRANCHFK        NUMBER
+        constraint TPKS_FK1
+            references ORCLPDB1.MBRANCH,
+    MPRODUCTFK       NUMBER
+        constraint TPKS_FK2
+            references ORCLPDB1.MPRODUCT,
+    PKSNO            CHAR(50 char)  default '',
+    PKSDATE          DATE,
+    INSTITUTENAME    CHAR(100 char) default '',
+    PKSDUEDATE       DATE,
+    NOTE             CHAR(200 char) default '',
+    ISACTIVE         CHAR           default '',
+    STATUS           CHAR(2 char)   default '',
+    DECIDEDBY        CHAR(40 char)  default '',
+    DECIDEDAT        TIMESTAMP(6),
+    DECISIONNOTE     CHAR(200 char) default '',
+    DOCID            CHAR(50 char)  default '',
+    DOCNAME          CHAR(200 char) default '',
+    DOCPATH          CHAR(500 char) default '',
+    DESIGNIMGID      CHAR(50 char)  default '',
+    DESIGNIMGNAME    CHAR(200 char) default '',
+    DESIGNIMGPATH    CHAR(500 char) default '',
+    DESIGNVECTORID   CHAR(50 char)  default '',
+    DESIGNVECTORNAME CHAR(200 char) default '',
+    DESIGNVECTORPATH CHAR(500 char) default '',
+    DUMMYIMGID       CHAR(50 char)  default '',
+    DUMMYIMGNAME     CHAR(200 char) default '',
+    DUMMYIMGPATH     CHAR(500 char) default '',
+    DUMMYVECTORID    CHAR(50 char)  default '',
+    DUMMYVECTORNAME  CHAR(200 char) default '',
+    DUMMYVECTORPATH  CHAR(500 char) default '',
+    CREATEDBY        CHAR(40 char)  default '',
+    CREATETIME       TIMESTAMP(6),
+    UPDATEDBY        CHAR(40 char)  default '',
+    LASTUPDATED      TIMESTAMP(6),
+    TOTALQTY         NUMBER         default 0
+)
+/
+
+create table ORCLPDB1.TCOMPLAINT
+(
+    TCOMPLAINTPK NUMBER not null
+        primary key,
+    MBRANCHFK    NUMBER
+        constraint TCOMPLAINT_FK1
+            references ORCLPDB1.MBRANCH,
+    PRODUCTGROUP CHAR(2 char)   default '',
+    TICKETNO     CHAR(30 char)  default '',
+    TICKETDATE   DATE,
+    NOTE         CHAR(500 char) default '',
+    COMPLAINTBY  CHAR(40 char)  default '',
+    STATUS       CHAR(2 char)   default '',
+    CLOSEDAT     TIMESTAMP(6),
+    DOCID        CHAR(50 char)  default '',
+    DOCNAME      CHAR(200 char) default '',
+    DOCPATH      CHAR(500 char) default '',
+    CREATEDBY    CHAR(40 char)  default '',
+    CREATETIME   TIMESTAMP(6),
+    UPDATEDBY    CHAR(40 char)  default '',
+    LASTUPDATED  TIMESTAMP(6)
+)
+/
+
+create table ORCLPDB1.TCOMPLAINTRESPONSE
+(
+    TCOMPLAINTRESPONSEPK NUMBER not null
+        primary key,
+    TCOMPLAINTFK         NUMBER
+        constraint TCOMPLAINTRESPONSE_FK1
+            references ORCLPDB1.TCOMPLAINT,
+    RESPONSE             CHAR(500 char) default '',
+    RESPONSEDAT          TIMESTAMP(6),
+    RESPONSEDBY          CHAR(40 char)  default '',
+    CREATEDBY            CHAR(40 char)  default '',
+    CREATETIME           TIMESTAMP(6),
+    UPDATEDBY            CHAR(40 char)  default '',
+    LASTUPDATED          TIMESTAMP(6)
+)
+/
+
+create table ORCLPDB1.TQUOTAREQDATA
+(
+    TQUOTAREQDATAPK NUMBER not null
+        primary key,
+    MBRANCHFK       NUMBER
+        constraint TQUOTAREQDATA_FK1
+            references ORCLPDB1.MBRANCH,
+    MPRODUCTFK      NUMBER
+        constraint TQUOTAREQDATA_FK2
+            references ORCLPDB1.MPRODUCT,
+    QUOTATYPE       CHAR          default '',
+    PAGU            NUMBER        default 0,
+    QUOTA           NUMBER        default 0,
+    UPDATEDBY       CHAR(40 char) default '',
+    LASTUPDATED     TIMESTAMP(6),
+    SISAKUOTA       NUMBER        default 0,
+    TQUOTAREQFK     NUMBER
+        constraint TQUOTAREQDATA_FK3
+            references ORCLPDB1.TQUOTAREQ,
+    unique (MBRANCHFK, MPRODUCTFK)
+)
+/
+
+create table ORCLPDB1.TTRACKING
+(
+    TTRACKINGPK  NUMBER not null
+        primary key,
+    TDELIVERYFK  NUMBER
+        constraint TTRACKING_FK1
+            references ORCLPDB1.TDELIVERY,
+    TRACKID      CHAR(50 char) default '',
+    TRACKTIME    TIMESTAMP(6),
+    ACTIVITY     CHAR(250)     default '',
+    ACTIVITYTIME CHAR(40 char) default ''
+)
+/
+
+create table ORCLPDB1.TFILEPHONE
+(
+    TFILEPHONEPK NUMBER(32) not null
+        primary key,
+    FILENAME     CHAR(100 char) default '',
+    FILEGETTIME  TIMESTAMP(6)
+)
+/
+
+create table ORCLPDB1.TSALE
+(
+    TSALEPK    NUMBER not null
+        primary key,
+    MBRANCHFK  NUMBER
+        constraint TSALE_FK1
+            references ORCLPDB1.MBRANCH,
+    MOUTLETFK  NUMBER
+        constraint TSALE_FK2
+            references ORCLPDB1.MOUTLET,
+    SALEID     CHAR(50) default '',
+    SALEDATE   DATE,
+    SALECUST   CHAR(70) default '',
+    CREATEDBY  CHAR(40) default '',
+    CREATETIME TIMESTAMP(6),
+    TOTALQTY   NUMBER   default 0
+)
+/
+
+create table ORCLPDB1.TSALEITEM
+(
+    TSALEITEMPK NUMBER not null
+        primary key,
+    TSALEFK     NUMBER
+        constraint TSALEITEM_FK1
+            references ORCLPDB1.TSALE,
+    MPRODUCTFK  NUMBER
+        constraint TSALEITEM_FK2
+            references ORCLPDB1.MPRODUCT,
+    CARDNO      CHAR(20) default ''
+)
+/
+
