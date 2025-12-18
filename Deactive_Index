@@ -1,0 +1,17 @@
+//MATIKAN INDEX
+SELECT 'ALTER INDEX ' || index_name || ' UNUSABLE;'
+FROM   user_indexes
+WHERE    uniqueness <> 'UNIQUE';
+
+
+//REBUILD INDEX
+SELECT 'ALTER INDEX ' || index_name ||
+       ' REBUILD PARALLEL 8 NOLOGGING;'
+FROM   user_indexes
+WHERE   uniqueness <> 'UNIQUE';
+
+
+//RESET STATISTIC INDEX
+SELECT 'ALTER INDEX ' || index_name || ' NOPARALLEL LOGGING;'
+FROM   user_indexes
+WHERE  uniqueness <> 'UNIQUE';
