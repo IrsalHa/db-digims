@@ -1,0 +1,73 @@
+SELECT
+    'DROP INDEX ' || index_name || ';' AS drop_statement
+FROM user_indexes
+WHERE index_type IN (
+    'FUNCTION-BASED NORMAL',
+    'FUNCTION-BASED BITMAP',
+    'BITMAP'
+)
+AND table_name NOT LIKE 'BIN$%';
+
+
+-- ========================================================================
+-- STEP 1: Generate DROP INDEX statements
+-- ========================================================================
+
+SELECT 'DROP INDEX ' || i.index_name || ';' AS drop_statement
+FROM user_indexes i
+JOIN user_ind_columns ic ON i.index_name = ic.index_name
+JOIN user_tab_columns tc ON ic.table_name = tc.table_name
+                         AND ic.column_name = tc.column_name
+WHERE tc.data_type = 'CHAR'
+  AND i.table_name NOT LIKE 'BIN$%'
+  AND (i.index_type LIKE '%FUNCTION%' OR i.index_type LIKE '%BITMAP%');
+
+
+-- ========================================================================
+-- STEP 2: Generate ALTER TABLE statements
+-- ========================================================================
+
+SELECT
+    'ALTER TABLE ' || table_name ||
+    ' MODIFY ' || column_name ||
+    ' VARCHAR2(' || data_length || ');' AS alter_statement
+FROM user_tab_columns
+WHERE data_type = 'CHAR'
+  AND table_name NOT LIKE 'BIN$%'
+ORDER BY table_name, column_id;
+
+
+-- ========================================================================
+-- STEP 3: Generate TRIM UPDATE statements
+-- ========================================================================
+
+SELECT
+    'UPDATE ' || table_name ||
+    ' SET ' || column_name ||
+    ' = TRIM(' || column_name || ')' ||
+    ' WHERE ' || column_name || ' IS NOT NULL;' AS update_statement
+FROM user_tab_columns
+WHERE data_type = 'CHAR' OR data_type= 'VARCHAR2'
+  AND table_name NOT LIKE 'BIN$%'
+ORDER BY table_name, column_id;
+
+
+-- ========================================================================
+-- STEP 4: Generate Statistic
+-- ========================================================================
+
+SELECT
+    'EXEC DBMS_STATS.GATHER_TABLE_STATS(USER, ''' || table_name || ''', CASCADE => TRUE);'
+FROM user_tables
+WHERE table_name NOT LIKE 'BIN$%'
+ORDER BY table_name;
+
+
+-- ========================================================================
+-- STEP 5: Check CHAR yg tersisa
+-- ========================================================================
+
+SELECT column_name
+FROM user_tab_columns
+WHERE data_type = 'CHAR'
+  AND table_name NOT LIKE 'BIN$%';
