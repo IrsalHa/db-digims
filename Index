@@ -1,4 +1,21 @@
 -- ========================================================================
+-- Generete Query INDEX
+-- ========================================================================
+SELECT 
+    'CREATE ' || 
+    CASE WHEN uniqueness = 'UNIQUE' THEN 'UNIQUE ' ELSE '' END ||
+    'INDEX ' || index_name || 
+    ' ON ' || table_name || ' (' ||
+    (SELECT LISTAGG(column_name, ', ') WITHIN GROUP (ORDER BY column_position)
+     FROM user_ind_columns uic
+     WHERE uic.index_name = ui.index_name) ||
+    ');'
+FROM user_indexes ui
+WHERE table_name NOT LIKE 'BIN$%'
+  AND generated = 'N'
+ORDER BY table_name, index_name;
+
+-- ========================================================================
 -- PRIMARY INDEXES: Kolom yang sering di-filter EXACT match
 -- ========================================================================
 
