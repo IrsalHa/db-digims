@@ -71,3 +71,39 @@ SELECT column_name
 FROM user_tab_columns
 WHERE data_type = 'CHAR'
   AND table_name NOT LIKE 'BIN$%';
+
+
+-- ========================================================================
+-- FULL REBUILD + STATS (All-in-one)
+-- ========================================================================
+
+BEGIN
+    DBMS_OUTPUT.PUT_LINE('=== REBUILDING ALL INDEXES ===');
+    
+    FOR rec IN (
+        SELECT index_name, table_name
+        FROM user_indexes
+        WHERE table_name NOT LIKE 'BIN$%'
+          AND index_type NOT IN ('LOB', 'DOMAIN')
+        ORDER BY table_name, index_name
+    ) LOOP
+        BEGIN
+            -- Rebuild index
+            EXECUTE IMMEDIATE 'ALTER INDEX ' || rec.index_name || ' REBUILD ONLINE';
+            
+            -- Gather stats
+            DBMS_STATS.GATHER_INDEX_STATS(
+                ownname => USER,
+                indname => rec.index_name
+            );
+            
+            DBMS_OUTPUT.PUT_LINE('OK: ' || rec.index_name);
+        EXCEPTION
+            WHEN OTHERS THEN
+                DBMS_OUTPUT.PUT_LINE('ERROR: ' || rec.index_name || ' - ' || SQLERRM);
+        END;
+    END LOOP;
+    
+    DBMS_OUTPUT.PUT_LINE('=== REBUILD COMPLETED ===');
+END;
+/
