@@ -1,3 +1,28 @@
+
+-- ========================================================================
+-- Generete Query INDEX AMAN
+-- ========================================================================
+SELECT 
+    'BEGIN' || CHR(10) ||
+    '    EXECUTE IMMEDIATE ''CREATE ' || 
+    CASE WHEN uniqueness = 'UNIQUE' THEN 'UNIQUE ' ELSE '' END ||
+    'INDEX ' || index_name || 
+    ' ON ' || table_name || ' (' ||
+    (SELECT LISTAGG(column_name, ', ') WITHIN GROUP (ORDER BY column_position)
+     FROM user_ind_columns uic
+     WHERE uic.index_name = ui.index_name) ||
+    ')'';' || CHR(10) ||
+    '    DBMS_OUTPUT.PUT_LINE(''Created: ' || index_name || ''');' || CHR(10) ||
+    'EXCEPTION WHEN OTHERS THEN' || CHR(10) ||
+    '    DBMS_OUTPUT.PUT_LINE(''Skip: ' || index_name || ' - '' || SQLERRM);' || CHR(10) ||
+    'END;' || CHR(10) || 
+    '/' AS create_statement
+FROM user_indexes ui
+WHERE table_name NOT LIKE 'BIN$%'
+  AND generated = 'N'
+ORDER BY table_name, index_name;
+
+
 -- ========================================================================
 -- Generete Query INDEX
 -- ========================================================================
