@@ -1,0 +1,181 @@
+-- ========================================================================
+-- PRIMARY INDEXES: Kolom yang sering di-filter EXACT match
+-- ========================================================================
+
+-- 1. productgroup (exact match)
+CREATE INDEX idx_tdelivery_productgroup 
+ON tdelivery (productgroup);
+
+-- 2. branchpool (exact match)
+CREATE INDEX idx_tdelivery_branchpool 
+ON tdelivery (branchpool);
+
+-- 3. isdlvcust (exact match)
+CREATE INDEX idx_tdelivery_isdlvcust 
+ON tdelivery (isdlvcust);
+
+-- 4. status (LIKE search, tapi bisa pakai index kalau gak ada leading %)
+CREATE INDEX idx_tdelivery_status 
+ON tdelivery (status);
+
+-- 5. isproductphoto (exact match)
+CREATE INDEX idx_tdelivery_isproductphoto 
+ON tdelivery (isproductphoto);
+
+-- ========================================================================
+-- DATE RANGE INDEX: processtime (sering di-filter by date range)
+-- ========================================================================
+
+-- 6. processtime (range query: >= and <)
+CREATE INDEX idx_tdelivery_processtime 
+ON tdelivery (processtime);
+
+-- ========================================================================
+-- LIKE SEARCH INDEXES: Kolom dengan LIKE '%value%'
+-- ========================================================================
+
+-- 7. dlvid (LIKE search)
+-- Kalau sudah VARCHAR2, index normal sudah cukup untuk LIKE '%xxx%'
+CREATE INDEX idx_tdelivery_dlvid 
+ON tdelivery (dlvid);
+
+-- ========================================================================
+-- COMPOSITE INDEXES: Kombinasi filter yang sering dipakai bareng
+-- ========================================================================
+
+-- 8. Composite: processtime + status (sering filter by date + status)
+CREATE INDEX idx_tdelivery_time_status 
+ON tdelivery (processtime, status);
+
+-- 9. Composite: productgroup + branchpool (sering filter bareng)
+CREATE INDEX idx_tdelivery_prodgrp_pool 
+ON tdelivery (productgroup, branchpool);
+
+-- 10. Composite: status + isdlvcust
+CREATE INDEX idx_tdelivery_status_dlvcust 
+ON tdelivery (status, isdlvcust);
+
+-- ========================================================================
+-- FOREIGN KEY INDEXES: Untuk JOIN performance
+-- ========================================================================
+
+-- 11. mcouriervendor FK (untuk LEFT JOIN)
+-- Format: tdelivery.mcouriervendor_fk → ganti sesuai nama FK column Anda
+CREATE INDEX idx_tdelivery_courier_fk 
+ON tdelivery (mcouriervendor_fk);
+
+-- 12. mbranch FK (untuk LEFT JOIN)
+CREATE INDEX idx_tdelivery_branch_fk 
+ON tdelivery (mbranch_fk);
+
+-- 13. tdeliverycourier FK (untuk INNER JOIN)
+CREATE INDEX idx_tdelivery_delcourier_fk 
+ON tdelivery (tdeliverycourier_fk);
+
+-- ========================================================================
+-- RELATED TABLE INDEXES: Mcouriervendor
+-- ========================================================================
+
+-- 14. Mcouriervendor.vendorcode (untuk LIKE search di JOIN)
+CREATE INDEX idx_mcouriervendor_code 
+ON mcouriervendor (vendorcode);
+
+-- ========================================================================
+-- RELATED TABLE INDEXES: Mbranch
+-- ========================================================================
+
+-- 15. Mbranch.branchid (untuk LIKE search di JOIN)
+CREATE INDEX idx_mbranch_branchid 
+ON mbranch (branchid);
+
+-- 16. Mbranch.branchname (untuk LIKE search di JOIN)
+CREATE INDEX idx_mbranch_branchname 
+ON mbranch (branchname);
+
+-- ========================================================================
+-- OPTIONAL: Covering Index (Advanced)
+-- ========================================================================
+
+-- 18. Covering index untuk query umum (baca langsung dari index)
+-- Include kolom yang sering di-SELECT
+CREATE INDEX idx_tdelivery_covering 
+ON tdelivery (
+    processtime, 
+    status, 
+    productgroup, 
+    dlvid
+);
+
+
+
+-- ========================================================================
+-- RECOMMENDED INDEXES untuk Tpaketdata Query Performance
+-- ========================================================================
+-- Query: GROUP BY branch dengan MIN(orderdate) dan COUNT
+-- ========================================================================
+
+-- ========================================================================
+-- CRITICAL INDEXES: Foreign Keys untuk JOIN
+-- ========================================================================
+
+-- 1. Tpaketdata → Tpaket FK (INNER JOIN)
+CREATE INDEX idx_tpaketdata_tpaket_fk 
+ON tpaketdata (tpaket_fk);
+
+-- 2. Tpaketdata → Mbranch FK (INNER JOIN)
+CREATE INDEX idx_tpaketdata_branch_fk 
+ON tpaketdata (mbranch_fk);
+
+-- ========================================================================
+-- CRITICAL INDEXES: Aggregate Function
+-- ========================================================================
+
+-- 3. orderdate (untuk MIN function)
+CREATE INDEX idx_tpaketdata_orderdate 
+ON tpaketdata (orderdate);
+
+-- ========================================================================
+-- COMPOSITE INDEXES: FK + orderdate (Optimal untuk query ini)
+-- ========================================================================
+
+-- 4. BEST PERFORMANCE: Composite untuk GROUP BY + MIN + filter
+-- Covering index yang include semua kolom yang dibutuhkan
+CREATE INDEX idx_tpaketdata_branch_date 
+ON tpaketdata (mbranch_fk, orderdate);
+
+-- 5. Alternative: Composite dengan tpaket FK
+CREATE INDEX idx_tpaketdata_paket_date 
+ON tpaketdata (tpaket_fk, orderdate);
+
+-- ========================================================================
+-- FILTER INDEXES: Tergantung buildPredicates() Anda
+-- ========================================================================
+-- Tambahkan sesuai filter di TpaketFilterDto
+
+-- Contoh umum filter untuk tpaket queries:
+
+-- 6. status (kalau ada filter status)
+CREATE INDEX idx_tpaketdata_status 
+ON tpaketdata (status);
+
+-- 7. createddate/processdate (kalau ada filter date range)
+CREATE INDEX idx_tpaketdata_created 
+ON tpaketdata (createddate);
+
+-- 8. Composite: status + orderdate
+CREATE INDEX idx_tpaketdata_status_date 
+ON tpaketdata (status, orderdate);
+
+
+-- ========================================================================
+-- MBRANCH INDEXES: Untuk ORDER BY dan GROUP BY
+-- ========================================================================
+
+-- 9. branchid (untuk ORDER BY)
+CREATE INDEX idx_mbranch_branchid 
+ON mbranch (branchid);
+
+-- 10. Composite: branchid + branchcode + branchname
+-- Covering index untuk SELECT columns
+CREATE INDEX idx_mbranch_covering 
+ON mbranch (branchid, branchcode, branchname);
