@@ -1,0 +1,25 @@
+SELECT
+   
+    'ALTER SEQUENCE ' || sequencename ||
+    ' INCREMENT BY ' || increment_by ||
+    ' MINVALUE ' || min_value ||
+    ' MAXVALUE ' || CASE WHEN max_value = 9223372036854775807 THEN 'NOMAXVALUE' ELSE max_value::text END ||
+    CASE WHEN cycle THEN ' CYCLE' ELSE ' NOCYCLE' END ||
+    CASE WHEN cache_size > 1 THEN ' CACHE ' || cache_size ELSE ' NOCACHE' END ||
+    ';' AS oracle_alter_sequence,
+
+   
+    'DECLARE' || chr(10) ||
+    '  current_val NUMBER;' || chr(10) ||
+    '  target_val NUMBER := ' || last_value || ';' || chr(10) ||
+    'BEGIN' || chr(10) ||
+    '  SELECT ' || sequencename || '.NEXTVAL INTO current_val FROM dual;' || chr(10) ||
+    '  EXECUTE IMMEDIATE ''ALTER SEQUENCE ' || sequencename || ' INCREMENT BY '' || (target_val - current_val);' || chr(10) ||
+    '  SELECT ' || sequencename || '.NEXTVAL INTO current_val FROM dual;' || chr(10) ||
+    '  EXECUTE IMMEDIATE ''ALTER SEQUENCE ' || sequencename || ' INCREMENT BY ' || increment_by || ''';' || chr(10) ||
+    'END;' || chr(10) ||
+    '/' AS oracle_set_current_value
+FROM
+    pg_sequences
+WHERE
+    schemaname = 'public';
